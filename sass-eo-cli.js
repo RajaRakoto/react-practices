@@ -16,7 +16,6 @@ module.exports = function (grunt) {
 				files: {
 					// destination: source
 					'./src/index.min.css': './src/index.scss',
-					'./src/components/app/App.min.css': './src/components/app/App.scss',
 				},
 			},
 		},
