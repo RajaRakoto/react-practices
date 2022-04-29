@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import './jungle.min.css';
-// import { plantList } from '../../../data/plantList';
+import { plantList } from '../../../data/plantList';
 
 // TODO: verified
 function Header() {
@@ -20,24 +20,23 @@ function Header() {
 // TODO: verified
 function Cart() {
 	const unity = 'Ar';
-	const monsteraPrice = 3000;
-	const ivyPrice = 2300;
-	const flowerPrice = 5000;
 
-	function getSumPrice() {
-		return monsteraPrice + ivyPrice + flowerPrice;
+	function getPlantPrice(id) {
+		const plant = plantList.filter(plant => plant.id === id);
+		return plant[0].price;
 	}
 
 	return (
 		<div id="cart">
 			<h4>🛒 Panier</h4>
 			<ul>
-				<li>Monstera: {monsteraPrice + unity}</li>
-				<li>Lierre: {ivyPrice + unity}</li>
-				<li>Fleurs: {flowerPrice + unity}</li>
+				<li>Monstera: {getPlantPrice('1ed') + unity}</li>
+				<li>Yucca: {getPlantPrice('4kk') + unity}</li>
+				<li>Olivier: {getPlantPrice('5pl') + unity}</li>
 			</ul>
 			<h5>
-				<span>TOTAL:</span> {getSumPrice()}
+				<span>TOTAL:</span>{' '}
+				{getPlantPrice('1ed') + getPlantPrice('4kk') + getPlantPrice('5pl')}
 			</h5>
 		</div>
 	);
