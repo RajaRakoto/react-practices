@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import './jungle.min.css';
+// NOTE: import object
 import { plantList } from '../../../data/plantList';
 
-// TODO: verified
 function Header() {
 	const description = (
 		<p>Ici achetez toutes les plantes dont vous avez toujours rêvé 🌱</p>
@@ -17,14 +17,14 @@ function Header() {
 	);
 }
 
-// TODO: verified
 function Cart() {
 	const unity = 'Ar';
 
-	function getPlantPrice(id) {
+	// NOTE: get an element from object
+	const getPlantPrice = id => {
 		const plant = plantList.filter(plant => plant.id === id);
 		return plant[0].price;
-	}
+	};
 
 	return (
 		<div id="cart">
@@ -66,7 +66,6 @@ function Cart() {
 // 	);
 // }
 
-// TODO: work - render
 export default function Jungle() {
 	return (
 		<Fragment>
