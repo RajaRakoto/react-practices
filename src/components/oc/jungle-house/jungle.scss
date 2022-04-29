@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+@import 'sass-eo-basics';
+
+$bg-color: __color-pastel(
+	$colors:
+		__color-complement(
+			$colors: green,
+		),
+);
+
+#banner {
+	#official-logo {
+		@include image-logo(
+			$image-url: '../../../assets/images/jungle-logo.png',
+			$width: 100px,
+			$height: 100px
+		);
+	}
+
+	#title {
+		@include effect-text-stroke(
+			$colors: #999,
+			$stroke-color: #333,
+			$fallback-color: #333,
+			$stroke-width: thin
+		);
+		font-weight: bolder;
+	}
+
+	#description {
+		color: #888;
+	}
+
+	@include spacing-padding-gabarit($gabarit: medium);
+	// @include box-debugging(
+	// 	$colors: red,
+	// 	$size: 3px,
+	// 	$bg-color: false,
+	// 	$status: true
+	// );
+	text-align: right;
+	border-bottom: #555 10px solid;
+	background-color: $bg-color;
+}
