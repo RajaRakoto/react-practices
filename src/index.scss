@@ -1,9 +1,7 @@
 @charset "UTF-8";
 
 @import 'sass-eo-basics';
-
-@include normalize();
-
 @import 'sass-eo-bootstrap';
 
+@include normalize();
 @include antialias($value: only);
