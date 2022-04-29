@@ -16,6 +16,8 @@ module.exports = function (grunt) {
 				files: {
 					// destination: source
 					'./src/index.min.css': './src/index.scss',
+					'./src/components/oc/jungle-house/jungle.min.css':
+						'./src/components/oc/jungle-house/jungle.scss',
 				},
 			},
 		},
