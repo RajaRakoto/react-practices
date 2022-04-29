@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
 @import 'sass-eo-basics';
+@import 'sass-eo-bootstrap';
 
 @include normalize();
+@include antialias($value: only);
+
+body {
+  background-color: #888;
+}
