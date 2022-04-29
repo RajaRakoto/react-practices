@@ -20,7 +20,7 @@ function Header() {
 function Cart() {
 	const unity = 'Ar';
 
-	// NOTE: get an element from object
+	// NOTE: filter() - get an element from object
 	const getPlantPrice = id => {
 		const plant = plantList.filter(plant => plant.id === id);
 		return plant[0].price;
@@ -42,36 +42,40 @@ function Cart() {
 	);
 }
 
-// // TODO: work - mapping
-// function Shopping() {
-// 	const categories = plantList.reduce(
-// 		(acc, plant) =>
-// 			acc.includes(plant.category) ? acc : acc.concat(plant.category),
-// 		[],
-// 	);
+// TODO: work
+function Shopping() {
+	// NOTE: reduce() - extrait un liste d'element unique par un mot cle
+	const categories = plantList.reduce(
+		(acc, plant) =>
+			acc.includes(plant.category) ? acc : acc.concat(plant.category),
+		[],
+	);
 
-// 	return (
-// 		<div>
-// 			<ul>
-// 				{categories.map(cat => (
-// 					<li key={cat}>{cat}</li>
-// 				))}
-// 			</ul>
-// 			<ul>
-// 				{plantList.map(plant => (
-// 					<li key={plant.id}>{plant.name}</li>
-// 				))}
-// 			</ul>
-// 		</div>
-// 	);
-// }
+	console.table(categories);
+
+	return (
+		// <div>
+		// 	<ul>
+		// 		{categories.map(cat => (
+		// 			<li key={cat}>{cat}</li>
+		// 		))}
+		// 	</ul>
+		// 	<ul>
+		// 		{plantList.map(plant => (
+		// 			<li key={plant.id}>{plant.name}</li>
+		// 		))}
+		// 	</ul>
+		// </div>
+		<div></div>
+	);
+}
 
 export default function Jungle() {
 	return (
 		<Fragment>
 			<Header />
 			<Cart />
-			{/* <Shopping /> */}
+			<Shopping />
 		</Fragment>
 	);
 }
