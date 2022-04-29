@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import jungleLogo from '../../../assets/images/jungle-logo.png';
+import './jungle.min.css';
 
 function Header() {
 	const description = (
@@ -7,10 +7,10 @@ function Header() {
 	);
 	const title = 'Jungle house';
 	return (
-		<div>
-			<img src={jungleLogo} width={200} alt="junglehouse official logo" />
-			<h1>{title.toUpperCase()}</h1>
-			{description}
+		<div id="banner">
+			<div id="official-logo"></div>
+			<h1 id="title"> {title.toUpperCase()}</h1>
+			<h3 id="description"> {description}</h3>
 		</div>
 	);
 }
