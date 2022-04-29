@@ -4,12 +4,12 @@ import reportWebVitals from './reportWebVitals';
 /* styles */
 import './index.min.css';
 /* components */
-import JungleHome from './components/oc/jungle-house/jungle-home';
+import Jungle from './components/oc/jungle-house/jungle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<Fragment>
-		<JungleHome />
+		<Jungle />
 	</Fragment>,
 );
 reportWebVitals();

@@ -40,7 +40,7 @@ function Cart() {
 	);
 }
 
-export default function JungleHome() {
+export default function Jungle() {
 	return (
 		<Fragment>
 			<Header />
