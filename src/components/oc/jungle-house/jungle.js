@@ -1,8 +1,29 @@
 import React, { Fragment } from 'react';
 import './jungle.min.css';
-// NOTE: import object
 import { plantList } from '../../../data/plantList';
 
+/// ----------- UTILITIES -----------
+/**
+ * @description extraire un element particulier dans un tableau d'objet
+ * @param {object} obj - tableau d'objet a filtrer
+ * @param {string} id - identifiant de l'element de l'objet
+ * @param {string} key - le mot cle a extraire (sa valeur)
+ * @returns {*} la valeur de l'argument `key` de l'element portant l'identifiant `id` de l'objet `obj`
+ * @example getObjectElement(plantList, '3sd', 'price');
+ */
+const getObjectElement = (obj, id, key) => {
+	const result = obj.filter(obj => obj.id === id);
+
+	if (key === 'name') {
+		return result[0].name;
+	} else if (key === 'category') {
+		return result[0].category;
+	} else if (key === 'price') {
+		return result[0].price;
+	}
+};
+
+/// ----------- COMPONENTS -----------
 function Header() {
 	const description = (
 		<p>Ici achetez toutes les plantes dont vous avez toujours rêvé 🌱</p>
@@ -18,35 +39,38 @@ function Header() {
 }
 
 function Cart() {
-	const unity = 'Ar';
-
-	// NOTE: filter() - get an element (price) from object
-	const getPlantPrice = id => {
-		const plant = plantList.filter(plant => plant.id === id);
-		return plant[0].price;
-	};
+	const unity = ' Ar';
 
 	return (
 		<div id="cart">
 			<h4>🛒 Panier</h4>
 			<ul>
-				<li>Monstera: {getPlantPrice('1ed') + unity}</li>
-				<li>Yucca: {getPlantPrice('4kk') + unity}</li>
-				<li>Olivier: {getPlantPrice('5pl') + unity}</li>
+				<li>Monstera: {getObjectElement(plantList, '1ed', 'price') + unity}</li>
+				<li>Yucca: {getObjectElement(plantList, '4kk', 'price') + unity}</li>
+				<li>Olivier: {getObjectElement(plantList, '5pl', 'price') + unity}</li>
 			</ul>
 			<h5>
 				<span>TOTAL:</span>{' '}
-				{getPlantPrice('1ed') + getPlantPrice('4kk') + getPlantPrice('5pl')}
+				{getObjectElement(plantList, '1ed', 'price') +
+					getObjectElement(plantList, '4kk', 'price') +
+					getObjectElement(plantList, '5pl', 'price')}
 			</h5>
 		</div>
 	);
 }
 
+// NOTE: reduce() - extrait une liste de valeur unique par un mot cle (category)
+// const getUniqueList = () => {
+// 	const categories = plantList.reduce(
+// 		(acc, plant) =>
+// 			acc.includes(plant.category) ? acc : acc.concat(plant.category),
+// 		[],
+// 	);
+// };
+
 // TODO: work
 function Shopping() {
-	// NOTE: reduce() - extrait une liste de valeur unique par un mot cle (category)
 	// const getCategoryList = () => {
-	// 	onject 
 	// 	const categories = plantList.reduce(
 	// 		(acc, plant) =>
 	// 			acc.includes(plant.category) ? acc : acc.concat(plant.category),
