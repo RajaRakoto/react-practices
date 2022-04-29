@@ -26,14 +26,16 @@ function Cart() {
 	}
 
 	return (
-		<div>
-			<h4>Panier</h4>
+		<div id="cart">
+			<h4>🛒 Panier</h4>
 			<ul>
 				<li>Monstera: {monsteraPrice + unity}</li>
 				<li>Lierre: {ivyPrice + unity}</li>
 				<li>Fleurs: {flowerPrice + unity}</li>
 			</ul>
-			<h5>TOTAL: {getSumPrice()}</h5>
+			<h5>
+				<span>TOTAL:</span> {getSumPrice()}
+			</h5>
 		</div>
 	);
 }
