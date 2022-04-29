@@ -3,3 +3,7 @@
 @import 'sass-eo-basics';
 
 @include normalize();
+
+@import 'sass-eo-bootstrap';
+
+@include antialias($value: only);
