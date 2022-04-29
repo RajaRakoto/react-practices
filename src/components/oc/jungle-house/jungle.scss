@@ -21,7 +21,7 @@ $bg-color: __color-pastel(
 
 	#title {
 		@include effect-text-stroke(
-			$colors: #999,
+			$colors: #444,
 			$stroke-color: #333,
 			$fallback-color: #333,
 			$stroke-width: thin
