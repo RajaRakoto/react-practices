@@ -2,6 +2,7 @@
 
 @import 'sass-eo-basics';
 
+$green-sea: #16a085;
 $bg-color: __color-pastel(
 	$colors:
 		__color-complement(
@@ -33,13 +34,20 @@ $bg-color: __color-pastel(
 	}
 
 	@include spacing-padding-gabarit($gabarit: medium);
-	// @include box-debugging(
-	// 	$colors: red,
-	// 	$size: 3px,
-	// 	$bg-color: false,
-	// 	$status: true
-	// );
 	text-align: right;
 	border-bottom: #555 10px solid;
 	background-color: $bg-color;
+}
+
+#cart {
+	@include box-sizing($value: only);
+	@include sizer($width: 200px, $height: auto);
+	@include spacing-all-gabarit($gabarit: small);
+	@include box-radius('all', 10px);
+	@include effect-box-shadow($opacity: solid);
+	background-color: $bg-color;
+
+	span {
+		color: $green-sea;
+	}
 }
