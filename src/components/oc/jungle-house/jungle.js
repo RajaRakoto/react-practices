@@ -20,7 +20,7 @@ function Header() {
 function Cart() {
 	const unity = 'Ar';
 
-	// NOTE: filter() - get an element from object
+	// NOTE: filter() - get an element (price) from object
 	const getPlantPrice = id => {
 		const plant = plantList.filter(plant => plant.id === id);
 		return plant[0].price;
@@ -44,14 +44,19 @@ function Cart() {
 
 // TODO: work
 function Shopping() {
-	// NOTE: reduce() - extrait un liste d'element unique par un mot cle
-	const categories = plantList.reduce(
-		(acc, plant) =>
-			acc.includes(plant.category) ? acc : acc.concat(plant.category),
-		[],
-	);
+	// NOTE: reduce() - extrait une liste de valeur unique par un mot cle (category)
+	// const getCategoryList = () => {
+	// 	onject 
+	// 	const categories = plantList.reduce(
+	// 		(acc, plant) =>
+	// 			acc.includes(plant.category) ? acc : acc.concat(plant.category),
+	// 		[],
+	// 	);
 
-	console.table(categories);
+	// 	return categories;
+	// };
+
+	// console.table(categories);
 
 	return (
 		// <div>
