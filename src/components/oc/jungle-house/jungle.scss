@@ -89,7 +89,7 @@ $bg-color: __color-pastel(
 		color: #888;
 	}
 
-	@include spacing-padding-gabarit($gabarit: medium);
+	@include spacing-padding-gabarit($gabarit: x-large);
 	text-align: right;
 	border-bottom: #555 10px solid;
 	background-color: $bg-color;
@@ -118,4 +118,8 @@ $bg-color: __color-pastel(
 #shopping {
 	@include box-template(auto);
 	min-width: 654px;
+
+	.header {
+		text-align: center;
+	}
 }
