@@ -32,14 +32,14 @@ function Header() {
 		if (!isSpring) {
 			return (
 				<RecomNotif
-					message="ce n'est pas le moment de rempoter ! 😖"
+					message="ce n'est pas le moment de rempoter !"
 					status="alert alert-warning"
 				/>
 			);
 		} else {
 			return (
 				<RecomNotif
-					message="c'est le printemps, rempotez ! 🌈"
+					message="c'est le printemps, rempotez !"
 					status="alert alert-success"
 				/>
 			);
@@ -47,12 +47,16 @@ function Header() {
 	};
 
 	return (
-		<div id="banner" className="container-fluid">
-			<div id="official-logo"></div>
-			<h1 id="title"> {title.toUpperCase()}</h1>
-			<h3 id="description"> {description}</h3>
-			<Recommendation />
-		</div>
+		<Fragment>
+			<div id="banner">
+				<div id="official-logo"></div>
+				<h1 id="title"> {title.toUpperCase()}</h1>
+				<h3 id="description"> {description}</h3>
+			</div>
+			<div id="notification">
+				<Recommendation />
+			</div>
+		</Fragment>
 	);
 }
 
@@ -117,8 +121,10 @@ function Shopping() {
 export default function Jungle() {
 	return (
 		<Fragment>
-			<Header />
-			<div id="jungle_container" className="container">
+			<div id="header_container">
+				<Header />
+			</div>
+			<div id="main_container" className="container">
 				<Cart />
 				<Shopping />
 			</div>
