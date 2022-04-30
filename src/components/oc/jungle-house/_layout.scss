@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+@import './mixin';
+
+/* breakpointer */
+@include breakpointer($selector: '#shopping') {
+	@include breakpointerStyle();
+}
+
+/* grid */
 #main_container {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
