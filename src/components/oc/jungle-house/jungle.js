@@ -95,24 +95,34 @@ function Cart() {
 function Shopping() {
 	const categoriesList = getObjectElementType(plantList, 'category');
 
+	const Categories = () => {
+		return (
+			<ul>
+				{categoriesList.map(category => (
+					<li key={category}>{category}</li>
+				))}
+			</ul>
+		);
+	};
+
+	const Plants = () => {
+		return (
+			<ul className="plant-list">
+				{plantList.map(plant => (
+					<li key={plant.id} className="plant-item">
+						{plant.name} {plant.isBestSale ? '⭐' : null}
+					</li>
+				))}
+			</ul>
+		);
+	};
+
 	return (
 		<div id="shopping">
-			{/* liste des differentes types de categorie de plante  */}
 			<h2 className="header">🌱 Liste des plantes</h2>
 			<div className="body">
-				<ul>
-					{categoriesList.map(category => (
-						<li key={category}>{category}</li>
-					))}
-				</ul>
-				{/* liste de toutes les plantes  */}
-				<ul>
-					{plantList.map(plant => (
-						<li key={plant.id}>
-							{plant.name} {plant.isBestSale ? '⭐' : null}
-						</li>
-					))}
-				</ul>
+				<Categories />
+				<Plants />
 			</div>
 		</div>
 	);
