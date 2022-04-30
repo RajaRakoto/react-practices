@@ -23,7 +23,7 @@ function Header() {
 		const isSpring = currentDate >= 2 && currentDate <= 5;
 		const RecomNotif = props => {
 			return (
-				<div id="recommendation" className={props.status} role="alert">
+				<div className={props.status} role="alert">
 					<strong>Recommendation:</strong> {props.message}
 				</div>
 			);
