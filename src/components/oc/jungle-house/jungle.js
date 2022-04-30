@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { useMediaQuery } from 'react-responsive';
 /* styles */
 import './jungle.min.css';
 /* datas */
@@ -121,22 +122,44 @@ function Shopping() {
 		<div id="shopping">
 			<h2 className="header">🌱 Liste des plantes</h2>
 			<div className="body">
-				<Categories />
+				{/* <Categories /> */}
 				<Plants />
 			</div>
 		</div>
 	);
 }
 
+/**
+ *
+ * @feat - react-responsive (useMediaQuery) | bt5 (grid) | className injection
+ */
 export default function Jungle() {
+	const isSmallScreen = useMediaQuery({
+		query: '(max-width: 1199px)',
+	});
+
+	const ReactResponsive = props => (
+		<div
+			className={`${
+				props.active ? 'col-xl-3 d-flex justify-content-center' : 'col-xl-3'
+			}`}
+		>
+			{props.children}
+		</div>
+	);
+
 	return (
 		<Fragment>
 			<div id="header_container">
 				<Header />
 			</div>
 			<div id="main_container" className="container">
-				<Cart />
-				<Shopping />
+				<div className="row">
+					<ReactResponsive active={isSmallScreen} children={<Cart />} />
+					<div className="col-xl-9">
+						<Shopping />
+					</div>
+				</div>
 			</div>
 		</Fragment>
 	);

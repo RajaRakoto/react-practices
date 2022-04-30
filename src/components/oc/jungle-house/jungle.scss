@@ -72,13 +72,18 @@
 		text-align: center;
 	}
 
-	.plant-list {
-		@include columnize(3, 50px, false);
-		.plant-item {
-			@include sizer(200px);
-			@include box-radius(all, 20px);
-			@include effect-box-shadow($opacity: solid);
-			background-color: rgba(192, 192, 192, 0.384);
+	.body {
+		.plant-list {
+			margin-top: 5rem;
+
+			.plant-item {
+				@include sizer(200px);
+				@include box-radius(all, 20px);
+				@include effect-box-shadow($opacity: solid);
+				background-color: rgba(192, 192, 192, 0.384);
+			}
 		}
+
+		@include plant-list-layout();
 	}
 }
