@@ -2,6 +2,7 @@
 
 @import 'sass-eo-basics';
 
+// variables (colors)
 $green-sea: #16a085;
 $bg-color: __color-pastel(
 	$colors:
@@ -10,6 +11,65 @@ $bg-color: __color-pastel(
 		),
 );
 
+// mixin template
+@mixin box-template($width) {
+	@include box-sizing($value: only);
+	@include sizer($width: $width, $height: auto);
+	@include spacing-all-gabarit($gabarit: medium);
+	@include box-radius('all', 10px);
+	@include effect-box-shadow($opacity: solid);
+	background-color: $bg-color;
+}
+
+// global style
+#jungle_container {
+	ul {
+		list-style: none;
+	}
+
+	.title {
+		text-align: center;
+	}
+}
+
+// layout style
+#jungle_container {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(12, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+
+	#cart {
+		grid-area: 1 / 1 / 13 / 4;
+	}
+
+	#shopping {
+		grid-area: 1 / 4 / 13 / 13;
+	}
+
+	@include breakpoint(max, 1030px) {
+		#cart {
+			min-width: 240px;
+			grid-area: 1 / 1 / 6 / 13;
+			margin-left: 10rem;
+			margin-right: 10rem;
+		}
+		#shopping {
+			min-width: 240px;
+			grid-area: 7 / 1 / 13 / 13;
+		}
+	}
+
+	@include breakpoint(max, 526px) {
+		#cart {
+			margin-left: 5rem;
+			margin-right: 5rem;
+		}
+	};
+}
+
+// component style
 #banner {
 	#official-logo {
 		@include image-logo(
@@ -40,14 +100,21 @@ $bg-color: __color-pastel(
 }
 
 #cart {
-	@include box-sizing($value: only);
-	@include sizer($width: 200px, $height: auto);
-	@include spacing-all-gabarit($gabarit: small);
-	@include box-radius('all', 10px);
-	@include effect-box-shadow($opacity: solid);
-	background-color: $bg-color;
+	@include box-template(auto);
+	min-width: 283px;
 
 	span {
 		color: $green-sea;
 	}
+
+	.content {
+		text-align: center;
+	}
+
+	height: 100%;
+}
+
+#shopping {
+	@include box-template(auto);
+	min-width: 654px;
 }

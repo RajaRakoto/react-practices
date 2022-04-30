@@ -76,24 +76,26 @@ function Cart() {
 
 	return (
 		<div id="cart">
-			<h4>🛒 Panier</h4>
-			<ul>
-				<li>
-					Monstera: {getObjectElementValue(plantList, '1ed', 'price') + unity}
-				</li>
-				<li>
-					Yucca: {getObjectElementValue(plantList, '4kk', 'price') + unity}
-				</li>
-				<li>
-					Olivier: {getObjectElementValue(plantList, '5pl', 'price') + unity}
-				</li>
-			</ul>
-			<h5>
-				<span>TOTAL:</span>{' '}
-				{getObjectElementValue(plantList, '1ed', 'price') +
-					getObjectElementValue(plantList, '4kk', 'price') +
-					getObjectElementValue(plantList, '5pl', 'price')}
-			</h5>
+			<h2 class="title">🛒 Panier</h2>
+			<div className="content">
+				<ul>
+					<li>
+						Monstera: {getObjectElementValue(plantList, '1ed', 'price') + unity}
+					</li>
+					<li>
+						Yucca: {getObjectElementValue(plantList, '4kk', 'price') + unity}
+					</li>
+					<li>
+						Olivier: {getObjectElementValue(plantList, '5pl', 'price') + unity}
+					</li>
+				</ul>
+				<h5>
+					<span>TOTAL:</span>{' '}
+					{getObjectElementValue(plantList, '1ed', 'price') +
+						getObjectElementValue(plantList, '4kk', 'price') +
+						getObjectElementValue(plantList, '5pl', 'price')}
+				</h5>
+			</div>
 		</div>
 	);
 }
@@ -103,20 +105,24 @@ function Shopping() {
 	const categoriesList = getObjectElementType(plantList, 'category');
 
 	return (
-		<div>
+		<div id="shopping">
 			{/* liste des differentes types de categorie de plante  */}
-			🌱
-			<ul>
-				{categoriesList.map(category => (
-					<li key={category}>{category}</li>
-				))}
-			</ul>
-			{/* liste de toutes les plantes  */}
-			<ul>
-				{plantList.map(plant => (
-					<li key={plant.id}>{plant.name}</li>
-				))}
-			</ul>
+			<h2 class="title">🌱 Liste des plantes</h2>
+			<div className="content">
+				<ul>
+					{categoriesList.map(category => (
+						<li key={category}>{category}</li>
+					))}
+				</ul>
+				{/* liste de toutes les plantes  */}
+				<ul>
+					{plantList.map(plant => (
+						<li key={plant.id}>
+							{plant.name} {plant.isBestSale ? '⭐' : null}
+						</li>
+					))}
+				</ul>
+			</div>
 		</div>
 	);
 }
@@ -125,8 +131,10 @@ export default function Jungle() {
 	return (
 		<Fragment>
 			<Header />
-			<Cart />
-			<Shopping />
+			<div id="jungle_container">
+				<Cart />
+				<Shopping />
+			</div>
 		</Fragment>
 	);
 }
