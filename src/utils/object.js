@@ -1,5 +1,6 @@
 /**
  * @description extraire un element particulier dans un tableau d'objet (ex: le prix d'un olivier)
+ * @feat - filter()
  * @param {object} obj - tableau d'objet a filtrer
  * @param {string} id - identifiant de l'element de l'objet
  * @param {string} key - le mot cle a extraire (sa valeur)
@@ -20,6 +21,7 @@ export const getObjectElementValue = (obj, id, key) => {
 
 /**
  * @description extraire une liste de valeur unique dans un tableau d'objet (ex: les differentes type de categorie de plante)
+ * @feat - reduce() | include() | concat()
  * @param {object} obj - tableau d'objet a filter
  * @param {string} key - le mot cle a extraire (liste de sa valeur unique)
  * @returns {array} la liste de la valeur unique contenant dans le tableau d'objet

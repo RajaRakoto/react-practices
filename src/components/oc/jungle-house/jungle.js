@@ -52,7 +52,9 @@ function Cart() {
 	);
 }
 
-// TODO: work
+/**
+ * @feat - map() | ternary conditional
+ */
 function Shopping() {
 	const categoriesList = getObjectElementType(plantList, 'category');
 
