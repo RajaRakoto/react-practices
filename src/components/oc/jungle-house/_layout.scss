@@ -36,3 +36,9 @@
 #cart {
 	min-width: 267px;
 }
+
+@include breakpoint(max, 1185px) {
+	#cart {
+		max-width: 300px;
+	}
+}
