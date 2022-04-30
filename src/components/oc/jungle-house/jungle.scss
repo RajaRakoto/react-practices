@@ -63,12 +63,13 @@ $bg-color: __color-pastel(
 }
 
 #cart {
-	@include box-template(200px);
+	@include box-template(auto);
+	min-width: 200px;
 	span {
 		color: $green-sea;
 	}
 }
 
 #shopping {
-	@include box-template(500px);
+	@include box-template(auto);
 }

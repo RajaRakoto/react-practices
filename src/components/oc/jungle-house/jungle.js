@@ -76,7 +76,7 @@ function Cart() {
 
 	return (
 		<div id="cart">
-			<h4>🛒 Panier</h4>
+			<h2 class="title">🛒 Panier</h2>
 			<ul>
 				<li>
 					Monstera: {getObjectElementValue(plantList, '1ed', 'price') + unity}
@@ -103,9 +103,9 @@ function Shopping() {
 	const categoriesList = getObjectElementType(plantList, 'category');
 
 	return (
-		<div>
+		<div id="shopping">
 			{/* liste des differentes types de categorie de plante  */}
-			🌱
+			<h2 class="title">🌱 Liste des plantes</h2>
 			<ul>
 				{categoriesList.map(category => (
 					<li key={category}>{category}</li>
@@ -125,8 +125,16 @@ export default function Jungle() {
 	return (
 		<Fragment>
 			<Header />
-			<Cart />
-			<Shopping />
+			<div id="jungle_container" className="container-fluid">
+				<div className="row">
+					<div className="col-sm-12 col-md-3">
+						<Cart />
+					</div>
+					<div className="col-sm-12 col-md-9">
+						<Shopping />
+					</div>
+				</div>
+			</div>
 		</Fragment>
 	);
 }
