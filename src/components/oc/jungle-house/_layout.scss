@@ -41,6 +41,10 @@
 
 /* flex */
 @mixin plant-list-layout() {
+	.plant-list {
+		@include columnize(3, 50px, false);
+	}
+
 	@include breakpoint(max, 1187px) {
 		.plant-list {
 			@include columnize(2, 30px, false);
@@ -54,4 +58,9 @@
 			min-width: 196px;
 		}
 	}
+}
+
+/* sizing */
+#shopping {
+	min-width: 247px;
 }
