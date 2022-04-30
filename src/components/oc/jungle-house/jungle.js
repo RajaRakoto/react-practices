@@ -107,8 +107,8 @@ function Shopping() {
 	return (
 		<div id="shopping">
 			{/* liste des differentes types de categorie de plante  */}
-			<h2 class="title">🌱 Liste des plantes</h2>
-			<div className="content">
+			<h2 className="header">🌱 Liste des plantes</h2>
+			<div className="body">
 				<ul>
 					{categoriesList.map(category => (
 						<li key={category}>{category}</li>
