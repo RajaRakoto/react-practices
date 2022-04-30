@@ -76,8 +76,8 @@ function Cart() {
 
 	return (
 		<div id="cart">
-			<h2 class="title">🛒 Panier</h2>
-			<div className="content">
+			<h2 className="header">🛒 Panier</h2>
+			<div className="body">
 				<ul>
 					<li>
 						Monstera: {getObjectElementValue(plantList, '1ed', 'price') + unity}
@@ -89,13 +89,13 @@ function Cart() {
 						Olivier: {getObjectElementValue(plantList, '5pl', 'price') + unity}
 					</li>
 				</ul>
-				<h5>
-					<span>TOTAL:</span>{' '}
-					{getObjectElementValue(plantList, '1ed', 'price') +
-						getObjectElementValue(plantList, '4kk', 'price') +
-						getObjectElementValue(plantList, '5pl', 'price')}
-				</h5>
 			</div>
+			<h5 className="footer">
+				<span>TOTAL:</span>{' '}
+				{getObjectElementValue(plantList, '1ed', 'price') +
+					getObjectElementValue(plantList, '4kk', 'price') +
+					getObjectElementValue(plantList, '5pl', 'price')}
+			</h5>
 		</div>
 	);
 }

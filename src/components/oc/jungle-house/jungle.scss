@@ -26,10 +26,6 @@ $bg-color: __color-pastel(
 	ul {
 		list-style: none;
 	}
-
-	.title {
-		text-align: center;
-	}
 }
 
 // layout style
@@ -66,7 +62,7 @@ $bg-color: __color-pastel(
 			margin-left: 5rem;
 			margin-right: 5rem;
 		}
-	};
+	}
 }
 
 // component style
@@ -103,15 +99,20 @@ $bg-color: __color-pastel(
 	@include box-template(auto);
 	min-width: 283px;
 
-	span {
-		color: $green-sea;
-	}
-
-	.content {
+	.header {
 		text-align: center;
 	}
 
-	height: 100%;
+	.body {
+		text-align: center;
+	}
+
+	.footer {
+		text-align: center;
+		span {
+			color: $green-sea;
+		}
+	}
 }
 
 #shopping {
