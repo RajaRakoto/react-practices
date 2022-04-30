@@ -11,7 +11,7 @@ export const plantList = [
 		name: 'ficus lyrata',
 		category: 'classique',
 		price: 8000,
-		isBestSale: false,
+		isBestSale: true,
 	},
 	{
 		id: '3sd',

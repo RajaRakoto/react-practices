@@ -117,7 +117,9 @@ function Shopping() {
 				{/* liste de toutes les plantes  */}
 				<ul>
 					{plantList.map(plant => (
-						<li key={plant.id}>{plant.name}</li>
+						<li key={plant.id}>
+							{plant.name} {plant.isBestSale ? '⭐' : null}
+						</li>
 					))}
 				</ul>
 			</div>

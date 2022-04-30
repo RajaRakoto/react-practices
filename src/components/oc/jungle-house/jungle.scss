@@ -64,7 +64,7 @@ $bg-color: __color-pastel(
 
 #cart {
 	@include box-template(auto);
-	min-width: 200px;
+	min-width: 100px;
 
 	span {
 		color: $green-sea;
