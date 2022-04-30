@@ -129,10 +129,25 @@ function Shopping() {
 	);
 }
 
+/**
+ *
+ * @feat - react-responsive (useMediaQuery) | bt5 (grid) | className injection
+ */
 export default function Jungle() {
 	const isSmallScreen = useMediaQuery({
 		query: '(max-width: 1199px)',
 	});
+
+	const ReactResponsive = props => (
+		<div
+			className={`${
+				props.active ? 'col-xl-3 d-flex justify-content-center' : 'col-xl-3'
+			}`}
+		>
+			{props.children}
+		</div>
+	);
+
 	return (
 		<Fragment>
 			<div id="header_container">
@@ -140,15 +155,7 @@ export default function Jungle() {
 			</div>
 			<div id="main_container" className="container">
 				<div className="row">
-					{isSmallScreen ? (
-						<div className="col-xl-3 d-flex justify-content-center">
-							<Cart />
-						</div>
-					) : (
-						<div className="col-xl-3">
-							<Cart />
-						</div>
-					)}
+					<ReactResponsive active={isSmallScreen} children={<Cart />} />
 					<div className="col-xl-9">
 						<Shopping />
 					</div>
