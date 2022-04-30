@@ -81,4 +81,6 @@
 			background-color: rgba(192, 192, 192, 0.384);
 		}
 	}
+
+	@include plant-list-layout();
 }

@@ -3,9 +3,9 @@
 @import './mixin';
 
 /* breakpointer */
-@include breakpointer($selector: '#shopping') {
-	@include breakpointerStyle();
-}
+// @include breakpointer($selector: '#shopping') {
+// 	@include breakpointerStyle();
+// }
 
 /* grid */
 #main_container {
@@ -35,6 +35,23 @@
 	@include breakpoint(between, 1028px 1920px) {
 		#cart {
 			min-width: 276px;
+		}
+	}
+}
+
+/* flex */
+@mixin plant-list-layout() {
+	@include breakpoint(max, 1187px) {
+		.plant-list {
+			@include columnize(2, 30px, false);
+		}
+	}
+
+	@include breakpoint(max, 755px) {
+		.plant-list {
+			@include columnize(1, 25px, false);
+			max-width: 320px;
+			min-width: 196px;
 		}
 	}
 }
