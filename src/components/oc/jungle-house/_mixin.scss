@@ -5,6 +5,6 @@
 	@include sizer($width: $width, $height: auto);
 	@include spacing-all-gabarit($gabarit: medium);
 	@include box-radius('all', 10px);
-	@include effect-box-shadow($opacity: solid);
+	@include effect-box-shadow($opacity: small);
 	background-color: $bg-color;
 }
