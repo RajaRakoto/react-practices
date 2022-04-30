@@ -14,12 +14,49 @@ function Header() {
 		<p>Ici achetez toutes les plantes dont vous avez toujours rêvé</p>
 	);
 	const title = 'Jungle house';
+
+	/**
+	 * @feat - condition | props
+	 */
+	const Recommendation = () => {
+		const currentDate = new Date().getMonth();
+		const isSpring = currentDate >= 2 && currentDate <= 5;
+		const RecomNotif = props => {
+			return (
+				<div className={props.status} role="alert">
+					<strong>Recommendation:</strong> {props.message}
+				</div>
+			);
+		};
+
+		if (!isSpring) {
+			return (
+				<RecomNotif
+					message="ce n'est pas le moment de rempoter !"
+					status="alert alert-warning"
+				/>
+			);
+		} else {
+			return (
+				<RecomNotif
+					message="c'est le printemps, rempotez !"
+					status="alert alert-success"
+				/>
+			);
+		}
+	};
+
 	return (
-		<div id="banner">
-			<div id="official-logo"></div>
-			<h1 id="title"> {title.toUpperCase()}</h1>
-			<h3 id="description"> {description}</h3>
-		</div>
+		<Fragment>
+			<div id="banner">
+				<div id="official-logo"></div>
+				<h1 id="title"> {title.toUpperCase()}</h1>
+				<h3 id="description"> {description}</h3>
+			</div>
+			<div id="notification">
+				<Recommendation />
+			</div>
+		</Fragment>
 	);
 }
 
@@ -58,24 +95,34 @@ function Cart() {
 function Shopping() {
 	const categoriesList = getObjectElementType(plantList, 'category');
 
+	const Categories = () => {
+		return (
+			<ul>
+				{categoriesList.map(category => (
+					<li key={category}>{category}</li>
+				))}
+			</ul>
+		);
+	};
+
+	const Plants = () => {
+		return (
+			<ul className="plant-list">
+				{plantList.map(plant => (
+					<li key={plant.id} className="plant-item">
+						{plant.name} {plant.isBestSale ? '⭐' : null}
+					</li>
+				))}
+			</ul>
+		);
+	};
+
 	return (
 		<div id="shopping">
-			{/* liste des differentes types de categorie de plante  */}
 			<h2 className="header">🌱 Liste des plantes</h2>
 			<div className="body">
-				<ul>
-					{categoriesList.map(category => (
-						<li key={category}>{category}</li>
-					))}
-				</ul>
-				{/* liste de toutes les plantes  */}
-				<ul>
-					{plantList.map(plant => (
-						<li key={plant.id}>
-							{plant.name} {plant.isBestSale ? '⭐' : null}
-						</li>
-					))}
-				</ul>
+				<Categories />
+				<Plants />
 			</div>
 		</div>
 	);
@@ -84,8 +131,10 @@ function Shopping() {
 export default function Jungle() {
 	return (
 		<Fragment>
-			<Header />
-			<div id="jungle_container">
+			<div id="header_container">
+				<Header />
+			</div>
+			<div id="main_container" className="container">
 				<Cart />
 				<Shopping />
 			</div>

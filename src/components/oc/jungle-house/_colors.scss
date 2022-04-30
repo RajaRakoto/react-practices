@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+$green-sea: #16a085;
+$bg-color: __color-pastel(
+	$colors:
+		__color-complement(
+			$colors: green,
+		),
+);
