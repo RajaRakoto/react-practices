@@ -77,23 +77,25 @@ function Cart() {
 	return (
 		<div id="cart">
 			<h2 class="title">🛒 Panier</h2>
-			<ul>
-				<li>
-					Monstera: {getObjectElementValue(plantList, '1ed', 'price') + unity}
-				</li>
-				<li>
-					Yucca: {getObjectElementValue(plantList, '4kk', 'price') + unity}
-				</li>
-				<li>
-					Olivier: {getObjectElementValue(plantList, '5pl', 'price') + unity}
-				</li>
-			</ul>
-			<h5>
-				<span>TOTAL:</span>{' '}
-				{getObjectElementValue(plantList, '1ed', 'price') +
-					getObjectElementValue(plantList, '4kk', 'price') +
-					getObjectElementValue(plantList, '5pl', 'price')}
-			</h5>
+			<div className="content">
+				<ul>
+					<li>
+						Monstera: {getObjectElementValue(plantList, '1ed', 'price') + unity}
+					</li>
+					<li>
+						Yucca: {getObjectElementValue(plantList, '4kk', 'price') + unity}
+					</li>
+					<li>
+						Olivier: {getObjectElementValue(plantList, '5pl', 'price') + unity}
+					</li>
+				</ul>
+				<h5>
+					<span>TOTAL:</span>{' '}
+					{getObjectElementValue(plantList, '1ed', 'price') +
+						getObjectElementValue(plantList, '4kk', 'price') +
+						getObjectElementValue(plantList, '5pl', 'price')}
+				</h5>
+			</div>
 		</div>
 	);
 }
@@ -106,17 +108,19 @@ function Shopping() {
 		<div id="shopping">
 			{/* liste des differentes types de categorie de plante  */}
 			<h2 class="title">🌱 Liste des plantes</h2>
-			<ul>
-				{categoriesList.map(category => (
-					<li key={category}>{category}</li>
-				))}
-			</ul>
-			{/* liste de toutes les plantes  */}
-			<ul>
-				{plantList.map(plant => (
-					<li key={plant.id}>{plant.name}</li>
-				))}
-			</ul>
+			<div className="content">
+				<ul>
+					{categoriesList.map(category => (
+						<li key={category}>{category}</li>
+					))}
+				</ul>
+				{/* liste de toutes les plantes  */}
+				<ul>
+					{plantList.map(plant => (
+						<li key={plant.id}>{plant.name}</li>
+					))}
+				</ul>
+			</div>
 		</div>
 	);
 }
