@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+#main_container {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(12, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+
+	#cart {
+		grid-area: 1 / 1 / 13 / 4;
+	}
+
+	#shopping {
+		grid-area: 1 / 4 / 13 / 13;
+	}
+
+	@include breakpoint(max, 1030px) {
+		#cart {
+			grid-area: 1 / 1 / 6 / 13;
+		}
+		#shopping {
+			grid-area: 6 / 1 / 13 / 13;
+		}
+	}
+
+	@include breakpoint(between, 1028px 1920px) {
+		#cart {
+			min-width: 276px;
+		}
+	}
+}

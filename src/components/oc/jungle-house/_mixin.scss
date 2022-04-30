@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+@mixin box-template($width) {
+	@include box-sizing($value: only);
+	@include sizer($width: $width, $height: auto);
+	@include spacing-all-gabarit($gabarit: medium);
+	@include box-radius('all', 10px);
+	@include effect-box-shadow($opacity: solid);
+	background-color: $bg-color;
+}

@@ -1,59 +1,10 @@
 @charset "UTF-8";
 
 @import 'sass-eo-basics';
-
-// variables (colors)
-$green-sea: #16a085;
-$bg-color: __color-pastel(
-	$colors:
-		__color-complement(
-			$colors: green,
-		),
-);
-
-// mixin template
-@mixin box-template($width) {
-	@include box-sizing($value: only);
-	@include sizer($width: $width, $height: auto);
-	@include spacing-all-gabarit($gabarit: medium);
-	@include box-radius('all', 10px);
-	@include effect-box-shadow($opacity: solid);
-	background-color: $bg-color;
-}
-
-// layout style
-#main_container {
-	display: grid;
-	grid-template-columns: repeat(12, 1fr);
-	grid-template-rows: repeat(12, 1fr);
-	grid-column-gap: 0px;
-	grid-row-gap: 0px;
-
-	#cart {
-		grid-area: 1 / 1 / 13 / 4;
-	}
-
-	#shopping {
-		grid-area: 1 / 4 / 13 / 13;
-	}
-
-	@include breakpoint(max, 1030px) {
-		#cart {
-			grid-area: 1 / 1 / 6 / 13;
-		}
-		#shopping {
-			grid-area: 6 / 1 / 13 / 13;
-		}
-	}
-
-	@include breakpoint(between, 1028px 1920px) {
-		#cart {
-			min-width: 276px;
-		}
-	}
-}
-
-// component style
+@import './global';
+@import './colors';
+@import './mixin';
+@import './layout';
 
 #header_container {
 	#banner {
@@ -95,35 +46,36 @@ $bg-color: __color-pastel(
 	}
 }
 
-#main_container {
-	ul {
-		list-style: none;
+#cart {
+	@include box-template(auto);
+
+	.header {
+		text-align: center;
 	}
 
-	#cart {
-		@include box-template(auto);
-
-		.header {
-			text-align: center;
-		}
-
-		.body {
-			text-align: center;
-		}
-
-		.footer {
-			text-align: center;
-			span {
-				color: $green-sea;
-			}
-		}
+	.body {
+		text-align: center;
 	}
 
-	#shopping {
-		@include box-template(auto);
+	.footer {
+		text-align: center;
+		span {
+			color: $green-sea;
+		}
+	}
+}
 
-		.header {
-			text-align: center;
+#shopping {
+	@include box-template(auto);
+
+	.header {
+		text-align: center;
+	}
+
+	.plant-list {
+		@include columnize(3, 50px, false);
+		.plant-item {
+			background-color: rgba(192, 192, 192, 0.384);
 		}
 	}
 }
