@@ -122,7 +122,7 @@ function Shopping() {
 		<div id="shopping">
 			<h2 className="header">🌱 Liste des plantes</h2>
 			<div className="body">
-				<Categories />
+				{/* <Categories /> */}
 				<Plants />
 			</div>
 		</div>
