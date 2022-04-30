@@ -67,6 +67,11 @@ $bg-color: __color-pastel(
 
 // component style
 #banner {
+	@include spacing-padding-gabarit($gabarit: x-large);
+	text-align: right;
+	border-bottom: #555 10px solid;
+	background-color: $bg-color;
+
 	#official-logo {
 		@include image-logo(
 			$image-url: '../../../assets/images/jungle-logo.png',
@@ -89,10 +94,10 @@ $bg-color: __color-pastel(
 		color: #888;
 	}
 
-	@include spacing-padding-gabarit($gabarit: x-large);
-	text-align: right;
-	border-bottom: #555 10px solid;
-	background-color: $bg-color;
+	#recommendation {
+		width: 500px;
+		text-align: center;
+	}
 }
 
 #cart {

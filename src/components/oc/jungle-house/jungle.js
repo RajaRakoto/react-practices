@@ -23,7 +23,7 @@ function Header() {
 		const isSpring = currentDate >= 2 && currentDate <= 5;
 		const RecomNotif = props => {
 			return (
-				<div class={props.status} role="alert">
+				<div id="recommendation" className={props.status} role="alert">
 					<strong>Recommendation:</strong> {props.message}
 				</div>
 			);
@@ -47,7 +47,7 @@ function Header() {
 	};
 
 	return (
-		<div id="banner">
+		<div id="banner" className="container-fluid">
 			<div id="official-logo"></div>
 			<h1 id="title"> {title.toUpperCase()}</h1>
 			<h3 id="description"> {description}</h3>
@@ -118,7 +118,7 @@ export default function Jungle() {
 	return (
 		<Fragment>
 			<Header />
-			<div id="jungle_container">
+			<div id="jungle_container" className="container">
 				<Cart />
 				<Shopping />
 			</div>
