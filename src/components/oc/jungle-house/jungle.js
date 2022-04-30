@@ -14,11 +14,32 @@ function Header() {
 		<p>Ici achetez toutes les plantes dont vous avez toujours rêvé</p>
 	);
 	const title = 'Jungle house';
+
+	const Recommendation = () => {
+		const currentDate = new Date().getMonth();
+		const isSpring = currentDate >= 2 && currentDate <= 5;
+
+		if (!isSpring) {
+			return (
+				<div class="alert alert-warning" role="alert">
+					<strong>Recommendation:</strong> ce n'est pas le moment de rempoter !
+				</div>
+			);
+		} else {
+			return (
+				<div class="alert alert-success" role="alert">
+					<strong>Recommendation:</strong> c'est le printemps, rempotez !
+				</div>
+			);
+		}
+	};
+
 	return (
 		<div id="banner">
 			<div id="official-logo"></div>
 			<h1 id="title"> {title.toUpperCase()}</h1>
 			<h3 id="description"> {description}</h3>
+			<Recommendation />
 		</div>
 	);
 }
