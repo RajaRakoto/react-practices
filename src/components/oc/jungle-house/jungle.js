@@ -135,8 +135,14 @@ export default function Jungle() {
 				<Header />
 			</div>
 			<div id="main_container" className="container">
-				<Cart />
-				<Shopping />
+				<div className="row">
+					<div className="col-xl-3">
+						<Cart />
+					</div>
+					<div className="col-xl-9">
+						<Shopping />
+					</div>
+				</div>
 			</div>
 		</Fragment>
 	);
