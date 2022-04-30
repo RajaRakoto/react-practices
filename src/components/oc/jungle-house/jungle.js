@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { useMediaQuery } from 'react-responsive';
 /* styles */
 import './jungle.min.css';
 /* datas */
@@ -129,6 +130,9 @@ function Shopping() {
 }
 
 export default function Jungle() {
+	const isSmallScreen = useMediaQuery({
+		query: '(max-width: 1199px)',
+	});
 	return (
 		<Fragment>
 			<div id="header_container">
@@ -136,9 +140,15 @@ export default function Jungle() {
 			</div>
 			<div id="main_container" className="container">
 				<div className="row">
-					<div className="col-xl-3">
-						<Cart />
-					</div>
+					{isSmallScreen ? (
+						<div className="col-xl-3 d-flex justify-content-center">
+							<Cart />
+						</div>
+					) : (
+						<div className="col-xl-3">
+							<Cart />
+						</div>
+					)}
 					<div className="col-xl-9">
 						<Shopping />
 					</div>
