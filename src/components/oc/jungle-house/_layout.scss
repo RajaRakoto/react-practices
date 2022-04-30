@@ -8,6 +8,18 @@
 // }
 
 /* flex */
+#shopping {
+	.body {
+		@include position-flex-center();
+
+		.plant-list {
+			.plant-item {
+				@include position-flex-center();
+			}
+		}
+	}
+}
+
 @mixin plant-list-layout() {
 	.plant-list {
 		@include columnize(3, 50px, false);
