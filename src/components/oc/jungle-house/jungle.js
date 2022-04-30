@@ -131,15 +131,9 @@ export default function Jungle() {
 	return (
 		<Fragment>
 			<Header />
-			<div id="jungle_container" className="container-fluid">
-				<div className="row">
-					<div className="col-sm-12 col-md-3">
-						<Cart />
-					</div>
-					<div className="col-sm-12 col-md-9">
-						<Shopping />
-					</div>
-				</div>
+			<div id="jungle_container">
+				<Cart />
+				<Shopping />
 			</div>
 		</Fragment>
 	);

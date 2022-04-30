@@ -32,6 +32,43 @@ $bg-color: __color-pastel(
 	}
 }
 
+// layout style
+#jungle_container {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(12, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+
+	#cart {
+		grid-area: 1 / 1 / 13 / 4;
+	}
+
+	#shopping {
+		grid-area: 1 / 4 / 13 / 13;
+	}
+
+	@include breakpoint(max, 1030px) {
+		#cart {
+			min-width: 240px;
+			grid-area: 1 / 1 / 6 / 13;
+			margin-left: 10rem;
+			margin-right: 10rem;
+		}
+		#shopping {
+			min-width: 240px;
+			grid-area: 7 / 1 / 13 / 13;
+		}
+	}
+
+	@include breakpoint(max, 526px) {
+		#cart {
+			margin-left: 5rem;
+			margin-right: 5rem;
+		}
+	};
+}
+
 // component style
 #banner {
 	#official-logo {
@@ -64,7 +101,7 @@ $bg-color: __color-pastel(
 
 #cart {
 	@include box-template(auto);
-	min-width: 100px;
+	min-width: 283px;
 
 	span {
 		color: $green-sea;
@@ -79,4 +116,5 @@ $bg-color: __color-pastel(
 
 #shopping {
 	@include box-template(auto);
+	min-width: 654px;
 }
