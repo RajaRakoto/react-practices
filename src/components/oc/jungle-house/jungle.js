@@ -15,21 +15,33 @@ function Header() {
 	);
 	const title = 'Jungle house';
 
+	/**
+	 * @feat - condition | props
+	 */
 	const Recommendation = () => {
 		const currentDate = new Date().getMonth();
 		const isSpring = currentDate >= 2 && currentDate <= 5;
+		const RecomNotif = props => {
+			return (
+				<div class={props.status} role="alert">
+					<strong>Recommendation:</strong> {props.message}
+				</div>
+			);
+		};
 
 		if (!isSpring) {
 			return (
-				<div class="alert alert-warning" role="alert">
-					<strong>Recommendation:</strong> ce n'est pas le moment de rempoter !
-				</div>
+				<RecomNotif
+					message="ce n'est pas le moment de rempoter ! 😖"
+					status="alert alert-warning"
+				/>
 			);
 		} else {
 			return (
-				<div class="alert alert-success" role="alert">
-					<strong>Recommendation:</strong> c'est le printemps, rempotez !
-				</div>
+				<RecomNotif
+					message="c'est le printemps, rempotez ! 🌈"
+					status="alert alert-success"
+				/>
 			);
 		}
 	};
