@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+@include loadify(init);
+
+@keyframes ver-rotate {
+	from {
+		transform: rotateY(0deg);
+	}
+	to {
+		transform: rotateY(360deg);
+	}
+}
+
+#header_container {
+	#banner {
+		#official-logo {
+			animation: ver-rotate 20s infinite linear;
+		}
+
+		// #title {
+		// 	@include animation-slide($in-out: in, $direction: up);
+		// }
+
+		p {
+			@include loadify(0.2s);
+		}
+	}
+
+	#notification {
+		@include animation-flash();
+		animation-delay: 2s;
+	}
+}
+
+#main_container {
+	#shopping {
+		@include loadify(0.5s);
+	}
+
+	.plant-item {
+		@include loadify(0.5s);
+	}
+
+	#cart {
+		@include animation-slide($in-out: in, $direction: left);
+		animation-delay: 1s;
+	}
+}
