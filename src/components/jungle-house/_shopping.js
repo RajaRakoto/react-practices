@@ -1,8 +1,14 @@
 /* datas */
+import React, { Fragment } from 'react';
+import { useMediaQuery } from 'react-responsive';
+/* datas */
 import { plantList } from '../../data/plantList';
 import plantImg from '../../assets/images/jungle-logo.png';
 /* utils */
 import { getObjectElementType } from '../../utils/object';
+/* mui */
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 /**
  * @feat - map() | ternary conditional | getObjectElementType()
@@ -10,15 +16,33 @@ import { getObjectElementType } from '../../utils/object';
 export default function Shopping() {
 	const categoriesList = getObjectElementType(plantList, 'category');
 
+	/**
+	 * @feat - mui(Button) | react-responsive(mediaquery)
+	 */
 	const Categories = () => {
+		const isSmallScreenForCategories = useMediaQuery({
+			query: '(max-width: 537px)',
+		});
+
 		return (
-			<ul className="categories-list">
-				{categoriesList.map(category => (
-					<li key={category} className="categories-item">
-						{category}
-					</li>
-				))}
-			</ul>
+			<Fragment>
+				<div className="categories-list">
+					<Stack
+						spacing={3}
+						direction={isSmallScreenForCategories ? 'column' : 'row'}
+					>
+						{categoriesList.map(category => (
+							<Button
+								key={category}
+								className="categories-item"
+								variant="contained"
+							>
+								{category}
+							</Button>
+						))}
+					</Stack>
+				</div>
+			</Fragment>
 		);
 	};
 
