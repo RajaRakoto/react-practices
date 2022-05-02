@@ -1,22 +1,49 @@
 /* datas */
+import React, { Fragment } from 'react';
+import { useMediaQuery } from 'react-responsive';
+/* datas */
 import { plantList } from '../../data/plantList';
 import plantImg from '../../assets/images/jungle-logo.png';
 /* utils */
 import { getObjectElementType } from '../../utils/object';
+/* mui */
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 /**
- * @feat - map() | ternary conditional
+ * @feat - map() | ternary conditional | getObjectElementType()
  */
 export default function Shopping() {
 	const categoriesList = getObjectElementType(plantList, 'category');
 
+	/**
+	 * @feat - mui(Button) | react-responsive(mediaquery)
+	 */
 	const Categories = () => {
+		const isSmallScreenForCategories = useMediaQuery({
+			query: '(max-width: 537px)',
+		});
+
 		return (
-			<ul>
-				{categoriesList.map(category => (
-					<li key={category}>{category}</li>
-				))}
-			</ul>
+			<Fragment>
+				<div className="categories-list">
+					<Stack
+						spacing={3}
+						direction={isSmallScreenForCategories ? 'column' : 'row'}
+					>
+						{categoriesList.map(category => (
+							<Button
+								key={category}
+								className="categories-item"
+								variant="contained"
+							>
+								{category}
+							</Button>
+						))}
+					</Stack>
+				</div>
+			</Fragment>
 		);
 	};
 
@@ -36,8 +63,15 @@ export default function Shopping() {
 							width="80"
 							className="plant-image img-fluid"
 						/>
-						<p id="plant-description">{plant.name}</p>
-						<p>test</p>
+						<p id="plant-name">{plant.name}</p>
+						<p id="plant-description">{plant.description}</p>
+						{plant.isSpecialOffer ? (
+							<Stack spacing={1} alignItems="center">
+								<Stack direction="row" spacing={1}>
+									<Chip label="solde" color="primary" variant="outlined" />
+								</Stack>
+							</Stack>
+						) : null}
 					</li>
 				))}
 			</ul>
@@ -47,7 +81,9 @@ export default function Shopping() {
 	return (
 		<div id="shopping">
 			<h2 className="header">🌱 Liste des plantes</h2>
-			<Categories />
+			<div id="categories">
+				<Categories />
+			</div>
 			<div className="body">
 				<Plants />
 			</div>

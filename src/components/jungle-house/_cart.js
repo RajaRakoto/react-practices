@@ -3,6 +3,9 @@ import { plantList } from '../../data/plantList';
 /* utils */
 import { getObjectElementValue } from '../../utils/object';
 
+/**
+ * @feat - getObjectElementValue()
+ */
 export default function Cart() {
 	const unity = ' Ar';
 

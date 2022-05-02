@@ -7,7 +7,7 @@ export default function Header() {
 	const title = 'Jungle house';
 
 	/**
-	 * @feat - condition | props
+	 * @feat - condition | props | Date
 	 */
 	const Recommendation = () => {
 		const currentDate = new Date().getMonth();
