@@ -9,6 +9,21 @@
 
 /*----- Flexbox -----*/
 #shopping {
+	#categories {
+		@include box-debugging(
+			$colors: red,
+			$size: 3px,
+			$bg-color: false,
+			$status: true
+		);
+		.categories-list {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-evenly;
+		}
+	}
+
 	.body {
 		@include position-flex-center();
 
@@ -17,7 +32,7 @@
 				@include position-flex-center();
 				flex-direction: column;
 
-				#plant-description {
+				#plant-name {
 					@include position-flex-center();
 				}
 			}
