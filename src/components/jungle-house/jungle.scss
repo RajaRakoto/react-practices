@@ -81,7 +81,7 @@
 			margin-right: 0.5rem;
 
 			.plant-item {
-				@include sizer($width: auto, $height: 250px);
+				@include sizer($width: auto, $height: 300px);
 				@include box-radius(all, 10px);
 				@include effect-box-shadow($opacity: small);
 				@include spacing-padding(
@@ -91,9 +91,19 @@
 					$left: null
 				);
 				background-color: white;
+				transition: 0.2s ease-in-out;
+
+				&:hover {
+					@include effect-box-shadow($opacity: small);
+					border-bottom: #777 8px solid;
+				}
+
+				.plant-image {
+					@include spacing-margin-gabarit($gabarit: medium);
+				}
 
 				#plant-description {
-					@include spacing-margin-gabarit($gabarit: small);
+					@include spacing-margin-gabarit($gabarit: smooth);
 					border-top: #777 5px solid;
 					width: 100%;
 					height: 100%;
