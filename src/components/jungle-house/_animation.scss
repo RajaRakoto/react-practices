@@ -2,24 +2,11 @@
 
 @include loadify(init);
 
-@keyframes ver-rotate {
-	from {
-		transform: rotateY(0deg);
-	}
-	to {
-		transform: rotateY(360deg);
-	}
-}
-
 #header_container {
 	#banner {
 		#official-logo {
-			animation: ver-rotate 20s infinite linear;
+			@include animation-rotateY(20s);
 		}
-
-		// #title {
-		// 	@include animation-slide($in-out: in, $direction: up);
-		// }
 
 		p {
 			@include loadify(0.2s);
@@ -39,6 +26,11 @@
 
 	.plant-item {
 		@include loadify(0.5s);
+		transition: 0.5s;
+
+		&:hover {
+			@include animation-scale($scaleValue: 1.03);
+		}
 	}
 
 	#cart {
