@@ -46,6 +46,7 @@
 	}
 }
 
+/*----- Cart -----*/
 #cart {
 	@include box-template(auto);
 
@@ -65,6 +66,7 @@
 	}
 }
 
+/*----- Shopping -----*/
 #shopping {
 	@include box-template(auto);
 

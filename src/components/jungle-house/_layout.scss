@@ -7,7 +7,7 @@
 // 	@include breakpointerStyle();
 // }
 
-/* flex */
+/*----- Flexbox -----*/
 #shopping {
 	.body {
 		@include position-flex-center();
@@ -40,7 +40,7 @@
 	}
 }
 
-/* sizing */
+/*----- Sizing -----*/
 #shopping {
 	min-width: 267px;
 
