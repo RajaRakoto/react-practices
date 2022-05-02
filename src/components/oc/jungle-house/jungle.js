@@ -121,8 +121,8 @@ function Shopping() {
 	return (
 		<div id="shopping">
 			<h2 className="header">🌱 Liste des plantes</h2>
-			<div className="body">
 				<Categories />
+			<div className="body">
 				<Plants />
 			</div>
 		</div>

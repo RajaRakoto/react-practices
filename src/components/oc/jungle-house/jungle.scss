@@ -74,13 +74,14 @@
 
 	.body {
 		.plant-list {
-			margin-top: 5rem;
+			margin-top: 2rem;
+			margin-right: 0.5rem;
 
 			.plant-item {
 				@include sizer(200px);
-				@include box-radius(all, 20px);
-				@include effect-box-shadow($opacity: solid);
-				background-color: rgba(192, 192, 192, 0.384);
+				@include box-radius(all, 10px);
+				@include effect-box-shadow($opacity: small);
+				background-color: white;
 			}
 		}
 

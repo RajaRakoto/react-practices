@@ -43,6 +43,12 @@
 /* sizing */
 #shopping {
 	min-width: 267px;
+
+	@include breakpoint(max, 1187px) {
+		.plant-list {
+			max-width: 600px;
+		}
+	}
 }
 
 #cart {
