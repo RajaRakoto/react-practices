@@ -7,6 +7,7 @@ import plantImg from '../../assets/images/jungle-logo.png';
 /* utils */
 import { getObjectElementType } from '../../utils/object';
 /* mui */
+import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
@@ -64,6 +65,13 @@ export default function Shopping() {
 						/>
 						<p id="plant-name">{plant.name}</p>
 						<p id="plant-description">{plant.description}</p>
+						{plant.isSpecialOffer ? (
+							<Stack spacing={1} alignItems="center">
+								<Stack direction="row" spacing={1}>
+									<Chip label="solde" color="primary" variant="outlined" />
+								</Stack>
+							</Stack>
+						) : null}
 					</li>
 				))}
 			</ul>
