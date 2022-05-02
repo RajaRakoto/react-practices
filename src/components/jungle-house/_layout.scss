@@ -15,6 +15,11 @@
 		.plant-list {
 			.plant-item {
 				@include position-flex-center();
+				flex-direction: column;
+
+				#plant-description {
+					@include position-flex-center();
+				}
 			}
 		}
 	}
