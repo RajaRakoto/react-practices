@@ -5,16 +5,18 @@ import plantImg from '../../assets/images/jungle-logo.png';
 import { getObjectElementType } from '../../utils/object';
 
 /**
- * @feat - map() | ternary conditional
+ * @feat - map() | ternary conditional | getObjectElementType()
  */
 export default function Shopping() {
 	const categoriesList = getObjectElementType(plantList, 'category');
 
 	const Categories = () => {
 		return (
-			<ul>
+			<ul className="categories-list">
 				{categoriesList.map(category => (
-					<li key={category}>{category}</li>
+					<li key={category} className="categories-item">
+						{category}
+					</li>
 				))}
 			</ul>
 		);
@@ -36,8 +38,8 @@ export default function Shopping() {
 							width="80"
 							className="plant-image img-fluid"
 						/>
-						<p id="plant-description">{plant.name}</p>
-						<p>test</p>
+						<p id="plant-name">{plant.name}</p>
+						<p id="plant-description">{plant.description}</p>
 					</li>
 				))}
 			</ul>
@@ -47,7 +49,9 @@ export default function Shopping() {
 	return (
 		<div id="shopping">
 			<h2 className="header">🌱 Liste des plantes</h2>
-			<Categories />
+			<div id="categories">
+				<Categories />
+			</div>
 			<div className="body">
 				<Plants />
 			</div>
