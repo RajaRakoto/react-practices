@@ -75,6 +75,16 @@
 		text-align: center;
 	}
 
+	#categories {
+		@include spacing-margin-gabarit($gabarit: large);
+
+		.categories-list {
+			.categories-item {
+				background-color: $btn-color;
+			}
+		}
+	}
+
 	.body {
 		.plant-list {
 			margin-top: 2rem;
