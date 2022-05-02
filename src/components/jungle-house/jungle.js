@@ -9,10 +9,10 @@ import Cart from './_cart';
 
 /**
  *
- * @feat - react-responsive (useMediaQuery) | bt5 (grid) | className injection
+ * @feat - react-responsive(mediaquery) | bt5 (grid) | className injection
  */
 export default function Jungle() {
-	const isSmallScreen = useMediaQuery({
+	const isSmallScreenForCart = useMediaQuery({
 		query: '(max-width: 1199px)',
 	});
 
@@ -33,7 +33,7 @@ export default function Jungle() {
 			</div>
 			<div id="main_container" className="container-fluid">
 				<div className="row">
-					<ReactResponsive active={isSmallScreen} children={<Cart />} />
+					<ReactResponsive active={isSmallScreenForCart} children={<Cart />} />
 					<div className="col-xl-9">
 						<Shopping />
 					</div>
