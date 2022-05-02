@@ -32,7 +32,7 @@ export default function Shopping() {
 						)}
 						<img
 							src={plantImg}
-							alt="plant image"
+							alt="plant-img"
 							width="80"
 							className="plant-image img-fluid"
 						/>

@@ -31,7 +31,7 @@ export default function Jungle() {
 			<div id="header_container">
 				<Header />
 			</div>
-			<div id="main_container" className="container">
+			<div id="main_container" className="container-fluid">
 				<div className="row">
 					<ReactResponsive active={isSmallScreen} children={<Cart />} />
 					<div className="col-xl-9">
