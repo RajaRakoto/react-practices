@@ -3,12 +3,11 @@ import { useMediaQuery } from 'react-responsive';
 /* styles */
 import './jungle.min.css';
 /* datas */
-import { plantList } from '../../../data/plantList';
+import { plantList } from '../../data/plantList';
 /* utils */
-import {
-	getObjectElementValue,
-	getObjectElementType,
-} from '../../../utils/object';
+import { getObjectElementValue } from '../../utils/object';
+/* components */
+import Shopping from './_shopping';
 
 function Header() {
 	const description = (
@@ -86,45 +85,6 @@ function Cart() {
 					getObjectElementValue(plantList, '4kk', 'price') +
 					getObjectElementValue(plantList, '5pl', 'price')}
 			</h5>
-		</div>
-	);
-}
-
-/**
- * @feat - map() | ternary conditional
- */
-function Shopping() {
-	const categoriesList = getObjectElementType(plantList, 'category');
-
-	const Categories = () => {
-		return (
-			<ul>
-				{categoriesList.map(category => (
-					<li key={category}>{category}</li>
-				))}
-			</ul>
-		);
-	};
-
-	const Plants = () => {
-		return (
-			<ul className="plant-list">
-				{plantList.map(plant => (
-					<li key={plant.id} className="plant-item">
-						{plant.name} {plant.isBestSale ? '⭐' : null}
-					</li>
-				))}
-			</ul>
-		);
-	};
-
-	return (
-		<div id="shopping">
-			<h2 className="header">🌱 Liste des plantes</h2>
-			<div className="body">
-				{/* <Categories /> */}
-				<Plants />
-			</div>
 		</div>
 	);
 }
