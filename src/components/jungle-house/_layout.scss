@@ -7,7 +7,7 @@
 // 	@include breakpointerStyle();
 // }
 
-/* flex */
+/*----- Flexbox -----*/
 #shopping {
 	.body {
 		@include position-flex-center();
@@ -15,6 +15,11 @@
 		.plant-list {
 			.plant-item {
 				@include position-flex-center();
+				flex-direction: column;
+
+				#plant-description {
+					@include position-flex-center();
+				}
 			}
 		}
 	}
@@ -40,7 +45,7 @@
 	}
 }
 
-/* sizing */
+/*----- Sizing -----*/
 #shopping {
 	min-width: 267px;
 

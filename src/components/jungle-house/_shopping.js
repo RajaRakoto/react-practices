@@ -1,5 +1,6 @@
 /* datas */
 import { plantList } from '../../data/plantList';
+import plantImg from '../../assets/images/jungle-logo.png';
 /* utils */
 import { getObjectElementType } from '../../utils/object';
 
@@ -24,7 +25,19 @@ export default function Shopping() {
 			<ul className="plant-list">
 				{plantList.map(plant => (
 					<li key={plant.id} className="plant-item">
-						{plant.name} {plant.isBestSale ? '⭐' : null}
+						{plant.isBestSale ? (
+							<p>⭐</p>
+						) : (
+							<p style={{ visibility: 'hidden' }}>.</p>
+						)}
+						<img
+							src={plantImg}
+							alt="plant-img"
+							width="80"
+							className="plant-image img-fluid"
+						/>
+						<p id="plant-description">{plant.name}</p>
+						<p>test</p>
 					</li>
 				))}
 			</ul>
