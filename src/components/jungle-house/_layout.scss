@@ -10,17 +10,12 @@
 /*----- Flexbox -----*/
 #shopping {
 	#categories {
-		@include box-debugging(
-			$colors: red,
-			$size: 3px,
-			$bg-color: false,
-			$status: true
-		);
 		.categories-list {
 			display: flex;
-			flex-direction: row;
+			align-items: center;
+			justify-content: center;
 			flex-wrap: wrap;
-			justify-content: space-evenly;
+			flex-direction: column;
 		}
 	}
 
