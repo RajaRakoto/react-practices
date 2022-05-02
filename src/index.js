@@ -4,7 +4,7 @@ import reportWebVitals from './reportWebVitals';
 /* styles */
 import './index.min.css';
 /* components */
-import Jungle from './components/oc/jungle-house/jungle';
+import Jungle from './components/jungle-house/jungle';
 
 ReactDOM.render(
 	<Fragment>
