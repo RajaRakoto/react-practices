@@ -26,7 +26,7 @@
 
 	.plant-item {
 		@include loadify(0.5s);
-		transition: 0.5s;
+		transition: 0.2s;
 
 		&:hover {
 			@include animation-scale($scaleValue: 1.03);
