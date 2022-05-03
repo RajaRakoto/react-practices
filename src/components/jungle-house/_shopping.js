@@ -18,7 +18,7 @@ export default function Shopping() {
 	const categoriesList = getObjectElementType(plantList, 'category');
 
 	/**
-	 * @feat - mui(Button) | react-responsive(mediaquery)
+	 * @feat - map() | mui(Button) | react-responsive(mediaquery)
 	 */
 	const Categories = () => {
 		const isSmallScreenForCategories = useMediaQuery({
@@ -47,6 +47,9 @@ export default function Shopping() {
 		);
 	};
 
+	/**
+	 * @feat - map()
+	 */
 	const Plants = () => {
 		return (
 			<ul className="plant-list">
