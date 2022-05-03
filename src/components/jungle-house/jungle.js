@@ -9,22 +9,26 @@ import Cart from './_cart';
 
 /**
  *
- * @feat - react-responsive(mediaquery) | bt5 (grid) | className injection
+ * @feat - react-responsive(mediaquery) | bt5 (grid) | className injection | props
  */
 export default function Jungle() {
 	const isSmallScreenForCart = useMediaQuery({
 		query: '(max-width: 1199px)',
 	});
 
-	const ReactResponsive = props => (
-		<div
-			className={`${
-				props.active ? 'col-xl-3 d-flex justify-content-center' : 'col-xl-3'
-			}`}
-		>
-			{props.children}
-		</div>
-	);
+	const ReactResponsive = props => {
+		const { active, children } = props;
+
+		return (
+			<div
+				className={`${
+					active ? 'col-xl-3 d-flex justify-content-center' : 'col-xl-3'
+				}`}
+			>
+				{children}
+			</div>
+		);
+	};
 
 	return (
 		<Fragment>
