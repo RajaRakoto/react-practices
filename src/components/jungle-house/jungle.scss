@@ -93,7 +93,7 @@
 			.plant-item {
 				@include sizer($width: auto, $height: auto);
 				@include box-radius(all, 10px);
-				@include effect-box-shadow($opacity: solid);
+				@include effect-box-shadow($opacity: small);
 				@include spacing-padding(
 					$top: 10px,
 					$right: null,
@@ -104,8 +104,8 @@
 				transition: 0.2s ease-in-out;
 
 				&:hover {
-					@include effect-box-shadow($opacity: small);
-					border-bottom: #777 8px solid;
+					@include effect-box-shadow($opacity: smooth);
+					cursor: pointer;
 				}
 
 				.plant-image {
