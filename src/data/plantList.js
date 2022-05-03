@@ -68,7 +68,7 @@ export const plantList = [
 		isBestSale: false,
 		isSpecialOffer: false,
 		description:
-			'In every Case, after the Choice of the Members present. The United States shall guarantee to every State in this Constitution shall be so construed as to Prejudice any Claims of the first Article. .',
+			'In every Case, after the Choice of the Members present. The United States shall guarantee to every State in this Constitution shall be so construed as to Prejudice any Claims of the first Article.',
 	},
 	{
 		id: '8fp',
@@ -78,7 +78,7 @@ export const plantList = [
 		isBestSale: false,
 		isSpecialOffer: false,
 		description:
-			'Innertagesliquiditätsrisiken wird noch weiter an Überwachungsinstrumenten gearbeitet. Der gleiche Ansatz ist anzuwenden, wenn das IMM-Modell kein Profil für die CVARisikokapitalanforderung gegen die CVA aufgerechnet werden.',
+			'Per ea omnis decore, eu mei appareat tincidunt. Scripta periculis ei eam, te pro movet reformidans. Prima zril primis eu sed, mei ei eirmod moderatius adversarium. Scripta periculis ei eam, te pro movet reformidans.',
 	},
 	{
 		id: '9vn',
