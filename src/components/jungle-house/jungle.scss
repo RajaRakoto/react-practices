@@ -9,10 +9,12 @@
 
 #header_container {
 	#banner {
-		@include spacing-padding-gabarit($gabarit: x-large);
+		@include spacing-padding-gabarit($gabarit: medium);
+		padding-right: 5rem;
 		text-align: right;
 		border-bottom: #555 10px solid;
 		background-color: $bg-color;
+		height: auto;
 
 		#official-logo {
 			@include image-logo(
@@ -104,8 +106,8 @@
 				transition: 0.2s ease-in-out;
 
 				&:hover {
-					@include effect-box-shadow($opacity: small);
-					border-bottom: #777 8px solid;
+					@include effect-box-shadow($opacity: smooth);
+					cursor: pointer;
 				}
 
 				.plant-image {
@@ -120,10 +122,15 @@
 					height: 3rem;
 					text-align: center;
 					background-color: rgba(119, 119, 119, 0.397);
+					font-weight: bolder;
 				}
 
 				#plant-description {
 					@include spacing-padding-gabarit($gabarit: medium);
+				}
+
+				.solde-badge {
+					@include badge-linear($type: 'gold');
 				}
 			}
 		}
