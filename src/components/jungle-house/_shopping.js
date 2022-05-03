@@ -63,40 +63,34 @@ export default function Shopping() {
 		};
 
 		const PlantName = props => {
-			const { plant } = props;
+			const { name, favori } = props;
 			return (
 				<div id="plant-name">
-					{plant.name}{' '}
-					{plant.isBestSale ? (
-						<p>⭐</p>
-					) : (
-						<p style={{ visibility: 'hidden' }}>.</p>
-					)}
+					{name}{' '}
+					{favori ? <p>⭐</p> : <p style={{ visibility: 'hidden' }}>.</p>}
 				</div>
 			);
 		};
 
 		const PlantCategorie = props => {
-			const { plant } = props;
+			const { category } = props;
 			return (
 				<Stack direction="row" spacing={1}>
-					<Chip label={plant.category} size="small" variant="outlined" />
+					<Chip label={category} size="small" variant="outlined" />
 				</Stack>
 			);
 		};
 
 		const PlantDescription = props => {
-			const { plant } = props;
-			return <p id="plant-description">{plant.description}</p>;
+			const { description } = props;
+			return <p id="plant-description">{description}</p>;
 		};
 
 		const PlantBadge = props => {
-			const { plant } = props;
+			const { solde } = props;
 			return (
 				<Fragment>
-					{plant.isSpecialOffer ? (
-						<div className="solde-badge">solde</div>
-					) : null}
+					{solde ? <div className="solde-badge">solde</div> : null}
 				</Fragment>
 			);
 		};
@@ -105,13 +99,13 @@ export default function Shopping() {
 		 * @feat - map() | toString()
 		 */
 		const PlantCondition = props => {
-			const { scaleValue } = props;
-
+			const { conditionType, conditionValue } = props;
 			const range = [1, 2, 3];
+
 			return (
 				<div>
 					{range.map(rangeElem =>
-						scaleValue >= rangeElem ? (
+						conditionValue >= rangeElem ? (
 							<span key={rangeElem.toString()}>☀️</span>
 						) : null,
 					)}
@@ -124,11 +118,11 @@ export default function Shopping() {
 				{plantList.map(plant => (
 					<li key={plant.id} className="plant-item">
 						<PlantImage />
-						<PlantName plant={plant} />
-						<PlantCategorie plant={plant} />
-						<PlantDescription plant={plant} />
-						<PlantBadge plant={plant} />
-						<PlantCondition scaleValue={3} />
+						<PlantName name={plant.name} favori={plant.isBestSale} />
+						<PlantCategorie category={plant.category} />
+						<PlantDescription description={plant.description} />
+						<PlantBadge solde={plant.isSpecialOffer} />
+						<PlantCondition conditionValue={3} />
 					</li>
 				))}
 			</ul>
