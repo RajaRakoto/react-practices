@@ -9,10 +9,12 @@
 
 #header_container {
 	#banner {
-		@include spacing-padding-gabarit($gabarit: x-large);
+		@include spacing-padding-gabarit($gabarit: medium);
+		padding-right: 5rem;
 		text-align: right;
 		border-bottom: #555 10px solid;
 		background-color: $bg-color;
+		height: auto;
 
 		#official-logo {
 			@include image-logo(
