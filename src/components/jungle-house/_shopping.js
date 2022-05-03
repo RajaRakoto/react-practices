@@ -65,14 +65,14 @@ export default function Shopping() {
 		const PlantName = props => {
 			const { plant } = props;
 			return (
-				<p id="plant-name">
+				<div id="plant-name">
 					{plant.name}{' '}
 					{plant.isBestSale ? (
 						<p>⭐</p>
 					) : (
 						<p style={{ visibility: 'hidden' }}>.</p>
 					)}
-				</p>
+				</div>
 			);
 		};
 
@@ -94,7 +94,9 @@ export default function Shopping() {
 			const { plant } = props;
 			return (
 				<Fragment>
-					{plant.isSpecialOffer ? <div class="solde-badge">solde</div> : null}
+					{plant.isSpecialOffer ? (
+						<div className="solde-badge">solde</div>
+					) : null}
 				</Fragment>
 			);
 		};
