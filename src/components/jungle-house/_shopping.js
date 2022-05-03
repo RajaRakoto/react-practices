@@ -7,6 +7,7 @@ import plantImg from '../../assets/images/jungle-logo.png';
 /* utils */
 import { getObjectElementType } from '../../utils/object';
 /* mui */
+import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
@@ -17,7 +18,7 @@ export default function Shopping() {
 	const categoriesList = getObjectElementType(plantList, 'category');
 
 	/**
-	 * @feat - mui(Button) | react-responsive(mediaquery)
+	 * @feat - map() | mui(Button) | react-responsive(mediaquery)
 	 */
 	const Categories = () => {
 		const isSmallScreenForCategories = useMediaQuery({
@@ -46,27 +47,88 @@ export default function Shopping() {
 		);
 	};
 
+	/**
+	 * @feat - map()
+	 */
 	const Plants = () => {
+		const PlantImage = () => {
+			return (
+				<img
+					src={plantImg}
+					alt="plant-img"
+					width="80"
+					className="plant-image img-fluid"
+				/>
+			);
+		};
+
+		const PlantName = props => {
+			const { plant } = props;
+			return (
+				<div id="plant-name">
+					{plant.name}{' '}
+					{plant.isBestSale ? (
+						<p>⭐</p>
+					) : (
+						<p style={{ visibility: 'hidden' }}>.</p>
+					)}
+				</div>
+			);
+		};
+
+		const PlantCategorie = props => {
+			const { plant } = props;
+			return (
+				<Stack direction="row" spacing={1}>
+					<Chip label={plant.category} size="small" variant="outlined" />
+				</Stack>
+			);
+		};
+
+		const PlantDescription = props => {
+			const { plant } = props;
+			return <p id="plant-description">{plant.description}</p>;
+		};
+
+		const PlantBadge = props => {
+			const { plant } = props;
+			return (
+				<Fragment>
+					{plant.isSpecialOffer ? (
+						<div className="solde-badge">solde</div>
+					) : null}
+				</Fragment>
+			);
+		};
+
+		/**
+		 * @feat - map() | toString()
+		 */
+		const PlantCondition = props => {
+			const { scaleValue } = props;
+
+			const range = [1, 2, 3];
+			return (
+				<div>
+					{range.map(rangeElem =>
+						scaleValue >= rangeElem ? (
+							<span key={rangeElem.toString()}>☀️</span>
+						) : null,
+					)}
+				</div>
+			);
+		};
+
 		return (
 			<ul className="plant-list">
 				{plantList.map(plant => (
 					<li key={plant.id} className="plant-item">
-						{plant.isBestSale ? (
-							<p>⭐</p>
-						) : (
-							<p style={{ visibility: 'hidden' }}>.</p>
-						)}
-						<img
-							src={plantImg}
-							alt="plant-img"
-							width="80"
-							className="plant-image img-fluid"
-						/>
-						<p id="plant-name">{plant.name}</p>
-						<p id="plant-description">{plant.description}</p>
-						{plant.isSpecialOffer ? (
-							<div class="solde-badge">solde</div>
-						) : null}
+						<PlantImage />
+						<PlantName plant={plant} />
+						<PlantCategorie plant={plant} />
+						<PlantDescription plant={plant} />
+						<PlantBadge plant={plant} />
+						<PlantCondition scaleValue={3} />
 					</li>
 				))}
 			</ul>

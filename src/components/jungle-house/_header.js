@@ -13,9 +13,10 @@ export default function Header() {
 		const currentDate = new Date().getMonth();
 		const isSpring = currentDate >= 2 && currentDate <= 5;
 		const RecomNotif = props => {
+			const { status, message } = props;
 			return (
-				<div className={props.status} role="alert">
-					<strong>Recommendation:</strong> {props.message}
+				<div className={status} role="alert">
+					<strong>Recommendation:</strong> {message}
 				</div>
 			);
 		};
