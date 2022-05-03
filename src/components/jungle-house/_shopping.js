@@ -68,7 +68,7 @@ export default function Shopping() {
 						{plant.isSpecialOffer ? (
 							<Stack spacing={1} alignItems="center">
 								<Stack direction="row" spacing={1}>
-									<Chip label="solde" color="primary" variant="outlined" />
+									<Chip label="solde" color="primary"/>
 								</Stack>
 							</Stack>
 						) : null}
