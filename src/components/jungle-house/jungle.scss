@@ -93,7 +93,7 @@
 			.plant-item {
 				@include sizer($width: auto, $height: auto);
 				@include box-radius(all, 10px);
-				@include effect-box-shadow($opacity: small);
+				@include effect-box-shadow($opacity: solid);
 				@include spacing-padding(
 					$top: 10px,
 					$right: null,
