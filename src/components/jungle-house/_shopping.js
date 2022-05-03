@@ -7,6 +7,7 @@ import plantImg from '../../assets/images/jungle-logo.png';
 /* utils */
 import { getObjectElementType } from '../../utils/object';
 /* mui */
+import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
@@ -51,22 +52,25 @@ export default function Shopping() {
 			<ul className="plant-list">
 				{plantList.map(plant => (
 					<li key={plant.id} className="plant-item">
-						{plant.isBestSale ? (
-							<p>⭐</p>
-						) : (
-							<p style={{ visibility: 'hidden' }}>.</p>
-						)}
 						<img
 							src={plantImg}
 							alt="plant-img"
 							width="80"
 							className="plant-image img-fluid"
 						/>
-						<p id="plant-name">{plant.name}</p>
+						<p id="plant-name">
+							{plant.name}{' '}
+							{plant.isBestSale ? (
+								<p>⭐</p>
+							) : (
+								<p style={{ visibility: 'hidden' }}>.</p>
+							)}
+						</p>
+						<Stack direction="row" spacing={1}>
+							<Chip label={plant.category} size="small" variant="outlined" />
+						</Stack>
 						<p id="plant-description">{plant.description}</p>
-						{plant.isSpecialOffer ? (
-							<div class="solde-badge">solde</div>
-						) : null}
+						{plant.isSpecialOffer ? <div class="solde-badge">solde</div> : null}
 					</li>
 				))}
 			</ul>
