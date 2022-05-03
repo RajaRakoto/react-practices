@@ -51,29 +51,82 @@ export default function Shopping() {
 	 * @feat - map()
 	 */
 	const Plants = () => {
+		const PlantImage = () => {
+			return (
+				<img
+					src={plantImg}
+					alt="plant-img"
+					width="80"
+					className="plant-image img-fluid"
+				/>
+			);
+		};
+
+		const PlantName = props => {
+			const { plant } = props;
+			return (
+				<p id="plant-name">
+					{plant.name}{' '}
+					{plant.isBestSale ? (
+						<p>⭐</p>
+					) : (
+						<p style={{ visibility: 'hidden' }}>.</p>
+					)}
+				</p>
+			);
+		};
+
+		const PlantCategorie = props => {
+			const { plant } = props;
+			return (
+				<Stack direction="row" spacing={1}>
+					<Chip label={plant.category} size="small" variant="outlined" />
+				</Stack>
+			);
+		};
+
+		const PlantDescription = props => {
+			const { plant } = props;
+			return <p id="plant-description">{plant.description}</p>;
+		};
+
+		const PlantBadge = props => {
+			const { plant } = props;
+			return (
+				<Fragment>
+					{plant.isSpecialOffer ? <div class="solde-badge">solde</div> : null}
+				</Fragment>
+			);
+		};
+
+		/**
+		 * @feat - map() | toString()
+		 */
+		const PlantCondition = props => {
+			const { scaleValue } = props;
+
+			const range = [1, 2, 3];
+			return (
+				<div>
+					{range.map(rangeElem =>
+						scaleValue >= rangeElem ? (
+							<span key={rangeElem.toString()}>☀️</span>
+						) : null,
+					)}
+				</div>
+			);
+		};
+
 		return (
 			<ul className="plant-list">
 				{plantList.map(plant => (
 					<li key={plant.id} className="plant-item">
-						<img
-							src={plantImg}
-							alt="plant-img"
-							width="80"
-							className="plant-image img-fluid"
-						/>
-						<p id="plant-name">
-							{plant.name}{' '}
-							{plant.isBestSale ? (
-								<p>⭐</p>
-							) : (
-								<p style={{ visibility: 'hidden' }}>.</p>
-							)}
-						</p>
-						<Stack direction="row" spacing={1}>
-							<Chip label={plant.category} size="small" variant="outlined" />
-						</Stack>
-						<p id="plant-description">{plant.description}</p>
-						{plant.isSpecialOffer ? <div class="solde-badge">solde</div> : null}
+						<PlantImage />
+						<PlantName plant={plant} />
+						<PlantCategorie plant={plant} />
+						<PlantDescription plant={plant} />
+						<PlantBadge plant={plant} />
+						<PlantCondition scaleValue={3} />
 					</li>
 				))}
 			</ul>
