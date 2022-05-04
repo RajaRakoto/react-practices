@@ -8,6 +8,20 @@
 // }
 
 /*----- Flexbox -----*/
+#header_container {
+	@include breakpoint(max, 368px) {
+		#notification {
+			font-size: 13px;
+		}
+	}
+
+	@include breakpoint(max, 286px) {
+		#notification {
+			font-size: 10px;
+		}
+	}
+}
+
 #shopping {
 	#categories {
 		.categories-list {
@@ -27,7 +41,7 @@
 				@include position-flex-center();
 				flex-direction: column;
 
-				#plant-name {
+				.plant-name {
 					@include position-flex-center();
 				}
 			}

@@ -9,9 +9,10 @@ import Cart from './_cart';
 
 /**
  *
- * @feat - react-responsive(mediaquery) | bt5 (grid) | className injection | props
+ * @feat - react-responsive(mediaquery) | bt5 (grid) | className injection | props (children)
  */
 export default function Jungle() {
+	// func component only
 	const isSmallScreenForCart = useMediaQuery({
 		query: '(max-width: 1199px)',
 	});
