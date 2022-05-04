@@ -11,6 +11,7 @@
 	#banner {
 		@include spacing-padding-gabarit($gabarit: medium);
 		padding-right: 5rem;
+		padding-left: 5rem;
 		text-align: right;
 		border-bottom: #555 10px solid;
 		background-color: $bg-color;
@@ -38,14 +39,10 @@
 			color: #888;
 		}
 
-		#recommendation {
-			width: 500px;
+		#notification {
+			width: auto;
 			text-align: center;
 		}
-	}
-
-	#notification {
-		text-align: center;
 	}
 }
 
