@@ -43,14 +43,15 @@ function Categories() {
 }
 
 /**
- * @feat - map() [get property with keyword] | toString() | props
+ * @feat - map() [get property with keyword] | toString() | props | SEO (img)
  */
 function Plants() {
-	const PlantImage = () => {
+	const PlantImage = props => {
+		const { name } = props;
 		return (
 			<img
 				src={plantImg}
-				alt="plant-img"
+				alt={`${name}-cover`} // SEO tips
 				width="80"
 				className="plant-image img-fluid"
 			/>
@@ -121,7 +122,7 @@ function Plants() {
 					description,
 				}) => (
 					<li key={id.toString()} className="plant-item">
-						<PlantImage />
+						<PlantImage name={name} />
 						<PlantName name={name} favori={isBestSale} />
 						<div className="plant-condition">
 							<PlantCondition
