@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 
 /**
  * @feat - props | Date
@@ -40,16 +40,14 @@ export default class Header extends Component {
 		);
 		const title = 'Jungle house';
 		return (
-			<Fragment>
-				<div id="banner">
-					<div id="official-logo"></div>
-					<h1 id="title"> {title.toUpperCase()}</h1>
-					<h3 id="description"> {description}</h3>
-				</div>
+			<div id="banner">
+				<div id="official-logo"></div>
+				<h1 id="title"> {title.toUpperCase()}</h1>
+				<h3 id="description"> {description}</h3>
 				<div id="notification">
 					<Recommendation />
 				</div>
-			</Fragment>
+			</div>
 		);
 	}
 }
