@@ -4,6 +4,8 @@ export const plantList = [
 		name: 'monstera',
 		category: 'classique',
 		price: 3000,
+		water: 2,
+		light: 3,
 		isBestSale: true,
 		isSpecialOffer: false,
 		description:
@@ -14,6 +16,8 @@ export const plantList = [
 		name: 'ficus lyrata',
 		category: 'classique',
 		price: 8000,
+		water: 3,
+		light: 3,
 		isBestSale: true,
 		isSpecialOffer: false,
 		description:
@@ -24,6 +28,8 @@ export const plantList = [
 		name: 'pothos argenté',
 		category: 'classique',
 		price: 1500,
+		water: 2,
+		light: 2,
 		isBestSale: false,
 		isSpecialOffer: false,
 		description:
@@ -34,6 +40,8 @@ export const plantList = [
 		name: 'yucca',
 		category: 'classique',
 		price: 5000,
+		water: 1,
+		light: 3,
 		isBestSale: true,
 		isSpecialOffer: true,
 		description:
@@ -44,6 +52,8 @@ export const plantList = [
 		name: 'olivier',
 		category: 'extérieur',
 		price: 2200,
+		water: 2,
+		light: 1,
 		isBestSale: false,
 		isSpecialOffer: false,
 		description:
@@ -55,6 +65,8 @@ export const plantList = [
 		name: 'géranium',
 		category: 'extérieur',
 		price: 4600,
+		water: 1,
+		light: 2,
 		isBestSale: true,
 		isSpecialOffer: true,
 		description:
@@ -65,6 +77,8 @@ export const plantList = [
 		name: 'basilique',
 		category: 'extérieur',
 		price: 7000,
+		water: 3,
+		light: 3,
 		isBestSale: false,
 		isSpecialOffer: false,
 		description:
@@ -75,6 +89,8 @@ export const plantList = [
 		name: 'aloe',
 		category: 'plante grasse',
 		price: 3200,
+		water: 2,
+		light: 2,
 		isBestSale: false,
 		isSpecialOffer: false,
 		description:
@@ -85,6 +101,8 @@ export const plantList = [
 		name: 'succulente',
 		category: 'plante grasse',
 		price: 3500,
+		water: 2,
+		light: 3,
 		isBestSale: false,
 		isSpecialOffer: true,
 		description:
