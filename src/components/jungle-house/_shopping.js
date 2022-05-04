@@ -65,7 +65,7 @@ export default function Shopping() {
 		const PlantName = props => {
 			const { name, favori } = props;
 			return (
-				<div id="plant-name">
+				<div className="plant-name">
 					{name}{' '}
 					{favori ? <p>⭐</p> : <p style={{ visibility: 'hidden' }}>.</p>}
 				</div>
@@ -83,7 +83,7 @@ export default function Shopping() {
 
 		const PlantDescription = props => {
 			const { description } = props;
-			return <p id="plant-description">{description}</p>;
+			return <p className="plant-description">{description}</p>;
 		};
 
 		const PlantBadge = props => {
@@ -106,7 +106,9 @@ export default function Shopping() {
 				<div>
 					{range.map(rangeElem =>
 						conditionValue >= rangeElem ? (
-							<span key={rangeElem.toString()}>☀️</span>
+							<span key={rangeElem.toString()}>
+								{conditionType === 'water' ? '💧' : '☀️'}
+							</span>
 						) : null,
 					)}
 				</div>
@@ -119,10 +121,19 @@ export default function Shopping() {
 					<li key={plant.id} className="plant-item">
 						<PlantImage />
 						<PlantName name={plant.name} favori={plant.isBestSale} />
+						<div className="plant-condition">
+							<PlantCondition
+								conditionType="water"
+								conditionValue={plant.water}
+							/>
+							<PlantCondition
+								conditionType="light"
+								conditionValue={plant.light}
+							/>
+						</div>
 						<PlantCategorie category={plant.category} />
 						<PlantDescription description={plant.description} />
 						<PlantBadge solde={plant.isSpecialOffer} />
-						<PlantCondition conditionValue={3} />
 					</li>
 				))}
 			</ul>
