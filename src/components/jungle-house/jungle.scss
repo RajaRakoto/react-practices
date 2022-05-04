@@ -114,7 +114,7 @@
 					@include spacing-margin-gabarit($gabarit: medium);
 				}
 
-				#plant-name {
+				.plant-name {
 					@include spacing-margin-gabarit($gabarit: small);
 					// padding: 5rem;
 					border-top: #777 5px solid;
@@ -125,8 +125,9 @@
 					font-weight: bolder;
 				}
 
-				#plant-description {
+				.plant-description {
 					@include spacing-padding-gabarit($gabarit: medium);
+					text-align: center;
 				}
 
 				.solde-badge {
