@@ -43,14 +43,15 @@ function Categories() {
 }
 
 /**
- * @feat - map() | toString() | props
+ * @feat - map() [get property with keyword] | toString() | props | SEO (img)
  */
 function Plants() {
-	const PlantImage = () => {
+	const PlantImage = props => {
+		const { name } = props;
 		return (
 			<img
 				src={plantImg}
-				alt="plant-img"
+				alt={`${name}-cover`} // SEO tips
 				width="80"
 				className="plant-image img-fluid"
 			/>
@@ -97,6 +98,7 @@ function Plants() {
 			<div>
 				{range.map(rangeElem =>
 					conditionValue >= rangeElem ? (
+						// key notation tips
 						<span key={rangeElem.toString()}>
 							{conditionType === 'water' ? '💧' : '☀️'}
 						</span>
@@ -108,25 +110,36 @@ function Plants() {
 
 	return (
 		<ul className="plant-list">
-			{plantList.map(plant => (
-				<li key={plant.id} className="plant-item">
-					<PlantImage />
-					<PlantName name={plant.name} favori={plant.isBestSale} />
-					<div className="plant-condition">
-						<PlantCondition
-							conditionType="water"
-							conditionValue={plant.water}
-						/>
-						<PlantCondition
-							conditionType="light"
-							conditionValue={plant.light}
-						/>
-					</div>
-					<PlantCategorie category={plant.category} />
-					<PlantDescription description={plant.description} />
-					<PlantBadge solde={plant.isSpecialOffer} />
-				</li>
-			))}
+			{plantList.map(
+				({
+					id,
+					name,
+					category,
+					waterValue,
+					lightValue,
+					isBestSale,
+					isSpecialOffer,
+					description,
+				}) => (
+					<li key={id.toString()} className="plant-item">
+						<PlantImage name={name} />
+						<PlantName name={name} favori={isBestSale} />
+						<div className="plant-condition">
+							<PlantCondition
+								conditionType="water"
+								conditionValue={waterValue}
+							/>
+							<PlantCondition
+								conditionType="light"
+								conditionValue={lightValue}
+							/>
+						</div>
+						<PlantCategorie category={category} />
+						<PlantDescription description={description} />
+						<PlantBadge solde={isSpecialOffer} />
+					</li>
+				),
+			)}
 		</ul>
 	);
 }
