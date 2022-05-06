@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 /* styles */
@@ -12,10 +12,10 @@ import Jungle from './components/jungle-house/jungle';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-	<Fragment>
+	<React.Fragment>
 		<Jungle />
 		{/* <Clock /> */}
-	</Fragment>,
+	</React.Fragment>,
 );
 
 reportWebVitals();
