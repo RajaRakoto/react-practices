@@ -37,15 +37,12 @@ export default function Stacks(props) {
 	return (
 		<p>
 			{' '}
-			<strong>stacks:</strong>{' '}
-			{pers.stacks.map(stack => (
-				<span
-					className="stack-item"
-					style={{ backgroundColor: checkStackStyle(stack) }}
-				>
-					{stack}
-				</span>
-			))}
+			<strong>stacks</strong>{' '}
+			<ul className="stack-style">
+				{pers.stacks.map(stack => (
+					<li style={{ backgroundColor: checkStackStyle(stack) }}>{stack}</li>
+				))}
+			</ul>
 		</p>
 	);
 }

@@ -21,25 +21,27 @@ export default class Departement extends React.Component {
 				<ul id="pers-list">
 					{this.state.Pers.map(pers => (
 						<li key={pers.id.toString()} className="pers-item">
+							<div className="header">
+								<p>
+									{' '}
+									<strong>admin</strong> {pers.admin ? '✅' : '⛔'}
+								</p>
+							</div>
 							<div className="body">
 								<p>
 									{' '}
-									<strong>pseudo: </strong>
+									<strong>pseudo </strong>
 									{pers.pseudo}
 								</p>
 								<p>
 									{' '}
-									<strong>age:</strong> {pers.age}
+									<strong>age</strong> {pers.age}
 								</p>
 								<p>
 									{' '}
-									<strong>email:</strong> {pers.email}
+									<strong>email</strong> {pers.email}
 								</p>
 								<Stacks pers={pers} />
-								<p>
-									{' '}
-									<strong>admin:</strong> {pers.admin ? '✅' : '⛔'}
-								</p>
 							</div>
 							<div className="footer">
 								<button class="button-82-pushable">
