@@ -39,6 +39,11 @@ export default class Departement extends React.Component {
 								{' '}
 								<strong>admin:</strong> {pers.admin ? '✅' : '⛔'}
 							</p>
+							<button class="button-82-pushable">
+								<span class="button-82-shadow"></span>
+								<span class="button-82-edge"></span>
+								<span class="button-82-front text">Viellir</span>
+							</button>
 						</li>
 					))}
 				</ul>
