@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+@import 'sass-eo-basics';
+
+body {
+	background: #eee;
+}
+
+/* color */
+$sun-flower: #f1c40f;
+
+/* global */
+
+h1 {
+	text-align: center;
+}
+
+#user-list {
+	list-style: none;
+	color: #eee;
+
+	.user-item {
+		background-color: #555;
+		min-width: 300px;
+		@include spacing-all-gabarit($gabarit: medium);
+		@include box-radius(all, 10px);
+		@include effect-box-shadow($opacity: medium);
+
+		strong {
+			color: $sun-flower;
+		}
+
+		.stack-item {
+			background-color: rgba(238, 238, 238, 0.247);
+			@include spacing-padding-gabarit($gabarit: x-small);
+			@include spacing-margin-gabarit($gabarit: xx-small);
+			@include box-radius(all, 100px);
+		}
+	}
+}
+
+/* layout */
+#user-list {
+	// @include columnize(3, 0px, false);
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
