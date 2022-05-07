@@ -27,6 +27,8 @@ export default function Stacks(props) {
 				return 'rgba(0, 162, 255, 0.712)';
 			case 'Angular':
 				return 'rgba(255, 68, 0, 0.568)';
+			case 'Git':
+				return 'rgba(255, 102, 0, 0.808)';
 			default:
 				return 'rgba(238, 238, 238, 0.247)'; // default style
 		}
