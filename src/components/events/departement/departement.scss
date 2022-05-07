@@ -47,9 +47,10 @@ h1 {
 
 		.header {
 			p {
+				background-color: #888;
 				@include box-radius(top, 10px);
 				@include spacing-padding-gabarit($gabarit: xx-small);
-				background-color: #888;
+				padding-left: 1rem; // don't move
 			}
 		}
 
@@ -67,7 +68,7 @@ h1 {
 				flex-wrap: wrap;
 				justify-content: center;
 				align-items: center;
-				padding-right: 25px;
+				padding-right: 30px;
 
 				li {
 					width: auto;
