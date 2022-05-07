@@ -4,7 +4,7 @@ export const Pers = [
 		pseudo: 'Rasoa',
 		age: 20,
 		email: 'rasoa@protonmail.com',
-		stacks: ['Ansible', 'AWS', 'Docker'],
+		stacks: ['Ansible', 'AWS', 'Docker', 'Git'],
 		admin: true,
 	},
 	{
