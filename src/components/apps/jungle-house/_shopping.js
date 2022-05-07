@@ -1,11 +1,11 @@
 /* datas */
-import React, { Fragment, Component } from 'react';
+import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 /* datas */
-import { plantList } from '../../data/plantList';
-import plantImg from '../../assets/images/jungle-logo.png';
+import { plantList } from '../../../data/plantList';
+import plantImg from '../../../assets/images/jungle-logo.png';
 /* utils */
-import { getObjectElementType } from '../../utils/object';
+import { getObjectElementType } from '../../../utils/object';
 /* mui */
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
@@ -21,7 +21,7 @@ function Categories() {
 	});
 
 	return (
-		<Fragment>
+		<React.Fragment>
 			<div className="categories-list">
 				<Stack
 					spacing={3}
@@ -38,7 +38,7 @@ function Categories() {
 					))}
 				</Stack>
 			</div>
-		</Fragment>
+		</React.Fragment>
 	);
 }
 
@@ -84,9 +84,9 @@ function Plants() {
 	const PlantBadge = props => {
 		const { solde } = props;
 		return (
-			<Fragment>
+			<React.Fragment>
 				{solde ? <div className="solde-badge">solde</div> : null}
-			</Fragment>
+			</React.Fragment>
 		);
 	};
 
@@ -144,7 +144,7 @@ function Plants() {
 	);
 }
 
-export default class Shopping extends Component {
+export default class Shopping extends React.Component {
 	render() {
 		return (
 			<div id="shopping">

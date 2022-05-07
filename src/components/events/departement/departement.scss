@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+@import 'sass-eo-basics';
+@import './button';
+
+/* debugging */
+@mixin debug() {
+	@include box-debugging(
+		$colors: red,
+		$size: 2px,
+		$bg-color: false,
+		$status: true
+	);
+}
+
+body {
+	background: #eee;
+}
+
+/* color */
+$sun-flower: #f1c40f;
+
+/* global */
+h1 {
+	text-align: center;
+	font-size: 60px;
+	@include effect-text-stroke(
+		$colors: transparent,
+		$stroke-color: #333,
+		$fallback-color: #333,
+		$stroke-width: thin
+	);
+}
+
+#pers-list {
+	list-style: none;
+	color: #eee;
+
+	.pers-item {
+		background-color: #555;
+		min-width: 288px;
+		position: relative;
+		top: 50%;
+		@include spacing-margin-gabarit($gabarit: medium);
+		@include box-radius(all, 10px);
+		@include effect-box-shadow($opacity: medium);
+
+		.header {
+			p {
+				@include box-radius(top, 10px);
+				@include spacing-padding-gabarit($gabarit: xx-small);
+				background-color: #888;
+			}
+		}
+
+		.body {
+			@include spacing-all-gabarit($gabarit: smaller);
+
+			strong {
+				color: $sun-flower;
+			}
+
+			.stack-style {
+				margin-top: 20px;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+				padding-right: 25px;
+
+				li {
+					width: auto;
+					font-size: small;
+					text-align: center;
+					list-style: none;
+					border: rgba(238, 238, 238, 0.288) solid 2px;
+					@include spacing-padding-gabarit($gabarit: x-small);
+					@include spacing-margin-gabarit($gabarit: xx-small);
+					@include box-radius(all, 100px);
+				}
+			}
+		}
+
+		.footer {
+			button {
+				max-width: 134px;
+				margin-bottom: 20px;
+			}
+		}
+	}
+}
+
+/* layout */
+#pers-list {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+
+	.pers-item {
+		.footer {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+}
+
+/* animation */
+#pers-list {
+	.pers-item {
+		transition: 0.5s;
+
+		&:hover {
+			cursor: pointer;
+			@include animation-scale($scaleValue: 1.05);
+			@include effect-box-shadow($opacity: smooth);
+		}
+	}
+}

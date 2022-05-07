@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 /**
  * @feat - props | Date
@@ -33,7 +33,7 @@ function Recommendation() {
 	}
 }
 
-export default class Header extends Component {
+export default class Header extends React.Component {
 	render() {
 		const description = (
 			<p>Ici achetez toutes les plantes dont vous avez toujours rêvé</p>

@@ -1,7 +1,7 @@
 /* datas */
-import { plantList } from '../../data/plantList';
+import { plantList } from '../../../data/plantList';
 /* utils */
-import { getObjectElementValue } from '../../utils/object';
+import { getObjectElementValue } from '../../../utils/object';
 
 /**
  * @feat - getObjectElementValue()

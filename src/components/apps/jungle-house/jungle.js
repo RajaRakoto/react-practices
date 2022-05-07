@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 /* styles */
 import './jungle.min.css';
@@ -32,7 +32,7 @@ export default function Jungle() {
 	};
 
 	return (
-		<Fragment>
+		<React.Fragment>
 			<div id="header_container">
 				<Header />
 			</div>
@@ -44,6 +44,6 @@ export default function Jungle() {
 					</div>
 				</div>
 			</div>
-		</Fragment>
+		</React.Fragment>
 	);
 }
