@@ -3,6 +3,16 @@
 @import 'sass-eo-basics';
 @import './button';
 
+/* debugging */
+@mixin debug() {
+	@include box-debugging(
+		$colors: red,
+		$size: 2px,
+		$bg-color: false,
+		$status: true
+	);
+}
+
 body {
 	background: #eee;
 }
@@ -29,38 +39,63 @@ h1 {
 	.pers-item {
 		background-color: #555;
 		min-width: 288px;
-		@include spacing-all-gabarit($gabarit: medium);
+		position: relative;
+		top: 50%;
+		@include spacing-margin-gabarit($gabarit: medium);
 		@include box-radius(all, 10px);
 		@include effect-box-shadow($opacity: medium);
 
-		strong {
-			color: $sun-flower;
+		.header {
+			p {
+				@include box-radius(top, 10px);
+				@include spacing-padding-gabarit($gabarit: xx-small);
+				background-color: #888;
+			}
 		}
 
-		.stack-item {
-			@include spacing-padding-gabarit($gabarit: x-small);
-			@include spacing-margin-gabarit($gabarit: xx-small);
-			@include box-radius(all, 100px);
-			font-size: small;
+		.body {
+			@include spacing-all-gabarit($gabarit: smaller);
+
+			strong {
+				color: $sun-flower;
+			}
+
+			.stack-style {
+				margin-top: 20px;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+				padding-right: 25px;
+
+				li {
+					width: auto;
+					font-size: small;
+					text-align: center;
+					list-style: none;
+					border: rgba(238, 238, 238, 0.288) solid 2px;
+					@include spacing-padding-gabarit($gabarit: x-small);
+					@include spacing-margin-gabarit($gabarit: xx-small);
+					@include box-radius(all, 100px);
+				}
+			}
 		}
 
-		button {
-			@include spacing-margin(
-				$top: 10px,
-				$right: 50px,
-				$bottom: 10px,
-				$left: 50px
-			);
-			max-width: 134px;
+		.footer {
+			button {
+				max-width: 134px;
+				margin-bottom: 20px;
+			}
 		}
 	}
 }
 
 /* layout */
 #pers-list {
-	// @include columnize(3, 0px, false);
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	flex-wrap: wrap;
 
 	.pers-item {
