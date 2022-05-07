@@ -4,8 +4,9 @@ import reportWebVitals from './reportWebVitals';
 /* styles */
 import './index.min.css';
 /* components */
-import Jungle from './components/apps/jungle-house/jungle';
+// import Jungle from './components/apps/jungle-house/jungle';
 // import Clock from './components/lifecycle/clock';
+import PublicInfo from './components/events/onclick';
 /* tests */
 // import Test from './tests/labs';
 
@@ -13,8 +14,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
 	<React.Fragment>
-		<Jungle />
+		{/* <Jungle /> */}
 		{/* <Clock /> */}
+		<PublicInfo />
 	</React.Fragment>,
 );
 
