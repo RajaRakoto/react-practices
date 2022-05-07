@@ -19,7 +19,7 @@
 
 		#official-logo {
 			@include image-logo(
-				$image: '../../assets/images/jungle-logo.png',
+				$image: '../../../assets/images/jungle-logo.png',
 				$width: 100px,
 				$height: 100px
 			);

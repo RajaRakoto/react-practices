@@ -2,10 +2,10 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 /* datas */
-import { plantList } from '../../data/plantList';
-import plantImg from '../../assets/images/jungle-logo.png';
+import { plantList } from '../../../data/plantList';
+import plantImg from '../../../assets/images/jungle-logo.png';
 /* utils */
-import { getObjectElementType } from '../../utils/object';
+import { getObjectElementType } from '../../../utils/object';
 /* mui */
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';

@@ -4,8 +4,8 @@ import reportWebVitals from './reportWebVitals';
 /* styles */
 import './index.min.css';
 /* components */
-import Jungle from './components/jungle-house/jungle';
-// import Clock from './components/clock/clock';
+import Jungle from './components/apps/jungle-house/jungle';
+// import Clock from './components/lifecycle/clock';
 /* tests */
 // import Test from './tests/labs';
 
