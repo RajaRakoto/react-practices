@@ -18,7 +18,7 @@ h1 {
 		$stroke-color: #333,
 		$fallback-color: #333,
 		$stroke-width: thin
-	);
+		);
 }
 
 #pers-list {
@@ -40,6 +40,7 @@ h1 {
 			@include spacing-padding-gabarit($gabarit: x-small);
 			@include spacing-margin-gabarit($gabarit: xx-small);
 			@include box-radius(all, 100px);
+			font-size: small;
 		}
 	}
 }
