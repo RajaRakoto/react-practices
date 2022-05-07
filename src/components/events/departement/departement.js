@@ -21,29 +21,33 @@ export default class Departement extends React.Component {
 				<ul id="pers-list">
 					{this.state.Pers.map(pers => (
 						<li key={pers.id.toString()} className="pers-item">
-							<p>
-								{' '}
-								<strong>pseudo: </strong>
-								{pers.pseudo}
-							</p>
-							<p>
-								{' '}
-								<strong>age:</strong> {pers.age}
-							</p>
-							<p>
-								{' '}
-								<strong>email:</strong> {pers.email}
-							</p>
-							<Stacks pers={pers} />
-							<p>
-								{' '}
-								<strong>admin:</strong> {pers.admin ? '✅' : '⛔'}
-							</p>
-							<button class="button-82-pushable">
-								<span class="button-82-shadow"></span>
-								<span class="button-82-edge"></span>
-								<span class="button-82-front text">Viellir</span>
-							</button>
+							<div className="body">
+								<p>
+									{' '}
+									<strong>pseudo: </strong>
+									{pers.pseudo}
+								</p>
+								<p>
+									{' '}
+									<strong>age:</strong> {pers.age}
+								</p>
+								<p>
+									{' '}
+									<strong>email:</strong> {pers.email}
+								</p>
+								<Stacks pers={pers} />
+								<p>
+									{' '}
+									<strong>admin:</strong> {pers.admin ? '✅' : '⛔'}
+								</p>
+							</div>
+							<div className="footer">
+								<button class="button-82-pushable">
+									<span class="button-82-shadow"></span>
+									<span class="button-82-edge"></span>
+									<span class="button-82-front text">Vieillir</span>
+								</button>
+							</div>
 						</li>
 					))}
 				</ul>
