@@ -6,7 +6,7 @@ import './index.min.css';
 /* components */
 // import Jungle from './components/apps/jungle-house/jungle';
 // import Clock from './components/lifecycle/clock';
-import PublicInfo from './components/events/onclick';
+import Departement from './components/events/departement';
 /* tests */
 // import Test from './tests/labs';
 
@@ -16,7 +16,7 @@ root.render(
 	<React.Fragment>
 		{/* <Jungle /> */}
 		{/* <Clock /> */}
-		<PublicInfo />
+		<Departement />
 	</React.Fragment>,
 );
 

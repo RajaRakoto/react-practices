@@ -37,7 +37,6 @@ h1 {
 		}
 
 		.stack-item {
-			background-color: rgba(238, 238, 238, 0.247);
 			@include spacing-padding-gabarit($gabarit: x-small);
 			@include spacing-margin-gabarit($gabarit: xx-small);
 			@include box-radius(all, 100px);
@@ -61,6 +60,7 @@ h1 {
 		&:hover {
 			cursor: pointer;
 			@include animation-scale($scaleValue: 1.05);
+			@include effect-box-shadow($opacity: smooth);
 		}
 	}
 }
