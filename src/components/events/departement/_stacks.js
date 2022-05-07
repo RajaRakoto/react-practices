@@ -16,7 +16,17 @@ export default function Stacks(props) {
 			case 'Docker':
 				return 'rgba(0, 225, 255, 0.637)';
 			case 'AWS':
-				return 'rgba(0, 225, 255, 0.637)';
+				return 'rgb(139, 127, 10)';
+			case 'Javascript':
+				return 'rgba(255, 217, 0, 0.548)';
+			case 'NodeJS':
+				return 'rgba(172, 255, 47, 0.616)';
+			case 'MongoDB':
+				return 'rgba(51, 168, 36, 0.685)';
+			case 'React':
+				return 'rgba(0, 162, 255, 0.712)';
+			case 'Angular':
+				return 'rgba(255, 68, 0, 0.568)';
 			default:
 				return 'rgba(238, 238, 238, 0.247)'; // default style
 		}

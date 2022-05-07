@@ -23,4 +23,12 @@ export const Pers = [
 		stacks: ['Flutter', 'Dart'],
 		admin: false,
 	},
+	{
+		id: 'u9777',
+		pseudo: 'Rakoto',
+		age: 25,
+		email: 'rakoto@gmail.com',
+		stacks: ['Javascript', 'NodeJS', 'MongoDB', 'React', 'Angular'],
+		admin: false,
+	},
 ];
