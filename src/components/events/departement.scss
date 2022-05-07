@@ -21,11 +21,11 @@ h1 {
 	);
 }
 
-#user-list {
+#pers-list {
 	list-style: none;
 	color: #eee;
 
-	.user-item {
+	.pers-item {
 		background-color: #555;
 		min-width: 300px;
 		@include spacing-all-gabarit($gabarit: medium);
@@ -45,7 +45,7 @@ h1 {
 }
 
 /* layout */
-#user-list {
+#pers-list {
 	// @include columnize(3, 0px, false);
 	display: flex;
 	justify-content: center;
@@ -53,8 +53,8 @@ h1 {
 }
 
 /* animation */
-#user-list {
-	.user-item {
+#pers-list {
+	.pers-item {
 		transition: 0.5s;
 
 		&:hover {

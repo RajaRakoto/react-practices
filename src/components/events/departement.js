@@ -1,9 +1,11 @@
 import React from 'react';
-/* style */
+/* datas */
+import { Pers } from '../../data/pers';
+/* styles */
 import './departement.min.css';
 
 function Stacks(props) {
-	const { user } = props;
+	const { pers } = props;
 
 	const checkStackStyle = stack => {
 		switch (stack) {
@@ -28,7 +30,7 @@ function Stacks(props) {
 		<p>
 			{' '}
 			<strong>stacks:</strong>{' '}
-			{user.stacks.map(stack => (
+			{pers.stacks.map(stack => (
 				<span
 					className="stack-item"
 					style={{ backgroundColor: checkStackStyle(stack) }}
@@ -44,34 +46,7 @@ export default class Departement extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			Users: [
-				{
-					id: 'u1545',
-					pseudo: 'Rasoa',
-					age: 20,
-					email: 'rasoa@protonmail.com',
-					stacks: ['Ansible', 'AWS', 'Docker'],
-					admin: true,
-				},
-
-				{
-					id: 'u2006',
-					pseudo: 'Rabe',
-					age: 30,
-					email: 'rabe@yahoo.fr',
-					stacks: ['PHP', 'Symfony', 'Laravel', 'MySQL'],
-					admin: false,
-				},
-
-				{
-					id: 'u4587',
-					pseudo: 'Randria',
-					age: 27,
-					email: 'randria@gmail.com',
-					stacks: ['Flutter', 'Dart'],
-					admin: false,
-				},
-			],
+			Pers: Pers,
 		};
 	}
 
@@ -79,26 +54,26 @@ export default class Departement extends React.Component {
 		return (
 			<div>
 				<h1>Departement</h1>
-				<ul id="user-list">
-					{this.state.Users.map(user => (
-						<li key={user.id.toString()} className="user-item">
+				<ul id="pers-list">
+					{this.state.Pers.map(pers => (
+						<li key={pers.id.toString()} className="pers-item">
 							<p>
 								{' '}
 								<strong>pseudo: </strong>
-								{user.pseudo}
+								{pers.pseudo}
 							</p>
 							<p>
 								{' '}
-								<strong>age:</strong> {user.age}
+								<strong>age:</strong> {pers.age}
 							</p>
 							<p>
 								{' '}
-								<strong>email:</strong> {user.email}
+								<strong>email:</strong> {pers.email}
 							</p>
-							<Stacks user={user} />
+							<Stacks pers={pers} />
 							<p>
 								{' '}
-								<strong>admin:</strong> {user.admin ? '✅' : '⛔'}
+								<strong>admin:</strong> {pers.admin ? '✅' : '⛔'}
 							</p>
 						</li>
 					))}
