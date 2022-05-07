@@ -55,7 +55,7 @@ export default class PublicInfo extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>~ Liste des utilisateurs ~</h1>
+				<h1>Liste des utilisateurs</h1>
 				<ul id="user-list">
 					{this.state.Users.map(user => (
 						<li key={user.id.toString()} className="user-item">

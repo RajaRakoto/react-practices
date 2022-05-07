@@ -10,9 +10,15 @@ body {
 $sun-flower: #f1c40f;
 
 /* global */
-
 h1 {
 	text-align: center;
+	font-size: 60px;
+	@include effect-text-stroke(
+		$colors: transparent,
+		$stroke-color: #333,
+		$fallback-color: #333,
+		$stroke-width: thin
+	);
 }
 
 #user-list {
@@ -45,4 +51,16 @@ h1 {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
+}
+
+/* animation */
+#user-list {
+	.user-item {
+		transition: 0.5s;
+
+		&:hover {
+			cursor: pointer;
+			@include animation-scale($scaleValue: 1.05);
+		}
+	}
 }
