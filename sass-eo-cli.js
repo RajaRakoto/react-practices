@@ -18,6 +18,8 @@ module.exports = function (grunt) {
 					'./src/index.min.css': './src/index.scss',
 					'./src/components/apps/jungle-house/jungle.min.css':
 						'./src/components/apps/jungle-house/jungle.scss',
+					'./src/components/events/onclick.min.css':
+						'./src/components/events/onclick.scss',
 				},
 			},
 		},
