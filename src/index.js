@@ -6,7 +6,7 @@ import './index.min.css';
 /* components */
 // import Jungle from './components/apps/jungle-house/jungle';
 // import Clock from './components/lifecycle/clock';
-import Departement from './components/events/departement';
+import Departement from './components/events/departement/departement';
 /* tests */
 // import Test from './tests/labs';
 
