@@ -41,9 +41,9 @@ function SampleForm() {
 	);
 }
 
-// TODO: working
+// TODO: verified
 /**
- * @feat - onSubmit() | onChange() | preventDefault() | useState() | get input & textarea value | ternary conditional manipulation
+ * @feat - onSubmit() | onChange() | preventDefault() | useState() | formChecker() | get input & textarea value | ternary conditional manipulation
  * @description - formulaire controllE en React
  */
 function ControlledForm() {
@@ -57,18 +57,31 @@ function ControlledForm() {
 	);
 
 	const handleSubmit = e => {
+		e.preventDefault();
+
 		// get all input value
-		let pseudo = e.target['controlled-input-pseudo'].value;
-		let age = e.target['controlled-input-age'].value;
-		let message = e.target['controlled-input-message'].value;
-		let errorMessage = '';
+		const pseudo = e.target['controlled-input-pseudo'].value;
+		const age = e.target['controlled-input-age'].value;
+		const message = e.target['controlled-input-message'].value;
+
+		// errors var
+		let errorMessage;
 		let errorStatus = false;
 
 		// form controller
-		if (isNaN(age)) {
-			errorMessage = '⛔ vous avez entrE un texte, veuillez entrer votre age';
-			errorStatus = true;
-		}
+		const formChecker = (condition, message) => {
+			if (condition) {
+				errorMessage = message;
+				errorStatus = true;
+			}
+		};
+
+		formChecker(
+			isNaN(age),
+			'⛔ vous avez entrE un texte, veuillez entrer votre age',
+		);
+
+		formChecker(age === '', '⛔ Veuillez reseigner votre age');
 
 		errorStatus
 			? alert(errorMessage)
@@ -80,7 +93,7 @@ function ControlledForm() {
 				? age + ' (majeur)'
 				: errorMessage
 		}
-    message: ${message}`);
+    ${message !== '' ? '✅ Message envoyE !' : ''}`);
 	};
 
 	return (
@@ -98,7 +111,6 @@ function ControlledForm() {
 					name="controlled-input-age"
 					placeholder="Entrer votre age ici ..."
 					min="12"
-					required
 				/>
 				<textarea
 					cols="30"

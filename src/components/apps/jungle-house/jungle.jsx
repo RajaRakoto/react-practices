@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 import './jungle.min.css';
 /* components */
 import Header from './_header';
+import Footer from './_footer';
 import Shopping from './_shopping';
 import Cart from './_cart';
 
@@ -33,17 +34,16 @@ export default function Jungle() {
 
 	return (
 		<React.Fragment>
-			<div id="header_container">
-				<Header />
-			</div>
-			<div id="main_container" className="container-fluid">
+			<Header />
+			<main className="container-fluid">
 				<div className="row">
 					<ReactResponsive active={isSmallScreenForCart} children={<Cart />} />
 					<div className="col-xl-9">
 						<Shopping />
 					</div>
 				</div>
-			</div>
+			</main>
+			<Footer />
 		</React.Fragment>
 	);
 }

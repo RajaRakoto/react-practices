@@ -7,7 +7,7 @@
 @import './mixin';
 @import './layout';
 
-#header_container {
+header {
 	#banner {
 		@include spacing-padding-gabarit($gabarit: medium);
 		padding-right: 5rem;
@@ -46,7 +46,7 @@
 	}
 }
 
-#main_container {
+main {
 	/*----- Cart -----*/
 	#cart {
 		@include box-template(auto);
