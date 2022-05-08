@@ -1,7 +1,9 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+
 /* styles */
 import './jungle.min.css';
+
 /* components */
 import Header from './_header';
 import Footer from './_footer';
