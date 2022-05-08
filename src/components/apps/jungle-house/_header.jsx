@@ -35,19 +35,20 @@ function Recommendation() {
 
 export default class Header extends React.Component {
 	render() {
-		const description = (
-			<p>Ici achetez toutes les plantes dont vous avez toujours rêvé</p>
-		);
+		const description =
+			'Ici achetez toutes les plantes dont vous avez toujours rêvé ';
 		const title = 'Jungle house';
 		return (
-			<div id="banner">
-				<div id="official-logo"></div>
-				<h1 id="title"> {title.toUpperCase()}</h1>
-				<h3 id="description"> {description}</h3>
-				<div id="notification">
-					<Recommendation />
+			<header>
+				<div id="banner">
+					<div id="official-logo"></div>
+					<h1 id="title"> {title.toUpperCase()}</h1>
+					<h3 id="description"> {description}</h3>
+					<div id="notification">
+						<Recommendation />
+					</div>
 				</div>
-			</div>
+			</header>
 		);
 	}
 }

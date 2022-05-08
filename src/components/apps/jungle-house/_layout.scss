@@ -8,7 +8,7 @@
 // }
 
 /*----- Flexbox -----*/
-#header_container {
+header {
 	@include breakpoint(max, 368px) {
 		#notification {
 			font-size: 13px;

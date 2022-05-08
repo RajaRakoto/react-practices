@@ -2,7 +2,7 @@
 
 @include loadify(init);
 
-#header_container {
+header {
 	#banner {
 		#official-logo {
 			@include animation-rotateY(20s);
@@ -19,7 +19,7 @@
 	}
 }
 
-#main_container {
+main {
 	#shopping {
 		@include loadify(0.5s);
 	}
