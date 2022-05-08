@@ -14,6 +14,12 @@ export default class Departement extends React.Component {
 		};
 	}
 
+	// TODO
+	handleClick(pers) {
+		console.log('clicked !');
+		console.log(pers);
+	}
+
 	render() {
 		return (
 			<div>
@@ -44,10 +50,13 @@ export default class Departement extends React.Component {
 								<Stacks pers={pers} />
 							</div>
 							<div className="footer">
-								<button class="button-82-pushable">
-									<span class="button-82-shadow"></span>
-									<span class="button-82-edge"></span>
-									<span class="button-82-front text">Vieillir</span>
+								<button
+									className="button-82-pushable"
+									onClick={() => this.handleClick(pers.name)} // on n'utilise jamais la parenthese vide si le callback ne contient pas un argument
+								>
+									<span className="button-82-shadow"></span>
+									<span className="button-82-edge"></span>
+									<span className="button-82-front text">Vieillir</span>
 								</button>
 							</div>
 						</li>
