@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function Stacks(props) {
 	const { pers } = props;
 
@@ -35,14 +37,19 @@ export default function Stacks(props) {
 	};
 
 	return (
-		<p>
+		<React.Fragment>
 			{' '}
 			<strong>stacks</strong>{' '}
 			<ul className="stack-style">
-				{pers.stacks.map(stack => (
-					<li style={{ backgroundColor: checkStackStyle(stack) }}>{stack}</li>
+				{pers.stacks.map((stack, index) => (
+					<li
+						key={'stack' + index.toString()}
+						style={{ backgroundColor: checkStackStyle(stack) }}
+					>
+						{stack}
+					</li>
 				))}
 			</ul>
-		</p>
+		</React.Fragment>
 	);
 }

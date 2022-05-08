@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+@import 'sass-eo-basics';
+@import '../../imports/button82';
+@import './mixin';
+
+/* global */
+body {
+	background-color: #eee;
+}
+
+/* custom */
+#sample-form,
+#controlled-form {
+	@include form-style();
+}
+
+/* layout */
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#sample-form,
+#controlled-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+/* animation */
+#sample-form, #controlled-form {
+	transition: 0.5s;
+
+	&:hover {
+		cursor: pointer;
+		@include animation-scale($scaleValue: 1.01);
+		@include effect-box-shadow($opacity: smooth);
+	}
+}
