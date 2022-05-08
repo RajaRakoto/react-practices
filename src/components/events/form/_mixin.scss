@@ -8,7 +8,7 @@
 	@include box-radius(all, 10px);
 	@include spacing-all-gabarit($gabarit: medium);
 	@include effect-box-shadow($opacity: medium);
-  @include spacing-margin-gabarit($gabarit: larger);
+	@include spacing-margin-gabarit($gabarit: larger);
 
 	h5 {
 		background-color: rgba(238, 238, 238, 0.288);
@@ -26,6 +26,17 @@
 			$border-color: #eee,
 			$text-color: #444
 		);
+	}
+
+	textarea {
+		@include spacing-all-gabarit($gabarit: medium);
+		@include box-radius(all, 10px);
+		@include input-style-scale(
+			$bg-color: #eee,
+			$border-color: #eee,
+			$text-color: #444
+		);
+		min-height: 150px;
 	}
 
 	button {
