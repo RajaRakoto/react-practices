@@ -1,5 +1,5 @@
 import React from 'react';
-import './form.min.css';
+import './forms.min.css';
 
 // TODO: verified
 /**
