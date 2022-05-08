@@ -43,7 +43,7 @@ function SampleForm() {
 
 // TODO: working
 /**
- * @feat - onSubmit() | onChange() | preventDefault() | useState() | get input & textarea value
+ * @feat - onSubmit() | onChange() | preventDefault() | useState() | get input & textarea value | ternary conditional manipulation
  * @description - formulaire controllE en React
  */
 function ControlledForm() {
@@ -56,8 +56,31 @@ function ControlledForm() {
 		'Si vous avez des questions, posez les par ici ...',
 	);
 
-	const handleSubmit = () => {
-		alert('validE !');
+	const handleSubmit = e => {
+		// get all input value
+		let pseudo = e.target['controlled-input-pseudo'].value;
+		let age = e.target['controlled-input-age'].value;
+		let message = e.target['controlled-input-message'].value;
+		let errorMessage = '';
+		let errorStatus = false;
+
+		// form controller
+		if (isNaN(age)) {
+			errorMessage = '⛔ vous avez entrE un texte, veuillez entrer votre age';
+			errorStatus = true;
+		}
+
+		errorStatus
+			? alert(errorMessage)
+			: alert(`    Pseudo: ${pseudo}
+    age: ${
+			!errorStatus && age < 18
+				? age + ' (mineur)'
+				: !errorStatus && age >= 18
+				? age + ' (majeur)'
+				: errorMessage
+		}
+    message: ${message}`);
 	};
 
 	return (
@@ -68,17 +91,19 @@ function ControlledForm() {
 					type="text"
 					name="controlled-input-pseudo"
 					placeholder="Entrer votre pseudo ici ..."
+					required
 				/>
 				<input
 					type="number"
 					name="controlled-input-age"
 					placeholder="Entrer votre age ici ..."
 					min="12"
+					required
 				/>
 				<textarea
 					cols="30"
 					rows="10"
-					// value={messageValue}
+					name="controlled-input-message"
 					placeholder={messageValue}
 					onChange={e => setMessageValue(e.target.value)}
 				></textarea>
