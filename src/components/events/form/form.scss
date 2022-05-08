@@ -2,6 +2,7 @@
 
 @import 'sass-eo-basics';
 @import '../../imports/button82';
+@import './mixin';
 
 /* global */
 body {
@@ -9,36 +10,9 @@ body {
 }
 
 /* custom */
-#sample-form {
-	background-color: #777;
-	color: #eee;
-	max-width: 600px; // responsive width
-	height: auto; // responsive height
-	@include box-radius(all, 10px);
-	@include spacing-all-gabarit($gabarit: medium);
-	@include effect-box-shadow($opacity: medium);
-
-	h5 {
-		background-color: rgba(238, 238, 238, 0.288);
-		text-align: center;
-		@include spacing-margin-gabarit($gabarit: xx-small);
-		@include spacing-padding-gabarit($gabarit: medium);
-		@include effect-box-shadow-inset($opacity: medium);
-		@include box-radius(all, 10px);
-	}
-
-	button {
-		@include spacing-margin-gabarit($gabarit: smaller);
-	}
-
-	input {
-		@include spacing-all-gabarit($gabarit: small);
-		@include input-style-scale(
-			$bg-color: #eee,
-			$border-color: #eee,
-			$text-color: #444
-		);
-	}
+#sample-form,
+#controlled-form {
+	@include form-style();
 }
 
 /* layout */
@@ -48,15 +22,17 @@ body {
 	align-items: center;
 }
 
-#sample-form {
+#sample-form,
+#controlled-form {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
+	flex-direction: column;
 }
 
 /* animation */
-#sample-form {
+#sample-form, #controlled-form {
 	transition: 0.5s;
 
 	&:hover {
