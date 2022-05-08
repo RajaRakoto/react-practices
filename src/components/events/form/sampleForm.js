@@ -41,19 +41,33 @@ function SampleForm() {
 	);
 }
 
+// TODO: working
 /**
- * @feat - onSubmit() | preventDefault() | get input value
+ * @feat - onSubmit() | onChange() | preventDefault() | useState() | get input & textarea value
  * @description - formulaire controllE en React
  */
 function ControlledForm() {
+	/**
+	 * @messageValue - contient la valeur en input de textarea ainsi sa valeur initiale grace a l'argument de useState()
+	 * @setMessageValue - une fonction permettant de modifier "messageValue" a chaque saisi dans textarea grace a l'event onChange() dont l'argument est la valeur recuperer par l'evenement syntetic "e.target.value"
+	 * @useState - permet d'utiliser l'etat local (state) pour "messageValue"
+	 */
+	const [messageValue, setMessageValue] = React.useState(
+		'Si vous avez des questions, posez les par ici ...',
+	);
+
+	const handleSubmit = () => {
+		alert('validE !');
+	};
+
 	return (
 		<React.Fragment>
-			<form id="controlled-form">
+			<form id="controlled-form" onSubmit={handleSubmit}>
 				<h5>Controlled form</h5>
 				<input
 					type="text"
-					name="controlled-input-name"
-					placeholder="Entrer votre nom ici ..."
+					name="controlled-input-pseudo"
+					placeholder="Entrer votre pseudo ici ..."
 				/>
 				<input
 					type="number"
@@ -61,6 +75,13 @@ function ControlledForm() {
 					placeholder="Entrer votre age ici ..."
 					min="12"
 				/>
+				<textarea
+					cols="30"
+					rows="10"
+					// value={messageValue}
+					placeholder={messageValue}
+					onChange={e => setMessageValue(e.target.value)}
+				></textarea>
 				<ValidBtn />
 			</form>
 		</React.Fragment>
