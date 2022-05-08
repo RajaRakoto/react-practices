@@ -8,6 +8,11 @@
 @import './sass/layout';
 
 header {
+	// position: fixed;
+	// top: 0;
+	// z-index: 1;
+	// width: 100%;
+
 	#banner {
 		@include spacing-padding-gabarit($gabarit: medium);
 		padding-right: 5rem;
@@ -143,6 +148,57 @@ main {
 			}
 
 			@include plant-list-layout();
+		}
+	}
+}
+
+footer {
+	background-color: #434444;
+	color: #eee;
+
+	.footer--1 {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap-reverse;
+		height: 100%;
+		@include spacing-padding-gabarit($gabarit: small);
+	}
+
+	.footer--2 {
+		background-color: #555;
+		height: 100%;
+		@include effect-box-shadow-inset($opacity: medium);
+	}
+
+	h6 {
+		font-size: 26px;
+	}
+
+	h6,
+	#email {
+		@include spacing-padding-gabarit($gabarit: small);
+	}
+
+	.email-btn {
+		@include spacing-margin-gabarit($gabarit: small);
+	}
+
+	#email {
+		max-width: 800px;
+	}
+
+	// TODO: layout
+	@include breakpoint(max, 1358px) {
+		h6 {
+			font-size: 20px;
+		}
+
+		.footer--1 {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap-reverse;
 		}
 	}
 }
