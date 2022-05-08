@@ -10,7 +10,7 @@ import './index.min.css';
 // import Clock from './components/lifecycle/clock';
 // import Departement from './components/events/departement/departement';
 // import Age from './components/events/age/age';
-import SampleForm from './components/events/form/sampleForm';
+import Forms from './components/events/form/sampleForm';
 
 /* tests */
 // import Test from './tests/labs';
@@ -23,7 +23,7 @@ root.render(
 		{/* <Clock /> */}
 		{/* <Departement /> */}
 		{/* <Age /> */}
-		<SampleForm />
+		<Forms />
 	</React.Fragment>,
 );
 
