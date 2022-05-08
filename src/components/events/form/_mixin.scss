@@ -1,1 +1,40 @@
-@charset "UTF-8";@mixin form-style(){background-color:#777;color:#eee;max-width:800px;height:auto;@include box-radius(all,10px);@include spacing-all-gabarit($gabarit:medium);@include effect-box-shadow($opacity:medium);@include spacing-margin-gabarit($gabarit:larger);h5{background-color:rgba(238,238,238,.288);text-align:center;@include spacing-margin-gabarit($gabarit:xx-small);@include spacing-padding-gabarit($gabarit:medium);@include effect-box-shadow-inset($opacity:medium);@include box-radius(all,10px)}input{@include spacing-all-gabarit($gabarit:small);@include input-style-scale($bg-color:#eee,$border-color:#eee,$text-color:#444)}textarea{@include spacing-all-gabarit($gabarit:medium);@include box-radius(all,10px);@include input-style-scale($bg-color:#eee,$border-color:#eee,$text-color:#444);min-height:150px}button{@include spacing-margin-gabarit($gabarit:smaller)}}
+@charset "UTF-8";
+@mixin form-style() {
+	background-color: #777;
+	color: #eee;
+	max-width: 800px;
+	height: auto;
+	@include box-radius(all, 10px);
+	@include spacing-all-gabarit($gabarit: medium);
+	@include effect-box-shadow($opacity: medium);
+	@include spacing-margin-gabarit($gabarit: larger);
+	h5 {
+		background-color: rgba(238, 238, 238, 0.288);
+		text-align: center;
+		@include spacing-margin-gabarit($gabarit: xx-small);
+		@include spacing-padding-gabarit($gabarit: medium);
+		@include effect-box-shadow-inset($opacity: medium);
+		@include box-radius(all, 10px);
+	}
+	input {
+		@include spacing-all-gabarit($gabarit: small);
+		@include input-style-scale(
+			$bg-color: #eee,
+			$border-color: #eee,
+			$text-color: #444
+		);
+	}
+	textarea {
+		@include spacing-all-gabarit($gabarit: medium);
+		@include box-radius(all, 10px);
+		@include input-style-scale(
+			$bg-color: #eee,
+			$border-color: #eee,
+			$text-color: #444
+		);
+		min-height: 150px;
+	}
+	button {
+		@include spacing-margin-gabarit($gabarit: smaller);
+	}
+}
