@@ -15,11 +15,12 @@ module.exports = function (grunt) {
 				},
 				files: {
 					// destination: source
-					'./src/index.min.css': './src/index.scss',
+					'./src/index.min.css': './src/index.scss',		
 					'./src/components/apps/jungle-house/jungle.min.css':
-						'./src/components/apps/jungle-house/jungle.scss',
+					'./src/components/apps/jungle-house/jungle.scss',
 					'./src/components/events/departement/departement.min.css':
-						'./src/components/events/departement/departement.scss',
+					'./src/components/events/departement/departement.scss',
+					'./src/components/events/form/form.min.css': './src/components/events/form/form.scss',
 				},
 			},
 		},
