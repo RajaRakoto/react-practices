@@ -20,7 +20,7 @@ module.exports = function (grunt) {
 					'./src/components/apps/jungle-house/jungle.scss',
 					'./src/components/events/departement/departement.min.css':
 					'./src/components/events/departement/departement.scss',
-					'./src/components/events/form/form.min.css': './src/components/events/form/form.scss',
+					'./src/components/events/form/forms.min.css': './src/components/events/form/forms.scss',
 				},
 			},
 		},

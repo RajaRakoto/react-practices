@@ -32,7 +32,8 @@ body {
 }
 
 /* animation */
-#sample-form, #controlled-form {
+#sample-form,
+#controlled-form {
 	transition: 0.5s;
 
 	&:hover {
