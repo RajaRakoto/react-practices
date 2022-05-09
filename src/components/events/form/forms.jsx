@@ -1,7 +1,6 @@
 import React from 'react';
 import './forms.min.css';
 
-// TODO: verified
 /**
  * @description - button de validation pour chaque formulaire (independant)
  */
@@ -15,7 +14,6 @@ const ValidBtn = () => {
 	);
 };
 
-// TODO: verified
 /**
  * @feat - onSubmit() | preventDefault() | get input value
  * @description - formulaire non controlE en React
@@ -41,7 +39,6 @@ function SampleForm() {
 	);
 }
 
-// TODO: verified
 /**
  * @feat - onSubmit() | onChange() | preventDefault() | useState() | formChecker() | get input & textarea value | ternary conditional manipulation
  * @description - formulaire controllE en React
@@ -125,7 +122,6 @@ function ControlledForm() {
 	);
 }
 
-// TODO: verified
 export default class Forms extends React.Component {
 	render() {
 		return (
