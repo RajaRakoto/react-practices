@@ -12,6 +12,8 @@ Le `state` (etat local) nous permet de garder des informations. Ces informations
 
 > **TIPS**: N’essayez pas de synchroniser les états de plusieurs composants. Préférez le faire remonter dans leur plus proche ancêtre commun, et faire redescendre l’info via les props aux composants concernés.
 
+### ◾ State pour les composant a base d'un class
+
 #### `📌 Utilisation basique d'un state`
 
 Prenons comme exemple un horloge (pour l'instant cette horloge est statique puisque qu'on n'a pas encore implementE un miniteur pour le mettre a jour a chaque seconde) - le fichier `lifecycle.md` montre comment ajouter un miniteur a ce dernier
@@ -41,32 +43,18 @@ root.render(<Clock />);
 #### `📌 Passage d'un state vers un autre composant via un props`
 
 ```jsx
-// le composant enfant (a base de fonction)
+// le composant enfant
 function FormattedDate(props) {
 	return <h2>Il est {props.date.toLocaleTimeString()}.</h2>;
 }
 
-// l'appel de "FormattedDate" ce fait dans son composant parent (a base de class)
+// l'appel de "FormattedDate" ce fait dans son composant parent (a base d'un class)
 <FormattedDate date={this.state.date} />;
 ```
 
-#### `📌 useState()`
-
-`useState()` est un Hook qui permet d'ajouter l'état local React à des composants a base de fonction.
-
-```jsx
-const [state, setState] = useState(initialState);
-```
-
-- Renvoie une valeur d’état local et une fonction pour la mettre à jour.
-
-- Pendant le rendu initial, l’état local `state` a la même valeur que celle passée en premier argument `initialState` de useState().
-
-- La fonction `setState` permet de mettre à jour l’état local. Elle accepte une nouvelle valeur d’état local et planifie un nouveau rendu du composant.
-
 #### `📌 setState()`
 
-`setState()` permet de planifier une mise à jour de l'état local du composant a base de class.
+`setState()` permet de planifier une mise à jour de l'état local d'un composant a base d'un class.
 
 > **NOTE**: le seul endroit ou vous pouvez affecter directement `this.state`, c'est dans le `constructeur`
 
@@ -121,3 +109,19 @@ constructor(props) {
   }
   }
 ```
+
+### ◾ State pour les composant a base d'une fonction
+
+#### `📌 useState()`
+
+`useState()` est un Hook qui permet d'ajouter l'état local React à des composants a base d'une fonction.
+
+```jsx
+const [state, setState] = useState(initialState);
+```
+
+- Renvoie une valeur d’état local et une fonction pour la mettre à jour.
+
+- Pendant le rendu initial, l’état local `state` a la même valeur que celle passée en premier argument `initialState` de useState().
+
+- La fonction `setState` permet de mettre à jour l’état local. Elle accepte une nouvelle valeur d’état local et planifie un nouveau rendu du composant.
