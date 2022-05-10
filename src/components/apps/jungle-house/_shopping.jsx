@@ -66,7 +66,7 @@ function Plants() {
 	const PlantPrice = props => {
 		const { price } = props;
 		return (
-			<div className="plant-price">
+			<div className="d-flex flex-row-reverse plant-price">
 				<div className="price-label">
 					{price} {unity}
 				</div>
