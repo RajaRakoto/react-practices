@@ -33,7 +33,7 @@ export default class Footer extends React.Component {
 									aria-describedby="inputGroup-sizing-sm"
 								/>
 							</div>
-							<Button variant="contained" color="primary" className="email-btn">
+							<Button variant="contained" color="success" className="email-btn">
 								Enregistrer
 							</Button>
 						</div>

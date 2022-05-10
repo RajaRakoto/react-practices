@@ -154,11 +154,12 @@ main {
 
 footer {
 	background-color: #434444;
+	padding: 1rem;
 	color: #eee;
 
 	.footer--1 {
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-evenly;
 		align-items: center;
 		flex-wrap: wrap-reverse;
 		height: 100%;
