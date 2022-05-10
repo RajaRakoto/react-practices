@@ -5,6 +5,7 @@ import { plantList } from '../../../data/plantList';
 import { getObjectElementValue } from '../../../utils/object';
 
 /**
+ * @description - liste des achats (panier)
  * @feat - getObjectElementValue()
  */
 export default function Cart() {

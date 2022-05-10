@@ -15,6 +15,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
 /**
+ * @description - triage des plantes par categorie
  * @feat - map() | mui(Button) | react-responsive(mediaquery) | getObjectElementType()
  */
 function Categories() {
@@ -46,6 +47,7 @@ function Categories() {
 }
 
 /**
+ * @description - liste des plantes disponibles a vendre
  * @feat - map() [get property with keyword] | toString() | props | SEO (img)
  */
 function Plants() {
