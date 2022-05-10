@@ -35,7 +35,7 @@ const myComponent = () => (// code JSX ...)
 
 #### `📌 Class`
 
-Creation d'un component a base de class
+Creation d'un component a base d'un class
 
 ```jsx
 export default class MyComponent extends React.Component {

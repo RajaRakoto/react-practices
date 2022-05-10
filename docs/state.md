@@ -1,4 +1,4 @@
-<!-- TODO: verified -->
+<!-- TODO: working -->
 
 ### 🔵 State
 
@@ -11,6 +11,8 @@ Le `state` (etat local) nous permet de garder des informations. Ces informations
 - Un composant ne peut pas changer ses `props`, mais il peut changer son `state`.
 
 > **TIPS**: N’essayez pas de synchroniser les états de plusieurs composants. Préférez le faire remonter dans leur plus proche ancêtre commun, et faire redescendre l’info via les props aux composants concernés.
+
+### ◾ State pour les composant a base d'un class
 
 #### `📌 Utilisation basique d'un state`
 
@@ -38,46 +40,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Clock />);
 ```
 
-```jsx
-// object
-const Users = {
-	user1: {
-		pseudo: 'Rasoa',
-		age: 20,
-		email: 'rasoa@protonmail.com',
-		stacks: ['Ansible', 'AWS', 'Docker'],
-		admin: true,
-	},
-
-	user2: {
-		pseudo: 'Rabe',
-		age: 30,
-		email: 'rabe@yahoo.fr',
-		stacks: ['PHP', 'Symfony', 'Laravel', 'MySQL'],
-		admin: false,
-	},
-
-	user3: {
-		pseudo: 'Randria',
-		age: 27,
-		email: 'randria@gmail.com',
-		stacks: ['Flutter', 'Dart'],
-		admin: false,
-	},
-};
-
-export default function Departements(state) {
-	state = { Users };
-	return (
-		<React.Fragment>
-			<p>{Users.user1.pseudo}</p>
-			<p>{Users.user2.age}</p>
-			<p>{Users.user3.stacks[0]}</p>
-		</React.Fragment>
-	);
-}
-```
-
 #### `📌 Passage d'un state vers un autre composant via un props`
 
 ```jsx
@@ -86,27 +48,13 @@ function FormattedDate(props) {
 	return <h2>Il est {props.date.toLocaleTimeString()}.</h2>;
 }
 
-// l'appel de "FormattedDate" ce fait dans son composant parent
+// l'appel de "FormattedDate" ce fait dans son composant parent (a base d'un class)
 <FormattedDate date={this.state.date} />;
 ```
 
-#### `📌 useState()`
-
-`useState()` est un Hook qui permet d'ajouter l'état local React à des fonctions composants.
-
-```jsx
-const [state, setState] = useState(initialState);
-```
-
-- Renvoie une valeur d’état local et une fonction pour la mettre à jour.
-
-- Pendant le rendu initial, l’état local `state` a la même valeur que celle passée en premier argument `initialState` de useState().
-
-- La fonction `setState` permet de mettre à jour l’état local. Elle accepte une nouvelle valeur d’état local et planifie un nouveau rendu du composant.
-
 #### `📌 setState()`
 
-`setState()` permet de planifier une mise à jour de l'état local du composant.
+`setState()` permet de planifier une mise à jour de l'état local d'un composant a base d'un class.
 
 > **NOTE**: le seul endroit ou vous pouvez affecter directement `this.state`, c'est dans le `constructeur`
 
@@ -161,3 +109,49 @@ constructor(props) {
   }
   }
 ```
+
+### ◾ State pour les composant a base d'une fonction
+
+#### `📌 useState()`
+
+`useState()` est un Hook qui permet d'ajouter l'état local React à des composants a base d'une fonction.
+
+Syntax de base:
+
+```jsx
+const [state, setState] = useState(initialState);
+```
+
+- Renvoie une valeur d’état local et une fonction pour la mettre à jour.
+
+- Pendant le rendu initial, l’état local `state` a la même valeur que celle passée en premier argument `initialState` de useState().
+
+- La fonction `setState` permet de mettre à jour l’état local. Elle accepte une nouvelle valeur d’état local et planifie un nouveau rendu du composant.
+
+Exemple:
+
+```jsx
+const [cart, updateCart] = useState(0);
+```
+
+**`useState()`** nous renvoie une paire de valeurs dans un `tableau de 2 éléments`, que nous récupérons dans les variables `cart` et `updateCart` dans notre exemple. Le premier élément est la valeur actuelle, et le deuxième est une fonction qui permet de la modifier.
+
+**Comprenez les crochets**
+
+Tout d'abord, `les crochets "[]"` . Si cette syntaxe peut vous paraître un peu particulière, ça s'appelle la `décomposition`, parce qu'il s'agit d'un tableau et non d'un objet (destructuration).
+
+Sans la décomposition, nous aurions aussi pu faire :
+
+```jsx
+const cartState = useState(0);
+const cart = cartState[0];
+const updateCart = cartState[1];
+```
+
+**Initialisez votre state**
+
+L'argument passer a `useState()` correspond à `l'état initial de notre state`. Cet état initial peut être un nombre comme ici, une string, un booléen, un tableau ou encore un objet avec plusieurs propriétés.
+
+> **ATTENTION**: Il est important de **préciser une valeur initiale dans votre state**. Sinon, elle sera `undefined` par défaut, et ce n'est pas un comportement souhaitable : plus vous serez explicite, mieux votre application s'en portera !
+
+> **NOTE**: Vous pouvez egalement creer plusieurs variables d'etat (state) pour un component

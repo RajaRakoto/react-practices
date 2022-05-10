@@ -63,6 +63,17 @@ function Plants() {
 		);
 	};
 
+	const PlantPrice = props => {
+		const { price } = props;
+		return (
+			<div className="d-flex flex-row-reverse plant-price">
+				<div className="price-label">
+					{price} {unity}
+				</div>
+			</div>
+		);
+	};
+
 	const PlantName = props => {
 		const { name, favori } = props;
 		return (
@@ -134,6 +145,8 @@ function Plants() {
 		);
 	};
 
+	const unity = ' Ar';
+
 	return (
 		<ul className="plant-list">
 			{plantList.map(plant => (
@@ -143,6 +156,7 @@ function Plants() {
 					onClick={() => handleClick(plant.waterValue, plant.lightValue)}
 				>
 					<PlantImage name={plant.name} />
+					<PlantPrice price={plant.price} />
 					<PlantName name={plant.name} favori={plant.isBestSale} />
 					<div className="plant-condition">
 						<PlantCondition
