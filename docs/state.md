@@ -116,6 +116,8 @@ constructor(props) {
 
 `useState()` est un Hook qui permet d'ajouter l'état local React à des composants a base d'une fonction.
 
+Syntax de base:
+
 ```jsx
 const [state, setState] = useState(initialState);
 ```
@@ -125,3 +127,31 @@ const [state, setState] = useState(initialState);
 - Pendant le rendu initial, l’état local `state` a la même valeur que celle passée en premier argument `initialState` de useState().
 
 - La fonction `setState` permet de mettre à jour l’état local. Elle accepte une nouvelle valeur d’état local et planifie un nouveau rendu du composant.
+
+Exemple:
+
+```jsx
+const [cart, updateCart] = useState(0);
+```
+
+**`useState()`** nous renvoie une paire de valeurs dans un `tableau de 2 éléments`, que nous récupérons dans les variables `cart` et `updateCart` dans notre exemple. Le premier élément est la valeur actuelle, et le deuxième est une fonction qui permet de la modifier.
+
+**Comprenez les crochets**
+
+Tout d'abord, `les crochets "[]"` . Si cette syntaxe peut vous paraître un peu particulière, ça s'appelle la `décomposition`, parce qu'il s'agit d'un tableau et non d'un objet (destructuration).
+
+Sans la décomposition, nous aurions aussi pu faire :
+
+```jsx
+const cartState = useState(0);
+const cart = cartState[0];
+const updateCart = cartState[1];
+```
+
+**Initialisez votre state**
+
+L'argument passer a `useState()` correspond à `l'état initial de notre state`. Cet état initial peut être un nombre comme ici, une string, un booléen, un tableau ou encore un objet avec plusieurs propriétés.
+
+> **ATTENTION**: Il est important de **préciser une valeur initiale dans votre state**. Sinon, elle sera `undefined` par défaut, et ce n'est pas un comportement souhaitable : plus vous serez explicite, mieux votre application s'en portera !
+
+> **NOTE**: Vous pouvez egalement creer plusieurs variables d'etat (state) pour un component
