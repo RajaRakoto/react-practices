@@ -107,10 +107,24 @@ main {
 					);
 					background-color: white;
 					transition: 0.2s ease-in-out;
+					height: auto;
 
 					&:hover {
 						@include effect-box-shadow($opacity: smooth);
 						cursor: pointer;
+					}
+
+					.plant-price {
+						width: 100%;
+						.price-label {
+							margin: 0.2rem;
+							max-width: 100px;
+							padding: 1rem;
+							border-radius: 3rem 3rem 0rem 3rem;
+							background-color: $purple;
+							color: #eee;
+							font-weight: bolder;
+						}
 					}
 
 					.plant-image {
