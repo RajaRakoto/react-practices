@@ -111,38 +111,51 @@ function Plants() {
 		);
 	};
 
+	const handleClick = (waterValue, lightValue) => {
+		const conditionalCkecker = conditionValue => {
+			let result = '';
+
+			conditionValue === 1
+				? (result = 'peu')
+				: conditionValue === 2
+				? (result = 'modérement')
+				: (result = 'beaucoup');
+
+			return result;
+		};
+
+		alert(
+			`Cette plante requiert ${conditionalCkecker(
+				waterValue,
+			)} d'arrosage (💧) et ${conditionalCkecker(lightValue)} de lumière (☀️)`,
+		);
+	};
+
 	return (
 		<ul className="plant-list">
-			{plantList.map(
-				({
-					id,
-					name,
-					category,
-					waterValue,
-					lightValue,
-					isBestSale,
-					isSpecialOffer,
-					description,
-				}) => (
-					<li key={id.toString()} className="plant-item">
-						<PlantImage name={name} />
-						<PlantName name={name} favori={isBestSale} />
-						<div className="plant-condition">
-							<PlantCondition
-								conditionType="water"
-								conditionValue={waterValue}
-							/>
-							<PlantCondition
-								conditionType="light"
-								conditionValue={lightValue}
-							/>
-						</div>
-						<PlantCategorie category={category} />
-						<PlantDescription description={description} />
-						<PlantBadge solde={isSpecialOffer} />
-					</li>
-				),
-			)}
+			{plantList.map(plant => (
+				<li
+					key={plant.id.toString()}
+					className="plant-item"
+					onClick={() => handleClick(plant.waterValue, plant.lightValue)}
+				>
+					<PlantImage name={plant.name} />
+					<PlantName name={plant.name} favori={plant.isBestSale} />
+					<div className="plant-condition">
+						<PlantCondition
+							conditionType="water"
+							conditionValue={plant.waterValue}
+						/>
+						<PlantCondition
+							conditionType="light"
+							conditionValue={plant.lightValue}
+						/>
+					</div>
+					<PlantCategorie category={plant.category} />
+					<PlantDescription description={plant.description} />
+					<PlantBadge solde={plant.isSpecialOffer} />
+				</li>
+			))}
 		</ul>
 	);
 }
