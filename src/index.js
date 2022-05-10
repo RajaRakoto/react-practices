@@ -13,7 +13,7 @@ import Jungle from './components/apps/jungle-house/jungle';
 // import Forms from './components/events/form/forms';
 
 /* tests */
-// import Test from './tests/labs';
+// import Labs from './tests/labs';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -24,6 +24,8 @@ root.render(
 		{/* <Departement /> */}
 		{/* <Age /> */}
 		{/* <Forms /> */}
+
+		{/* <Labs /> */}
 	</React.Fragment>,
 );
 
