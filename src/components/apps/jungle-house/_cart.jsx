@@ -1,9 +1,11 @@
 /* datas */
 import { plantList } from '../../../data/plantList';
+
 /* utils */
 import { getObjectElementValue } from '../../../utils/object';
 
 /**
+ * @description - liste des achats (panier)
  * @feat - getObjectElementValue()
  */
 export default function Cart() {

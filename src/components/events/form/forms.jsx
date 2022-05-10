@@ -1,4 +1,6 @@
 import React from 'react';
+
+/* styles */
 import './forms.min.css';
 
 /**
@@ -40,7 +42,7 @@ function SampleForm() {
 }
 
 /**
- * @feat - onSubmit() | onChange() | preventDefault() | useState() | formChecker() | get input & textarea value | ternary conditional manipulation
+ * @feat - onSubmit() | onChange() | onBlur() | preventDefault() | useState() | formChecker() | get input & textarea value | ternary conditional manipulation
  * @description - formulaire controllE en React
  */
 function ControlledForm() {
@@ -52,6 +54,8 @@ function ControlledForm() {
 	const [messageValue, setMessageValue] = React.useState(
 		'Si vous avez des questions, posez les par ici ...',
 	);
+
+	const [email, setEmail] = React.useState('');
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -93,6 +97,13 @@ function ControlledForm() {
     ${message !== '' ? '✅ Message envoyE !' : ''}`);
 	};
 
+	const handleBlur = () => {
+		if (!email.includes('@')) {
+			alert('Ce mail est invalide !');
+			setEmail(''); // reset email state value
+		}
+	};
+
 	return (
 		<React.Fragment>
 			<form id="controlled-form" onSubmit={handleSubmit}>
@@ -102,6 +113,14 @@ function ControlledForm() {
 					name="controlled-input-pseudo"
 					placeholder="Entrer votre pseudo ici ..."
 					required
+				/>
+				<input
+					value={email}
+					type="text"
+					placeholder="Entrer votre e-mail ici ..."
+					required
+					onBlur={handleBlur}
+					onChange={e => setEmail(e.target.value)}
 				/>
 				<input
 					type="number"

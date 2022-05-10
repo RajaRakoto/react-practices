@@ -11,14 +11,14 @@ En effet, un composant React fonctionnel est tout simplement une fonction/class 
 <div align="center">
 Illustration de la repatition des composants React ...
 <br>
-<img src="https://github.com/RajaRakoto/github-docs/blob/master/react-app/component-Exemple.png?raw=true" width=600>
+<img src="https://github.com/RajaRakoto/github-docs/blob/master/react-practices/component-example.png?raw=true" width=600>
 </div>
 
 > **NOTE**: Conceptuellement, les composants sont comme des fonctions JavaScript. Ils acceptent des entrées quelconques (appelées « props ») et renvoient des éléments React décrivant ce qui doit apparaître à l’écran.
 
 #### `📌 Function`
 
-Creation d'un component a base d'une fonction 
+Creation d'un component a base d'une fonction
 
 ```jsx
 // fonction classic

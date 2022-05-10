@@ -48,44 +48,18 @@ const Users = {
 	},
 };
 
-export default function Departement() {
-	state = { Users }; // get Users object
-
-	setAge = () => {
-		const Users = { ...state.Users }; // copie de l'objet du state (destructuring)
-		Users.user1.age += 1; // incrementation
-		setState({ Users }); // mise a jour du state
-	};
-
-	const { Users } = state; // recuperer le state actuel
-	return (
-		<React.Fragment>
-			<p>Age (user1): {Users.user1.age}</p>
-			<button onClick={setAge}>Viellir</button>
-		</React.Fragment>
-	);
-}
-```
-
-Passer un argument `age` pour la fonction `setAge()`
-
-> **NOTE**: React passe par défaut un `objet` en paramètre aux fonctions indiquées en callback des événements. Ici `age` n'est pas un objet, pour que React considere ce dernier comme un nombre. On utilise une fonction anonyme `() =>` pour appeller `setAge(age)`
-
-```jsx
-export default function Departement() {
+export default function Age() {
+	let [state, setState] = React.useState();
 	state = { Users };
 
-	setAge = age => {
-		const Users = { ...state.Users };
-		Users.user1.age += age;
-		this.setState({ Users });
+	const setAge = value => {
+		setState((state.Users.user1.age += value)); // mise a jour du state (age de user1)
 	};
 
-	const { Users } = state;
 	return (
 		<React.Fragment>
 			<p>Age (user1): {Users.user1.age}</p>
-			<button onClick={() => setAge(2)}>vieillir</button>
+			<button onClick={() => setAge(2)}>Viellir</button>
 		</React.Fragment>
 	);
 }
@@ -94,26 +68,42 @@ export default function Departement() {
 #### `📌 onChange`
 
 ```jsx
-export default function Departement() {
-	state = { Users }; // get Users object
-	Users = { ...state.Users }; // copie de l'objet du state (destructuring)
+export default function Message() {
+	const [message, setMessageValue] = React.useState('default message');
 
-	setName = e => {
-		// event represente l evenement attachE a l'element input
-		const name = e.target.value; // recuperer la valeur en input
-		Users.user1.pseudo = name; // modifier le state
-		this.setState({ Users }); // mettre a jour le state
-	};
-
-	const { Users } = state;
 	return (
 		<React.Fragment>
-			<input
-				value={Users.user1.pseudo} // valeur de l'input
-				onChange={setName} // ecouteur d'evenement qui fait appel a la methode setName a chaque modification
-				type="text"
-			></input>
-			<p>Pseudo (user1): {Users.user1.pseudo}</p>
+			<textarea
+				cols="30"
+				rows="10"
+				placeholder={message}
+				onChange={e => setMessageValue(e.target.value)} // ecouteur d'evenement qui fait appel a la methode setMessageValue() a chaque modification et mettre a jour le state
+			></textarea>
+		</React.Fragment>
+	);
+}
+```
+
+#### `📌 onSubmit`
+
+```jsx
+export default function SampleForm() {
+	const handleSubmit = e => {
+		e.preventDefault();
+		alert(e.target['sample-input'].value); // get sample-input value
+	};
+
+	return (
+		<React.Fragment>
+			<form id="sample-form" onSubmit={handleSubmit}>
+				<h5>Sample form</h5>
+				<input
+					type="text"
+					name="sample-input"
+					placeholder="Entrer un texte ici ..."
+				/>
+				<ValidBtn />
+			</form>
 		</React.Fragment>
 	);
 }

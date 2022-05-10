@@ -11,7 +11,7 @@ import Shopping from './_shopping';
 import Cart from './_cart';
 
 /**
- *
+ * @description - le composant mere pour jungle house app
  * @feat - react-responsive(mediaquery) | bt5 (grid) | className injection | props (children)
  */
 export default function Jungle() {

@@ -1,6 +1,8 @@
 import React from 'react';
 
+// TODO: del recomNotif onClick()
 /**
+ * @description - liste des recommendations pour les clients 
  * @feat - props | Date
  */
 function Recommendation() {
