@@ -1,4 +1,4 @@
-<!-- TODO: verified -->
+<!-- TODO: working -->
 
 ### 🔵 State
 
@@ -38,61 +38,21 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Clock />);
 ```
 
-```jsx
-// object
-const Users = {
-	user1: {
-		pseudo: 'Rasoa',
-		age: 20,
-		email: 'rasoa@protonmail.com',
-		stacks: ['Ansible', 'AWS', 'Docker'],
-		admin: true,
-	},
-
-	user2: {
-		pseudo: 'Rabe',
-		age: 30,
-		email: 'rabe@yahoo.fr',
-		stacks: ['PHP', 'Symfony', 'Laravel', 'MySQL'],
-		admin: false,
-	},
-
-	user3: {
-		pseudo: 'Randria',
-		age: 27,
-		email: 'randria@gmail.com',
-		stacks: ['Flutter', 'Dart'],
-		admin: false,
-	},
-};
-
-export default function Departements(state) {
-	state = { Users };
-	return (
-		<React.Fragment>
-			<p>{Users.user1.pseudo}</p>
-			<p>{Users.user2.age}</p>
-			<p>{Users.user3.stacks[0]}</p>
-		</React.Fragment>
-	);
-}
-```
-
 #### `📌 Passage d'un state vers un autre composant via un props`
 
 ```jsx
-// le composant enfant
+// le composant enfant (a base de fonction)
 function FormattedDate(props) {
 	return <h2>Il est {props.date.toLocaleTimeString()}.</h2>;
 }
 
-// l'appel de "FormattedDate" ce fait dans son composant parent
+// l'appel de "FormattedDate" ce fait dans son composant parent (a base de class)
 <FormattedDate date={this.state.date} />;
 ```
 
 #### `📌 useState()`
 
-`useState()` est un Hook qui permet d'ajouter l'état local React à des fonctions composants.
+`useState()` est un Hook qui permet d'ajouter l'état local React à des composants a base de fonction.
 
 ```jsx
 const [state, setState] = useState(initialState);
@@ -106,7 +66,7 @@ const [state, setState] = useState(initialState);
 
 #### `📌 setState()`
 
-`setState()` permet de planifier une mise à jour de l'état local du composant.
+`setState()` permet de planifier une mise à jour de l'état local du composant a base de class.
 
 > **NOTE**: le seul endroit ou vous pouvez affecter directement `this.state`, c'est dans le `constructeur`
 
