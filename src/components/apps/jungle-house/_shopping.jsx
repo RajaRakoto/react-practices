@@ -111,6 +111,7 @@ function Plants() {
 		);
 	};
 
+	// Autre methode -> https://github.com/OpenClassrooms-Student-Center/7008001-Debutez-avec-React/blob/P2C5-Solution/src/components/CareScale.js
 	const handleClick = (waterValue, lightValue) => {
 		const conditionalCkecker = conditionValue => {
 			let result = '';
