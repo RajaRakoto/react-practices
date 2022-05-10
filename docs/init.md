@@ -1,6 +1,10 @@
 <!-- TODO: verified -->
 
-Roadmap complet de React ... <br> <img src="https://github.com/RajaRakoto/github-docs/blob/master/react-app/react-roadmap.png?raw=true" width=700>
+<div align="center">
+Roadmap complet de React ...
+<br>
+<img src="https://github.com/RajaRakoto/github-docs/blob/master/react-practices/react-roadmap.png?raw=true" width=700>
+</div>
 
 ### `🔵 CRA initialization`
 

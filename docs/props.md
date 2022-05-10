@@ -14,7 +14,7 @@ Un `props` est un/plusieurs parametre(s)/argument(s) qu on va passer sur un comp
 #### `📌 Utilisation basique d'un props`
 
 ```jsx
-export default function Students(props) {
+function Students(props) {
 	const { name } = props;
 
 	return <p>Mon nom est : {name}</p>;
@@ -29,7 +29,7 @@ root.render(<Students name="Rakoto" />);
 > **RAPPEL**: La déstructuration est une syntaxe permettant de déclarer une variable en l'affectant directement à la valeur d'un objet (ou tableau).
 
 ```jsx
-export default function Students(props) {
+function Students(props) {
 	const { name, age, email } = props; //destructuring (props.name | props.age | props.email)
 	return (
 		<div>
@@ -51,7 +51,7 @@ root.render(<Students name="Rakoto" age={25} email="rakoto@gmail.com" />);
 > **NOTE**: Cette manière d'utiliser children est particulièrement utile lorsqu'un composant ne connaît pas ses enfants à l'avance, par exemple pour une barre de navigation (Sidebar) ou bien pour une modale.
 
 ```jsx
-export default function Parent({ children }) {
+function Parent({ children }) {
 	return (
 		<React.Fragment>
 			<p>{children}</p>
