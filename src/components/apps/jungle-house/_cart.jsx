@@ -1,5 +1,6 @@
 /* datas */
 import { plantList } from '../../../data/plantList';
+
 /* utils */
 import { getObjectElementValue } from '../../../utils/object';
 

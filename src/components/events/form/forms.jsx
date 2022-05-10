@@ -1,4 +1,6 @@
 import React from 'react';
+
+/* styles */
 import './forms.min.css';
 
 /**
