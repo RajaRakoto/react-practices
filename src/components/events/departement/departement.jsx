@@ -9,7 +9,7 @@ import './departement.min.css';
 /* components */
 import Stacks from './_stacks';
 
-// FIXME: handleClick Departement
+// TODO: handleClick Departement [*]
 /**
  * @feat - useState() | onClick()
  */
