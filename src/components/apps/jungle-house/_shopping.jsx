@@ -65,7 +65,7 @@ function Plants() {
 	 * @description - information sur chaque plante (alert)
 	 * Autre methode -> https://github.com/OpenClassrooms-Student-Center/7008001-Debutez-avec-React/blob/P2C5-Solution/src/components/CareScale.js
 	 */
-	const handleClick = (waterValue, lightValue) => {
+	const handleConditionClick = (waterValue, lightValue) => {
 		const conditionalCkecker = conditionValue => {
 			let result = '';
 
@@ -83,6 +83,10 @@ function Plants() {
 				waterValue,
 			)} d'arrosage (💧) et ${conditionalCkecker(lightValue)} de lumière (☀️)`,
 		);
+	};
+
+	const handleAddClick = plantName => {
+		alert(plantName);
 	};
 
 	/**
@@ -115,12 +119,16 @@ function Plants() {
 							? 'plant-item plant-item-anim--1'
 							: 'plant-item plant-item-anim--2'
 					}
-					onClick={() => handleClick(plant.waterValue, plant.lightValue)}
 				>
 					<PlantImage name={plant.name} />
 					<PlantPrice price={plant.price} />
 					<PlantName name={plant.name} favori={plant.isBestSale} />
-					<div className="plant-condition">
+					<div
+						className="plant-condition"
+						onClick={() =>
+							handleConditionClick(plant.waterValue, plant.lightValue)
+						}
+					>
 						<PlantCondition
 							conditionType="water"
 							conditionValue={plant.waterValue}
@@ -133,6 +141,9 @@ function Plants() {
 					<PlantCategorie category={plant.category} />
 					<PlantDescription description={plant.description} />
 					<PlantBadge solde={plant.isSpecialOffer} />
+					<div>
+						<button onClick={() => handleAddClick(plant.name)}>Ajouter</button>
+					</div>
 				</li>
 			))}
 		</ul>
