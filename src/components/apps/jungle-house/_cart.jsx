@@ -4,6 +4,7 @@ import { plantList } from '../../../data/plantList';
 /* utils */
 import { getObjectElementValue } from '../../../utils/object';
 
+// TODO: adding to cart [***]
 /**
  * @description - liste des achats (panier)
  * @feat - getObjectElementValue()

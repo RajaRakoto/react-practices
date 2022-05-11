@@ -17,7 +17,7 @@ import Jungle from './components/apps/jungle-house/jungle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-// TODO: indexed component menu
+// TODO: indexed component menu (router) [*]
 root.render(
 	<React.Fragment>
 		<Jungle />

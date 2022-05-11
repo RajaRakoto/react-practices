@@ -1,19 +1,28 @@
-/* datas */
 import React from 'react';
-import { useMediaQuery } from 'react-responsive';
 
 /* datas */
 import { plantList } from '../../../data/plantList';
-import plantImg from '../../../assets/images/jungle-logo.png';
+
+/* deps */
+import {
+	PlantImage,
+	PlantPrice,
+	PlantName,
+	PlantCondition,
+	PlantCategorie,
+	PlantDescription,
+	PlantBadge,
+} from './deps/_plants-deps';
 
 /* utils */
+import { useMediaQuery } from 'react-responsive';
 import { getObjectElementType } from '../../../utils/object';
 
 /* mui */
-import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
+// TODO: sort plant category [**]
 /**
  * @description - triage des plantes par categorie
  * @feat - map() | mui(Button) | react-responsive(mediaquery) | getObjectElementType()
@@ -46,86 +55,17 @@ function Categories() {
 	);
 }
 
+// TODO: adding to cart [***]
 /**
  * @description - liste des plantes disponibles a vendre
- * @feat - map() [get property with keyword] | toString() | props | SEO (img)
+ * @feat - map() [get property with keyword] | toString() | props | SEO (img) | setInterval() | className deleting
  */
 function Plants() {
-	const PlantImage = props => {
-		const { name } = props;
-		return (
-			<img
-				src={plantImg}
-				alt={`${name}-cover`} // SEO tips
-				width="80"
-				className="plant-image img-fluid"
-			/>
-		);
-	};
-
-	const PlantPrice = props => {
-		const { price } = props;
-		return (
-			<div className="d-flex flex-row-reverse plant-price">
-				<div className="price-label">
-					{price} {unity}
-				</div>
-			</div>
-		);
-	};
-
-	const PlantName = props => {
-		const { name, favori } = props;
-		return (
-			<div className="plant-name">
-				{name} {favori ? <p>⭐</p> : <p style={{ visibility: 'hidden' }}>.</p>}
-			</div>
-		);
-	};
-
-	const PlantCategorie = props => {
-		const { category } = props;
-		return (
-			<Stack direction="row" spacing={1}>
-				<Chip label={category} size="small" variant="outlined" />
-			</Stack>
-		);
-	};
-
-	const PlantDescription = props => {
-		const { description } = props;
-		return <p className="plant-description">{description}</p>;
-	};
-
-	const PlantBadge = props => {
-		const { solde } = props;
-		return (
-			<React.Fragment>
-				{solde ? <div className="solde-badge">solde</div> : null}
-			</React.Fragment>
-		);
-	};
-
-	const PlantCondition = props => {
-		const { conditionType, conditionValue } = props;
-		const range = [1, 2, 3];
-
-		return (
-			<div>
-				{range.map(rangeElem =>
-					conditionValue >= rangeElem ? (
-						// key notation tips
-						<span key={rangeElem.toString()}>
-							{conditionType === 'water' ? '💧' : '☀️'}
-						</span>
-					) : null,
-				)}
-			</div>
-		);
-	};
-
-	// Autre methode -> https://github.com/OpenClassrooms-Student-Center/7008001-Debutez-avec-React/blob/P2C5-Solution/src/components/CareScale.js
-	const handleClick = (waterValue, lightValue) => {
+	/**
+	 * @description - information sur chaque plante (alert)
+	 * Autre methode -> https://github.com/OpenClassrooms-Student-Center/7008001-Debutez-avec-React/blob/P2C5-Solution/src/components/CareScale.js
+	 */
+	const handleConditionClick = (waterValue, lightValue) => {
 		const conditionalCkecker = conditionValue => {
 			let result = '';
 
@@ -145,13 +85,14 @@ function Plants() {
 		);
 	};
 
-	const unity = ' Ar';
+	const handleAddClick = plantName => {
+		alert(plantName);
+	};
 
 	/**
+	 * @description - state for plant animation status
 	 * Animation scale fix
 	 */
-
-	// state for plant animation status
 	const [animationFlag, setAnimationFlag] = React.useState(true);
 	let seconds = plantList.length - 6; // plus le nombre de plante augmente, plus le nombre de seconde ou la class d'animation existe dans le DOM augmente
 
@@ -178,12 +119,16 @@ function Plants() {
 							? 'plant-item plant-item-anim--1'
 							: 'plant-item plant-item-anim--2'
 					}
-					onClick={() => handleClick(plant.waterValue, plant.lightValue)}
 				>
 					<PlantImage name={plant.name} />
 					<PlantPrice price={plant.price} />
 					<PlantName name={plant.name} favori={plant.isBestSale} />
-					<div className="plant-condition">
+					<div
+						className="plant-condition"
+						onClick={() =>
+							handleConditionClick(plant.waterValue, plant.lightValue)
+						}
+					>
 						<PlantCondition
 							conditionType="water"
 							conditionValue={plant.waterValue}
@@ -196,6 +141,9 @@ function Plants() {
 					<PlantCategorie category={plant.category} />
 					<PlantDescription description={plant.description} />
 					<PlantBadge solde={plant.isSpecialOffer} />
+					<div>
+						<button onClick={() => handleAddClick(plant.name)}>Ajouter</button>
+					</div>
 				</li>
 			))}
 		</ul>
