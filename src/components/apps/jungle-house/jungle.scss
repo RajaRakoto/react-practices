@@ -8,11 +8,6 @@
 @import './sass/layout';
 
 header {
-	// position: fixed;
-	// top: 0;
-	// z-index: 1;
-	// width: 100%;
-
 	#banner {
 		@include spacing-padding-gabarit($gabarit: medium);
 		padding-right: 5rem;
