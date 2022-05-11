@@ -48,7 +48,7 @@ function Categories() {
 
 /**
  * @description - liste des plantes disponibles a vendre
- * @feat - map() [get property with keyword] | toString() | props | SEO (img)
+ * @feat - map() [get property with keyword] | toString() | props | SEO (img) | setInterval() | className deleting
  */
 function Plants() {
 	const PlantImage = props => {
