@@ -106,7 +106,6 @@ main {
 
 					&:hover {
 						@include effect-box-shadow($opacity: smooth);
-						cursor: pointer;
 					}
 
 					.plant-price {
@@ -141,6 +140,7 @@ main {
 						margin-bottom: 1rem;
 						width: 100%;
 						background-color: #888;
+						cursor: pointer;
 					}
 
 					.plant-description {
