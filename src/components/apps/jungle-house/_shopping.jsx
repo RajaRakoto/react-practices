@@ -147,12 +147,37 @@ function Plants() {
 
 	const unity = ' Ar';
 
+	/**
+	 * Animation scale fix
+	 */
+
+	// state for plant animation status
+	const [animationFlag, setAnimationFlag] = React.useState(true);
+	let seconds = plantList.length - 6; // plus le nombre de plante augmente, plus le nombre de seconde ou la class d'animation existe dans le DOM augmente
+
+	const counterID = setInterval(() => {
+		countdown();
+	}, 1000);
+
+	const countdown = () => {
+		if (seconds !== 0) {
+			seconds--;
+		} else {
+			setAnimationFlag(false); // suppression de la class "plant-item--anim"
+			clearInterval(counterID);
+		}
+	};
+
 	return (
 		<ul className="plant-list">
 			{plantList.map(plant => (
 				<li
 					key={plant.id.toString()}
-					className="plant-item"
+					className={
+						animationFlag
+							? 'plant-item plant-item-anim--1'
+							: 'plant-item plant-item-anim--2'
+					}
 					onClick={() => handleClick(plant.waterValue, plant.lightValue)}
 				>
 					<PlantImage name={plant.name} />
