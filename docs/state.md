@@ -154,9 +154,9 @@ L'argument passer a `useState()` correspond à `l'état initial de notre state`.
 
 ### ◾ Transmission des données (state) entre les composants React
 
-#### `📌 Transmission de données du parent à l'enfant`
+### `📎 Transmission de données du parent à l'enfant`
 
-**1er methode (à l'aide d'un props)**
+#### `📌 1er methode (à l'aide d'un props)`
 
 - on utilise `setState()` pour recuperer/modifier les donnees du composant `parent` (on peut l'associer avec un evenement React)
 - on passe le `state` correspondant au composant `parent` comme un `props` pour le composant `enfant`
@@ -187,7 +187,7 @@ export default function Parent() {
 }
 ```
 
-**2e methode (à l'aide d'un callback)**
+#### `📌 2e methode (à l'aide d'un callback)`
 
 ```jsx
 function Child({ parentData }) {
@@ -216,7 +216,7 @@ export default function Parent() {
 
 > **NOTE**: Quelque soit la methode utilisE (props ou callback), les données du composant `parent` et composant `enfant` sont toujours `synchronisés`
 
-#### `📌 Transmission de données de l'enfant au parent`
+#### `📎 Transmission de données de l'enfant au parent`
 
 - le composant `enfant` a comme props la fonction callback du composant `parent`
 - cette fonction effectue la modification de l'etat local (state) du composant `parent`
@@ -254,17 +254,17 @@ export default function Parent() {
 }
 ```
 
-#### `📌 Transmission de données entre enfants`
+#### `📎 Transmission de données entre enfants`
 
-Il existe **2 methodes** pour effectuer le transfert de données entre les composants enfant:
+Il existe **2 methodes** pour effectuer le transfert de données entre les composants `enfants`
 
-- Méthode 1 : Utilisez `Redux` (state managment) en maintenant les états de tous les composants enfants dont vous pourriez avoir besoin dans un magasin global et obtenez les données dudit magasin.
+- **Méthode 1 :** Utilisez `Redux` (state managment) en maintenant les états de tous les composants enfants dont vous pourriez avoir besoin dans un magasin global et obtenez les données dudit magasin.
 
-- Méthode 2 : Utilisez `React's Context API` de nombreux développeurs ont choisi l'API Context de React plutôt que Redux
+- **Méthode 2 :** Utilisez `React's Context API` de nombreux développeurs ont choisi l'API Context de React plutôt que Redux
+
+#### `📌 useContext()`
 
 Essayez d'imaginer la structure de répertoires de l'application comme suit : le composant `parent` restitue en fait les composants `enfants` dans l'application.
-
-Supposons que vous deviez envoyer `"Comment allez-vous ?"` de `Child1` à `Child2`.
 
 ```
 App
@@ -272,3 +272,5 @@ App
    ├── Child1
    └── Child2
 ```
+
+Cela peut être fait à l'aide de l'API de contexte comme suit :
