@@ -154,13 +154,13 @@ L'argument passer a `useState()` correspond à `l'état initial de notre state`.
 
 ### ◾ Transmission des données (state) entre les composants React
 
-#### `📌 Transmission de données du parent à l'enfant`
+### `📎 Transmission de données du parent à l'enfant`
 
-**1er methode (à l'aide d'un props)**
+#### `📌 1er methode (à l'aide d'un props)`
 
-- on utilise `setState()` pour recuperer/modifier les donnees du composant `parent` (on peut l'associer avec un evenement React)
-- on passe le `state` correspondant au composant `parent` comme un `props` pour le composant `enfant`
-- seul les `props` interagissent avec le composant `enfant`
+- On utilise `setState()` pour recuperer/modifier les donnees du composant `parent` (on peut l'associer avec un evenement React)
+- On passe le `state` correspondant au composant `parent` comme un `props` pour le composant `enfant`
+- Seul les `props` interagissent avec le composant `enfant`
 
 ```jsx
 function Child({ parentData }) {
@@ -187,7 +187,7 @@ export default function Parent() {
 }
 ```
 
-**2e methode (à l'aide d'un callback)**
+#### `📌 2e methode (à l'aide d'un callback)`
 
 ```jsx
 function Child({ parentData }) {
@@ -216,12 +216,12 @@ export default function Parent() {
 
 > **NOTE**: Quelque soit la methode utilisE (props ou callback), les données du composant `parent` et composant `enfant` sont toujours `synchronisés`
 
-#### `📌 Transmission de données de l'enfant au parent`
+#### `📎 Transmission de données de l'enfant au parent`
 
-- le composant `enfant` a comme props la fonction callback du composant `parent`
-- cette fonction effectue la modification de l'etat local (state) du composant `parent`
-- on passe les donnees du composant `enfant`comme l'argument du callback
-- les données `enfant` écraseront les données parent lorsqu'on click sur `<button>`
+- Le composant `enfant` a comme props la fonction callback du composant `parent`
+- Cette fonction effectue la modification de l'etat local (state) du composant `parent`
+- On passe les donnees du composant `enfant`comme l'argument du callback
+- Les données `enfant` écraseront les données parent lorsqu'on click sur `<button>`
 
 > **ATTENTION**: le nom du props pour le composant `enfant` devrait toujours le meme que le nom de la fonction callback du composant `parent` pour permette son utilisation
 
@@ -254,21 +254,72 @@ export default function Parent() {
 }
 ```
 
-#### `📌 Transmission de données entre enfants`
+#### `📎 Transmission de données entre enfants`
 
-Il existe **2 methodes** pour effectuer le transfert de données entre les composants enfant:
+Il existe **2 methodes** pour effectuer le transfert de données entre les composants `enfants`
 
-- Méthode 1 : Utilisez `Redux` (state managment) en maintenant les états de tous les composants enfants dont vous pourriez avoir besoin dans un magasin global et obtenez les données dudit magasin.
+- **Méthode 1 :** Utilisez `Redux` (state managment) en maintenant les états de tous les composants enfants dont vous pourriez avoir besoin dans un magasin global et obtenez les données dudit magasin.
 
-- Méthode 2 : Utilisez `React's Context API` de nombreux développeurs ont choisi l'API Context de React plutôt que Redux
+- **Méthode 2 :** Utilisez `React's Context API` de nombreux développeurs ont choisi l'API Context de React plutôt que Redux
 
-Essayez d'imaginer la structure de répertoires de l'application comme suit : le composant `parent` restitue en fait les composants `enfants` dans l'application.
+#### `📌 useContext()`
 
-Supposons que vous deviez envoyer `"Comment allez-vous ?"` de `Child1` à `Child2`.
+Le `contexte` React fournit des données aux composants, quelle que soit leur profondeur dans l'arborescence des composants. Le `contexte` est utilisé pour gérer les données globales, par exemple l'état global, le thème, les services, les paramètres utilisateur, etc ...
+
+Essayez d'imaginer la structure de répertoires de l'application comme suit : le composant `parent` restitue en fait les composants `enfants` dans l'application qui partage leurs donnees grace au `contexte` React.
 
 ```
 App
  └── Parent
    ├── Child1
    └── Child2
+```
+
+L'utilisation du `contexte` React nécessite **3 étapes**:
+
+1. Créer le contexte
+2. Fournir le contexte
+3. Consommer le contexte.
+
+#### `A. Créer le contexte`
+
+- La fonction `createContexte()` cree une instance de contexte et accepte un argument optionnel comme `valeur par defaut`
+
+```jsx
+const Context = React.createContext('Default Value');
+```
+
+> **NOTE**: Vous pouvez creer plusieurs `contexte` autant que vous voulez pour vos composants
+
+#### `B. Fournir le contexte`
+
+- La methode `Provider` est disponible dans l'objet `Context` recément crée et est utilisé pour fournir le contexte à ses composants enfants, quelle que soit leur profondeur.
+
+- Pour définir la valeur de context, utilisez la `value` prop comme suit:
+
+```jsx
+function MyProvider() {
+	const contextValue = 'My Context Value';
+	return (
+		<Context.Provider value={contextValue}>
+			<Child1 />
+			<Child2 />
+		</Context.Provider>
+	);
+}
+```
+
+> **IMPORTANT**: Tous les composants qui souhaitent (au plus tard) consommer le contexte doivent être **`encapsulés`** dans le `composant fournisseur` (MyProvider) et dans le `contexte correspondant` (Context.Provider).
+
+- Si vous souhaitez modifier la valeur de contexte, mettez simplement à jour la value prop.
+
+#### `B. Consommer le contexte`
+
+- La consommation du contexte peut etre effectuée en utilisant `useContext(<context_object_name>)`
+
+```jsx
+function Child1() {
+	const contextValue = React.useContext(Context); // recupere la valeur de contextValue contenant dans prop value
+	return <span>{contextValue}</span>;
+}
 ```
