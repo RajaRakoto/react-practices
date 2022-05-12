@@ -12,9 +12,11 @@ Le `state` (etat local) nous permet de garder des informations. Ces informations
 
 > **TIPS**: N’essayez pas de synchroniser les états de plusieurs composants. Préférez le faire remonter dans leur plus proche ancêtre commun, et faire redescendre l’info via les props aux composants concernés.
 
+<br>
+
 ### ◾ State pour les composant a base d'un class
 
-#### `📌 Utilisation basique d'un state`
+#### `📌 Utilisation basique`
 
 Prenons comme exemple un horloge (pour l'instant cette horloge est statique puisque qu'on n'a pas encore implementE un miniteur pour le mettre a jour a chaque seconde) - le fichier `lifecycle.md` montre comment ajouter un miniteur a ce dernier
 
@@ -38,18 +40,6 @@ class Clock extends React.Component {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Clock />);
-```
-
-#### `📌 Passage d'un state vers un autre composant via un props`
-
-```jsx
-// le composant enfant
-function FormattedDate(props) {
-	return <h2>Il est {props.date.toLocaleTimeString()}.</h2>;
-}
-
-// l'appel de "FormattedDate" ce fait dans son composant parent (a base d'un class)
-<FormattedDate date={this.state.date} />;
 ```
 
 #### `📌 setState()`
@@ -110,6 +100,8 @@ constructor(props) {
   }
 ```
 
+<br>
+
 ### ◾ State pour les composant a base d'une fonction
 
 #### `📌 useState()`
@@ -148,6 +140,8 @@ const cart = cartState[0];
 const updateCart = cartState[1];
 ```
 
+<!-- TODO: working -->
+
 **Initialisez votre state**
 
 L'argument passer a `useState()` correspond à `l'état initial de notre state`. Cet état initial peut être un nombre comme ici, une string, un booléen, un tableau ou encore un objet avec plusieurs propriétés.
@@ -155,3 +149,126 @@ L'argument passer a `useState()` correspond à `l'état initial de notre state`.
 > **ATTENTION**: Il est important de **préciser une valeur initiale dans votre state**. Sinon, elle sera `undefined` par défaut, et ce n'est pas un comportement souhaitable : plus vous serez explicite, mieux votre application s'en portera !
 
 > **NOTE**: Vous pouvez egalement creer plusieurs variables d'etat (state) pour un component
+
+<br>
+
+### ◾ Transmission des données (state) entre les composants React
+
+#### `📌 Transmission de données du parent à l'enfant`
+
+**1er methode (à l'aide d'un props)**
+
+- on utilise `setState()` pour recuperer/modifier les donnees du composant `parent` (on peut l'associer avec un evenement React)
+- on passe le `state` correspondant au composant `parent` comme un `props` pour le composant `enfant`
+- seul les `props` interagissent avec le composant `enfant`
+
+```jsx
+function Child({ parentData }) {
+	return (
+		<div>
+			<span>Child data: {parentData}</span>
+		</div>
+	);
+}
+
+export default function Parent() {
+	const [state, setState] = React.useState(null);
+
+	const externalData = 'Ceci est un donnee venant du composant parent';
+
+	return (
+		<div>
+			<p>Parent data: {state}</p>
+			<Child parentData={state} />
+			<br />
+			<button onClick={() => setState(externalData)}>Send</button>
+		</div>
+	);
+}
+```
+
+**2e methode (à l'aide d'un callback)**
+
+```jsx
+function Child({ parentData }) {
+	return <div>Child data: {parentData}</div>;
+}
+
+export default function Parent() {
+	const [state, setstate] = React.useState(null);
+
+	const externalData = 'Ceci est un donnee venant du composant parent';
+
+	const sendDataToChild = externalData => {
+		setstate(externalData);
+	};
+
+	return (
+		<div>
+			<p>Parent data: {state}</p>
+			<Child parentData={state} />
+			<br />
+			<button onClick={() => sendDataToChild(externalData)}>Send</button>
+		</div>
+	);
+}
+```
+
+> **NOTE**: Quelque soit la methode utilisE (props ou callback), les données du composant `parent` et composant `enfant` sont toujours `synchronisés`
+
+#### `📌 Transmission de données de l'enfant au parent`
+
+- le composant `enfant` a comme props la fonction callback du composant `parent`
+- cette fonction effectue la modification de l'etat local (state) du composant `parent`
+- on passe les donnees du composant `enfant`comme l'argument du callback
+- les données `enfant` écraseront les données parent lorsqu'on click sur `<button>`
+
+> **ATTENTION**: le nom du props pour le composant `enfant` devrait toujours le meme que le nom de la fonction callback du composant `parent` pour permette son utilisation
+
+```jsx
+function Child({ sendDatatoParent }) {
+	const externalData = 'Ceci est un donnee venant du composant enfant';
+
+	return (
+		<div>
+			<span>Child data: {externalData}</span>
+			<br />
+			<button onClick={() => sendDatatoParent(externalData)}>Send</button>
+		</div>
+	);
+}
+
+export default function Parent() {
+	const [state, setState] = React.useState(null);
+
+	const sendDatatoParent = childData => {
+		setState(childData);
+	};
+
+	return (
+		<div>
+			<p>Parent data: {state}</p>
+			<Child sendDatatoParent={sendDatatoParent} />
+		</div>
+	);
+}
+```
+
+#### `📌 Transmission de données entre enfants`
+
+Il existe **2 methodes** pour effectuer le transfert de données entre les composants enfant:
+
+- Méthode 1 : Utilisez `Redux` (state managment) en maintenant les états de tous les composants enfants dont vous pourriez avoir besoin dans un magasin global et obtenez les données dudit magasin.
+
+- Méthode 2 : Utilisez `React's Context API` de nombreux développeurs ont choisi l'API Context de React plutôt que Redux
+
+Essayez d'imaginer la structure de répertoires de l'application comme suit : le composant `parent` restitue en fait les composants `enfants` dans l'application.
+
+Supposons que vous deviez envoyer `"Comment allez-vous ?"` de `Child1` à `Child2`.
+
+```
+App
+ └── Parent
+   ├── Child1
+   └── Child2
+```
