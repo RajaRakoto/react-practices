@@ -264,9 +264,25 @@ Il existe **2 methodes** pour effectuer le transfert de données entre les compo
 
 #### `📌 useContext()`
 
-Le `contexte` React fournit des données aux composants, quelle que soit leur profondeur dans l'arborescence des composants. Le `contexte` est utilisé pour gérer les données globales, par exemple l'état global, le thème, les services, les paramètres utilisateur, etc ...
+L'idée principale de l'utilisation du `contexte` est de permettre à vos composants d'accéder à certaines données globales quelle que soit leur profondeur dans l'arborescence des composants et de les restituer lorsque ces données globales sont modifiées.
 
-Essayez d'imaginer la structure de répertoires de l'application comme suit : le composant `parent` restitue en fait les composants `enfants` dans l'application qui partage leurs donnees grace au `contexte` React.
+Vous pouvez maintenir à l'intérieur du contexte :
+
+- état global
+- thème
+- configuration des applications
+- nom d'utilisateur authentifié
+- paramètres utilisateur
+- langue préférée
+- un ensemble de services
+- etc ...
+
+> **ATTENTION**:
+>
+> 1. Vous devez bien réfléchir avant de décider d'utiliser le contexte dans votre application puisque l'integration du contexte ajoute de la complexité.
+> 2. L'ajout de contexte rend plus difficile le test unitaire des composants.
+
+Maintenant, essayez d'imaginer la structure de répertoires de l'application comme suit : le composant `parent` restitue en fait les composants `enfants` dans l'application qui partage leurs donnees grace au `contexte` React.
 
 ```
 App
@@ -280,6 +296,12 @@ L'utilisation du `contexte` React nécessite **3 étapes**:
 1. Créer le contexte
 2. Fournir le contexte
 3. Consommer le contexte.
+
+<div align="center">
+Mode de fonctionnement du contexte React ...
+<br>
+<img src="https://github.com/RajaRakoto/github-docs/blob/master/react-practices/react-context.svg?raw=true" width=600>
+</div>
 
 #### `A. Créer le contexte`
 
@@ -313,7 +335,7 @@ function MyProvider() {
 
 - Si vous souhaitez modifier la valeur de contexte, mettez simplement à jour la value prop.
 
-#### `B. Consommer le contexte`
+#### `C. Consommer le contexte`
 
 - La consommation du contexte peut etre effectuée en utilisant `useContext(<context_object_name>)`
 
@@ -323,3 +345,7 @@ function Child1() {
 	return <span>{contextValue}</span>;
 }
 ```
+
+- Vous pouvez avoir autant de consommateurs que vous le souhaitez pour un même contexte. Si la valeur de contexte change (en changeant le value prop du provider `<Context.Provider value={value} />`, tous les consommateurs sont immédiatement notifiés et restitués.
+
+- Si le consommateur n'est pas enveloppé dans le fournisseur, mais essaie toujours d'accéder à la valeur de contexte en utilisant `useContext(<context_object_name>)`, alors la valeur du contexte serait l'argument de **valeur par défaut** fourni à la fonction `createContext(defaultValue)`
