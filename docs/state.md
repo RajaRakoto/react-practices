@@ -355,3 +355,55 @@ function Child1() {
 `L'API React Context` est sans état par défaut et ne fournit pas de méthode dédiée pour mettre à jour la valeur de contexte à partir des composants consommateurs.
 
 Mais cela peut être facilement mis en œuvre en intégrant un mécanisme de gestion d'état comme `useState()` ou `useReducer()` hooks et en fournissant une fonction de mise à jour directement dans le contexte à côté de la valeur elle-même.
+
+```jsx
+// first child component
+function UserInput() {
+	const { setUserName } = React.useContext(UserContext); // UserName setter in context
+
+	const handleChange = inputValue => {
+		setUserName(inputValue);
+	};
+
+	return (
+		<div>
+			<label htmlFor="user-name">Username:</label>
+			<input
+				type="text"
+				name="user-name"
+				id="user-name"
+				onChange={e => handleChange(e.target.value)}
+			/>
+			<br />
+		</div>
+	);
+}
+
+// second child component
+function UserInfo() {
+	const { userName } = React.useContext(UserContext);
+	return <div>UserName value (in second child component): {userName}</div>;
+}
+
+// def context
+const UserContext = React.createContext({
+	userName: '',
+	setUserName: () => {},
+});
+
+// parent component
+export default function UserApp() {
+	const [userName, setUserName] = React.useState('unknown'); // def state & default value
+	const value = React.useMemo(() => ({ userName, setUserName }), [userName]); // memo
+
+	return (
+		<React.Fragment>
+			<UserContext.Provider value={value}>
+				<UserInput />
+				<UserInfo />
+			</UserContext.Provider>
+			<span>UserName value (in parent component): {userName}</span>
+		</React.Fragment>
+	);
+}
+```
