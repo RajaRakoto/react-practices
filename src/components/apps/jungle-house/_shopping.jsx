@@ -22,7 +22,8 @@ import { getObjectElementType } from '../../../utils/object';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
-// TODO: sort plant category [**]
+// ===============================================
+
 /**
  * @description - triage des plantes par categorie
  * @feat - map() | mui(Button) | react-responsive(mediaquery) | getObjectElementType()
@@ -55,12 +56,11 @@ function Categories() {
 	);
 }
 
-// TODO: adding to cart [***]
 /**
  * @description - liste des plantes disponibles a vendre
  * @feat - map() [get property with keyword] | toString() | props | SEO (img) | setInterval() | className deleting
  */
-function Plants() {
+function Plants({ sendDatatoCart }) {
 	/**
 	 * @description - information sur chaque plante (alert)
 	 * Autre methode -> https://github.com/OpenClassrooms-Student-Center/7008001-Debutez-avec-React/blob/P2C5-Solution/src/components/CareScale.js
@@ -86,7 +86,7 @@ function Plants() {
 	};
 
 	const handleAddClick = plantName => {
-		alert(plantName);
+		sendDatatoCart(plantName);
 	};
 
 	/**
@@ -150,18 +150,16 @@ function Plants() {
 	);
 }
 
-export default class Shopping extends React.Component {
-	render() {
-		return (
-			<div id="shopping">
-				<h2 className="header">🌱 Liste des plantes</h2>
-				<div id="categories">
-					<Categories />
-				</div>
-				<div className="body">
-					<Plants />
-				</div>
+export default function Shopping({ sendDatatoCart }) {
+	return (
+		<div id="shopping">
+			<h2 className="header">🌱 Liste des plantes</h2>
+			<div id="categories">
+				<Categories />
 			</div>
-		);
-	}
+			<div className="body">
+				<Plants sendDatatoCart={sendDatatoCart} />
+			</div>
+		</div>
+	);
 }
