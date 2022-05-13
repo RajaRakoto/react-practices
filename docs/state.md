@@ -349,3 +349,9 @@ function Child1() {
 - Vous pouvez avoir autant de consommateurs que vous le souhaitez pour un même contexte. Si la valeur de contexte change (en changeant le value prop du provider `<Context.Provider value={value} />`, tous les consommateurs sont immédiatement notifiés et restitués.
 
 - Si le consommateur n'est pas enveloppé dans le fournisseur, mais essaie toujours d'accéder à la valeur de contexte en utilisant `useContext(<context_object_name>)`, alors la valeur du contexte serait l'argument de **valeur par défaut** fourni à la fonction `createContext(defaultValue)`
+
+#### `📌 Mise a jour du contexte`
+
+`L'API React Context` est sans état par défaut et ne fournit pas de méthode dédiée pour mettre à jour la valeur de contexte à partir des composants consommateurs.
+
+Mais cela peut être facilement mis en œuvre en intégrant un mécanisme de gestion d'état comme `useState()` ou `useReducer()` hooks et en fournissant une fonction de mise à jour directement dans le contexte à côté de la valeur elle-même.
