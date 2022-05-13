@@ -1,4 +1,4 @@
-<!-- TODO: working -->
+<!-- TODO: verified -->
 
 ### 🔵 State
 
@@ -354,12 +354,20 @@ function Child1() {
 
 `L'API React Context` est sans état par défaut et ne fournit pas de méthode dédiée pour mettre à jour la valeur de contexte à partir des composants consommateurs.
 
-Mais cela peut être facilement mis en œuvre en intégrant un mécanisme de gestion d'état comme `useState()` ou `useReducer()` hooks et en fournissant une fonction de mise à jour directement dans le contexte à côté de la valeur elle-même.
+Mais cela peut être facilement mis en œuvre en intégrant un mécanisme de gestion d'état comme `useState()` ou `useReducer()` hooks et en fournissant une fonction de mise à jour directement dans le contexte à côté de la valeur elle-même:
+
+- Le consommateur `<UserInput />` lit la valeur de contexte, d'où `setUserName` qui permet de mettre à jour la valeur de contexte.
+
+- `<UserInfo />` est un autre consommateur du contexte. Lors du mise a jour du contexte effectuer par `<UserNameInput />`, ce composant est également mis à jour.
+
+- Grace au Hook `useMemo()`, `<UserApp />` mémorise la valeur de contexte, empêchant le nouveau rendu des consommateurs à chaque fois que `<UserApp />` nouveau rendu.
+
+> **NOTE**: Sans mémorisation, `const value = { userName, setUserName }` créerait différentes instances d'objet lors du nouveau rendu de `<UserApp />`, déclenchant le nouveau rendu dans les consommateurs de contexte.
 
 ```jsx
 // first child component
 function UserInput() {
-	const { setUserName } = React.useContext(UserContext); // UserName setter in context
+	const { setUserName } = React.useContext(UserContext); // UserName setter for context
 
 	const handleChange = inputValue => {
 		setUserName(inputValue);

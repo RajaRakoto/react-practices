@@ -2,7 +2,7 @@ import React from 'react';
 
 // first child component
 function UserInput() {
-	const { setUserName } = React.useContext(UserContext); // UserName setter in context
+	const { setUserName } = React.useContext(UserContext); // UserName setter for context
 
 	const handleChange = inputValue => {
 		setUserName(inputValue);
