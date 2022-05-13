@@ -20,8 +20,7 @@ export default function Jungle() {
 		query: '(max-width: 1199px)',
 	});
 
-	const ReactResponsive = props => {
-		const { active, children } = props;
+	const ReactResponsive = ({ active, children }) => {
 
 		return (
 			<div

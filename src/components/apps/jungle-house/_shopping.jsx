@@ -40,9 +40,9 @@ function Categories() {
 					spacing={3}
 					direction={isSmallScreenForCategories ? 'column' : 'row'}
 				>
-					{categoriesList.map(category => (
+					{categoriesList.map((category, index) => (
 						<Button
-							key={category}
+							key={'cat-' + index}
 							className="categories-item"
 							variant="contained"
 						>
@@ -111,9 +111,9 @@ function Plants() {
 
 	return (
 		<ul className="plant-list">
-			{plantList.map(plant => (
+			{plantList.map((plant, index) => (
 				<li
-					key={plant.id.toString()}
+					key={'plt-' + index}
 					className={
 						animationFlag
 							? 'plant-item plant-item-anim--1'

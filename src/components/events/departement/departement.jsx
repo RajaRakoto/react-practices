@@ -9,22 +9,24 @@ import './departement.min.css';
 /* components */
 import Stacks from './_stacks';
 
-// TODO: handleClick Departement [*]
 /**
- * @feat - useState() | onClick()
+ * @feat - useState() | onClick() | data incrementation
  */
 export default function Departement() {
-	let [state, setState] = React.useState();
+	// def state
+	let [state, setState] = React.useState(null);
 	state = { Pers };
 
-	const handleClick = () => {};
+	const handleClick = pers => {
+		setState(pers.age++);
+	};
 
 	return (
 		<div>
 			<h1>Departement</h1>
 			<ul id="pers-list">
-				{state.Pers.map(pers => (
-					<li key={pers.id.toString()} className="pers-item">
+				{state.Pers.map((pers, index) => (
+					<li key={'pers-' + index} className="pers-item">
 						<div className="header">
 							<p>
 								{' '}
@@ -32,6 +34,11 @@ export default function Departement() {
 							</p>
 						</div>
 						<div className="body">
+							<p>
+								{' '}
+								<strong>id </strong>
+								{pers.id}
+							</p>
 							<p>
 								{' '}
 								<strong>pseudo </strong>
@@ -50,7 +57,7 @@ export default function Departement() {
 						<div className="footer">
 							<button
 								className="button-82-pushable"
-								onClick={() => handleClick(pers.name)} // on n'utilise jamais la parenthese vide si le callback ne contient pas un argument
+								onClick={() => handleClick(pers)}
 							>
 								<span className="button-82-shadow"></span>
 								<span className="button-82-edge"></span>

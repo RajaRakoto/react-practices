@@ -7,8 +7,7 @@ import plantImg from '../../../../assets/images/jungle-logo.png';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 
-export const PlantImage = props => {
-	const { name } = props;
+export const PlantImage = ({ name }) => {
 	return (
 		<img
 			src={plantImg}
@@ -19,9 +18,8 @@ export const PlantImage = props => {
 	);
 };
 
-export const PlantPrice = props => {
+export const PlantPrice = ({ price }) => {
 	const unity = ' Ar';
-	const { price } = props;
 	return (
 		<div className="d-flex flex-row-reverse plant-price">
 			<div className="price-label">
@@ -31,8 +29,7 @@ export const PlantPrice = props => {
 	);
 };
 
-export const PlantName = props => {
-	const { name, favori } = props;
+export const PlantName = ({ name, favori }) => {
 	return (
 		<div className="plant-name">
 			{name} {favori ? <p>⭐</p> : <p style={{ visibility: 'hidden' }}>.</p>}
@@ -40,8 +37,7 @@ export const PlantName = props => {
 	);
 };
 
-export const PlantCategorie = props => {
-	const { category } = props;
+export const PlantCategorie = ({ category }) => {
 	return (
 		<Stack direction="row" spacing={1}>
 			<Chip label={category} size="small" variant="outlined" />
@@ -49,13 +45,11 @@ export const PlantCategorie = props => {
 	);
 };
 
-export const PlantDescription = props => {
-	const { description } = props;
+export const PlantDescription = ({ description }) => {
 	return <p className="plant-description">{description}</p>;
 };
 
-export const PlantBadge = props => {
-	const { solde } = props;
+export const PlantBadge = ({ solde }) => {
 	return (
 		<React.Fragment>
 			{solde ? <div className="solde-badge">solde</div> : null}
@@ -63,8 +57,7 @@ export const PlantBadge = props => {
 	);
 };
 
-export const PlantCondition = props => {
-	const { conditionType, conditionValue } = props;
+export const PlantCondition = ({ conditionType, conditionValue }) => {
 	const range = [1, 2, 3];
 
 	return (

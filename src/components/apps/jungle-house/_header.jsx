@@ -9,8 +9,7 @@ function Recommendation() {
 	const currentDate = new Date().getMonth();
 	const isSpring = currentDate >= 2 && currentDate <= 5;
 
-	const RecomNotif = props => {
-		const { status, message } = props;
+	const RecomNotif = ({status, message}) => {
 		return (
 			<div className={status} role="alert">
 				<strong>Recommendation:</strong> {message}
