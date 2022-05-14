@@ -1,8 +1,4 @@
-/* datas */
-import { plantList } from '../../../data/plantList';
-
-/* utils */
-import { getObjectElementValue } from '../../../utils/object';
+import React from 'react';
 
 // ===============================================
 
@@ -19,15 +15,14 @@ export default function Cart({ cartList }) {
 			<div className="body">
 				<ul>
 					{cartList.map((list, index) => (
-						<li key={'lst-' + index}>{list}</li>
+						<li key={'lst-' + index}>
+							{list.PlantName} {list.PlantPrice} {unity}
+						</li>
 					))}
 				</ul>
 			</div>
 			<h5 className="footer">
 				<span>TOTAL:</span>{' '}
-				{getObjectElementValue(plantList, '1ed', 'price') +
-					getObjectElementValue(plantList, '4kk', 'price') +
-					getObjectElementValue(plantList, '5pl', 'price')}
 			</h5>
 		</div>
 	);
