@@ -7,6 +7,8 @@ import plantImg from '../../../../assets/images/jungle-logo.png';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 
+// ===============================================
+
 export const PlantImage = ({ name }) => {
 	return (
 		<img

@@ -17,12 +17,14 @@ import {
 /* utils */
 import { useMediaQuery } from 'react-responsive';
 import { getObjectElementType } from '../../../utils/object';
+import { animationCleaner } from '../../../utils/anim';
 
 /* mui */
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
-// TODO: sort plant category [**]
+// ===============================================
+
 /**
  * @description - triage des plantes par categorie
  * @feat - map() | mui(Button) | react-responsive(mediaquery) | getObjectElementType()
@@ -55,12 +57,11 @@ function Categories() {
 	);
 }
 
-// TODO: adding to cart [***]
 /**
  * @description - liste des plantes disponibles a vendre
  * @feat - map() [get property with keyword] | toString() | props | SEO (img) | setInterval() | className deleting
  */
-function Plants() {
+function Plants({ sendDatatoCart }) {
 	/**
 	 * @description - information sur chaque plante (alert)
 	 * Autre methode -> https://github.com/OpenClassrooms-Student-Center/7008001-Debutez-avec-React/blob/P2C5-Solution/src/components/CareScale.js
@@ -86,28 +87,12 @@ function Plants() {
 	};
 
 	const handleAddClick = plantName => {
-		alert(plantName);
+		sendDatatoCart(plantName);
 	};
 
-	/**
-	 * @description - state for plant animation status
-	 * Animation scale fix
-	 */
+	// animation cleaner
 	const [animationFlag, setAnimationFlag] = React.useState(true);
-	let seconds = plantList.length - 6; // plus le nombre de plante augmente, plus le nombre de seconde ou la class d'animation existe dans le DOM augmente
-
-	const counterID = setInterval(() => {
-		countdown();
-	}, 1000);
-
-	const countdown = () => {
-		if (seconds !== 0) {
-			seconds--;
-		} else {
-			setAnimationFlag(false); // suppression de la class "plant-item--anim"
-			clearInterval(counterID);
-		}
-	};
+	animationCleaner(setAnimationFlag, plantList.length - 6);
 
 	return (
 		<ul className="plant-list">
@@ -150,18 +135,16 @@ function Plants() {
 	);
 }
 
-export default class Shopping extends React.Component {
-	render() {
-		return (
-			<div id="shopping">
-				<h2 className="header">🌱 Liste des plantes</h2>
-				<div id="categories">
-					<Categories />
-				</div>
-				<div className="body">
-					<Plants />
-				</div>
+export default function Shopping({ sendDatatoCart }) {
+	return (
+		<div id="shopping">
+			<h2 className="header">🌱 Liste des plantes</h2>
+			<div id="categories">
+				<Categories />
 			</div>
-		);
-	}
+			<div className="body">
+				<Plants sendDatatoCart={sendDatatoCart} />
+			</div>
+		</div>
+	);
 }

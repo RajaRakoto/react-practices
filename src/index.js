@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import './index.min.css';
 
 /* components */
-// import Jungle from './components/apps/jungle-house/jungle';
+import Jungle from './components/apps/jungle-house/jungle';
 // import Clock from './components/lifecycle/clock';
 // import Departement from './components/events/departement/departement';
 // import Age from './components/events/age/age';
@@ -22,7 +22,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // TODO: indexed component menu (router) [*]
 root.render(
 	<React.Fragment>
-		{/* <Jungle /> */}
+		<Jungle />
 		{/* <Clock /> */}
 		{/* <Departement /> */}
 		{/* <Age /> */}
