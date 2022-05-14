@@ -17,6 +17,7 @@ import {
 /* utils */
 import { useMediaQuery } from 'react-responsive';
 import { getObjectElementType } from '../../../utils/object';
+import { animationCleaner } from '../../../utils/anim';
 
 /* mui */
 import Stack from '@mui/material/Stack';
@@ -89,25 +90,9 @@ function Plants({ sendDatatoCart }) {
 		sendDatatoCart(plantName);
 	};
 
-	/**
-	 * @description - state for plant animation status
-	 * Animation scale fix
-	 */
+	// animation cleaner
 	const [animationFlag, setAnimationFlag] = React.useState(true);
-	let seconds = plantList.length - 6; // plus le nombre de plante augmente, plus le nombre de seconde ou la class d'animation existe dans le DOM augmente
-
-	const counterID = setInterval(() => {
-		countdown();
-	}, 1000);
-
-	const countdown = () => {
-		if (seconds !== 0) {
-			seconds--;
-		} else {
-			setAnimationFlag(false); // suppression de la class "plant-item--anim"
-			clearInterval(counterID);
-		}
-	};
+	animationCleaner(setAnimationFlag, plantList.length - 6);
 
 	return (
 		<ul className="plant-list">
