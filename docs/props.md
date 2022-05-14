@@ -11,20 +11,7 @@ Un `props` est un/plusieurs parametre(s)/argument(s) qu on va passer sur un comp
 - Il existe deux syntaxes pour assigner une valeur à une prop -> les `guillemet` pour les string, les `accolades` pour tout le reste: nombres, expressions JavaScript, booléen, etc ...
 - Nommer les props du point de vue du composant plutôt que de celui du contexte dans lequel il est utilisé (un nom plus générique).
 
-#### `📌 Utilisation basique d'un props`
-
-```jsx
-function Students(props) {
-	const { name } = props;
-
-	return <p>Mon nom est : {name}</p>;
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Students name="Rakoto" />);
-```
-
-#### `📌 Utilisation de plusieurs props par déstructuration`
+#### `📌 Utilisation de props avec déstructuration`
 
 > **RAPPEL**: La déstructuration est une syntaxe permettant de déclarer une variable en l'affectant directement à la valeur d'un objet (ou tableau).
 
@@ -42,6 +29,23 @@ function Students(props) {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Students name="Rakoto" age={25} email="rakoto@gmail.com" />);
+```
+
+#### `📌 Utilisation de plusieurs props sans déstructuration`
+
+```jsx
+function Students({ name, age, email }) {
+	return (
+		<div>
+			<p>Nom: {name}</p>
+			<p>Age: {age}</p>
+			<p>Email: {email}</p>
+		</div>
+	);
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Students name="Rasoa" age={30} email="rasoa@yahoo.fr" />);
 ```
 
 #### `📌 children`
