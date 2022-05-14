@@ -1,4 +1,4 @@
-<!-- TODO: verified -->
+<!-- TODO: work -->
 
 ### 🔵 State
 
@@ -14,94 +14,6 @@ Le `state` (etat local) nous permet de garder des informations. Ces informations
 
 <br>
 
-### ◾ State pour les composant a base d'un class
-
-#### `📌 Utilisation basique`
-
-Prenons comme exemple un horloge (pour l'instant cette horloge est statique puisque qu'on n'a pas encore implementE un miniteur pour le mettre a jour a chaque seconde) - le fichier `lifecycle.md` montre comment ajouter un miniteur a ce dernier
-
-```jsx
-class Clock extends React.Component {
-	// les composants à base de classe devraient toujours appeler le constructeur de base avec props.
-	constructor(props) {
-		super(props);
-		this.state = { date: new Date() }; // initialisation de state en ajoutant l'objet date
-	}
-
-	render() {
-		return (
-			<div>
-				<h1>Hello, world!</h1>
-				<h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-			</div>
-		);
-	}
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Clock />);
-```
-
-#### `📌 setState()`
-
-`setState()` permet de planifier une mise à jour de l'état local d'un composant a base d'un class.
-
-> **NOTE**: le seul endroit ou vous pouvez affecter directement `this.state`, c'est dans le `constructeur`
-
-Exemple de mise a jour 1:
-
-```jsx
-// erroné
-this.state.comment = 'Bonjour';
-
-// correct
-this.setState({ comment: 'Bonjour' });
-```
-
-Exemple de mise a jour 2:
-
-```jsx
-// erroné
-this.setState({
-	counter: this.state.counter + this.props.increment,
-});
-
-// correct - cette fonction fléchée recevra l’état précédent comme premier argument et les props au moment de la mise à jour comme second argument
-this.setState((state, props) => ({
-	counter: state.counter + props.increment,
-}));
-```
-
-Exemple de mise a jour 3:
-
-```jsx
-constructor(props) {
-    super(props);
-		// un état peut contenir plusieurs variables indépendantes
-    this.state = {
-      posts: [],
-      comments: []
-    };
-
-		// mise a jour independant avec des appels separEes de setState()
-	 componentDidMount() {
-    fetchPosts().then(response => {
-      this.setState({
-        posts: response.posts
-      });
-    });
-
-    fetchComments().then(response => {
-      this.setState({
-        comments: response.comments
-      });
-    });
-  }
-  }
-```
-
-<br>
-
 ### ◾ State pour les composant a base d'une fonction
 
 #### `📌 useState()`
@@ -111,12 +23,12 @@ constructor(props) {
 Syntax de base:
 
 ```jsx
-const [state, setState] = useState(initialState);
+const [state, setState] = useState(initialStateValue);
 ```
 
 - Renvoie une valeur d’état local et une fonction pour la mettre à jour.
 
-- Pendant le rendu initial, l’état local `state` a la même valeur que celle passée en premier argument `initialState` de useState().
+- Pendant le rendu initial, l’état local `state` a la même valeur que celle passée en premier argument `initialStateValue` de useState().
 
 - La fonction `setState` permet de mettre à jour l’état local. Elle accepte une nouvelle valeur d’état local et planifie un nouveau rendu du composant.
 
@@ -140,8 +52,6 @@ const cart = cartState[0];
 const updateCart = cartState[1];
 ```
 
-<!-- TODO: working -->
-
 **Initialisez votre state**
 
 L'argument passer a `useState()` correspond à `l'état initial de notre state`. Cet état initial peut être un nombre comme ici, une string, un booléen, un tableau ou encore un objet avec plusieurs propriétés.
@@ -149,6 +59,66 @@ L'argument passer a `useState()` correspond à `l'état initial de notre state`.
 > **ATTENTION**: Il est important de **préciser une valeur initiale dans votre state**. Sinon, elle sera `undefined` par défaut, et ce n'est pas un comportement souhaitable : plus vous serez explicite, mieux votre application s'en portera !
 
 > **NOTE**: Vous pouvez egalement creer plusieurs variables d'etat (state) pour un component
+
+#### `📌 Utilisation basique`
+
+Prenons comme exemple un horloge (pour l'instant cette horloge est statique puisque qu'on n'a pas encore implementE un miniteur pour le mettre a jour a chaque seconde) - le fichier `lifecycle.md` montre comment ajouter un miniteur a ce dernier
+
+```jsx
+function Clock() {
+	const [stateDate, setStateDate] = React.useState({ date: new Date() }); // def state
+
+	return (
+		<div>
+			<h2>It' s {stateDate.toLocaleTimeString()}</h2>
+		</div>
+	);
+}
+```
+
+#### `📌 setState()`
+
+`setState()` permet de planifier une mise à jour de l'état local d'un composant.
+
+Exemple de mise a jour 1:
+
+```jsx
+// erroné
+state.comment = 'Bonjour';
+
+// correct
+setState({ comment: 'Bonjour' });
+```
+
+Exemple de mise a jour 2:
+
+```jsx
+// erroné
+setState({
+	counter: state.counter + props.increment,
+});
+
+// correct - cette fonction fléchée recevra l’état précédent comme premier argument et les props au moment de la mise à jour comme second argument
+setState((state, props) => ({
+	counter: state.counter + props.increment,
+}));
+```
+
+#### `📌 previous state pour les arrays ou objects`
+
+Toutes les operations effectuEs ci-dessous avec `setState()` ne permet pas de concatener l'ancienne valeur d'un state avec la nouvelle valeur. Voici une autre maniere plus propre de stocker/concatener vos states
+
+Exemple avec un state de type array:
+
+```jsx
+// def state
+const [cartList, setCartList] = React.useState([]); // empty array
+
+// callback func
+const sendDatatoCart = cartData => {
+	setCartList(previousState => [...previousState, cartData]); // destructuration de l'ancienne valeur du state et ajout de la nouvelle state
+};
+```
 
 <br>
 

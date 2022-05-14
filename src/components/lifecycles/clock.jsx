@@ -1,5 +1,9 @@
 import React from 'react';
 
+// ===============================================
+
+// TODO: useEffect exemple (class to func component) [**]
+
 /**
  * @feat - state | setState() | date | setInterval() | clearInterval() | toLocaleTimeString() | component life cycle
  */

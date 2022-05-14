@@ -10,18 +10,18 @@ import Footer from './_footer';
 import Shopping from './_shopping';
 import Cart from './_cart';
 
+// ===============================================
+
 /**
  * @description - le composant mere pour jungle house app
- * @feat - react-responsive(mediaquery) | bt5 (grid) | className injection | props (children)
+ * @feat - react-responsive(mediaquery) | bt5 (grid) | className injection | props | previousState
  */
 export default function Jungle() {
-	// func component only
 	const isSmallScreenForCart = useMediaQuery({
 		query: '(max-width: 1199px)',
 	});
 
 	const ReactResponsive = ({ active, children }) => {
-
 		return (
 			<div
 				className={`${
@@ -33,14 +33,32 @@ export default function Jungle() {
 		);
 	};
 
+	const [cartList, setCartList] = React.useState([]); // array
+
+	/**
+	 * @description - une fonction callback qui permet de recuperer les donnees des plantes (nom et prix) et mettre a jour le state global partagE avec Cart component
+	 */
+	const sendDatatoCart = (PlantName, PlantPrice) => {
+		// temporary cartList object
+		let updatedCartList = {
+			PlantName: PlantName,
+			PlantPrice: PlantPrice,
+		};
+
+		setCartList(previousState => [...previousState, updatedCartList]);
+	};
+
 	return (
 		<React.Fragment>
 			<Header />
 			<main className="container-fluid">
 				<div className="row">
-					<ReactResponsive active={isSmallScreenForCart} children={<Cart />} />
+					<ReactResponsive
+						active={isSmallScreenForCart}
+						children={<Cart cartList={cartList} />}
+					/>
 					<div className="col-xl-9">
-						<Shopping />
+						<Shopping sendDatatoCart={sendDatatoCart} />
 					</div>
 				</div>
 			</main>
