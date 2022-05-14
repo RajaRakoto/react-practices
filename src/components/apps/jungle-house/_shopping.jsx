@@ -86,8 +86,9 @@ function Plants({ sendDatatoCart }) {
 		);
 	};
 
-	const handleAddClick = plantName => {
-		sendDatatoCart(plantName);
+	// cart adding
+	const handleAddClick = (plantName, plantPrice) => {
+		sendDatatoCart(plantName, plantPrice);
 	};
 
 	// animation cleaner
@@ -127,7 +128,9 @@ function Plants({ sendDatatoCart }) {
 					<PlantDescription description={plant.description} />
 					<PlantBadge solde={plant.isSpecialOffer} />
 					<div>
-						<button onClick={() => handleAddClick(plant.name)}>Ajouter</button>
+						<button onClick={() => handleAddClick(plant.name, plant.price)}>
+							Ajouter
+						</button>
 					</div>
 				</li>
 			))}

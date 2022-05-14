@@ -33,12 +33,19 @@ export default function Jungle() {
 		);
 	};
 
-	// state
 	const [cartList, setCartList] = React.useState([]); // array
 
-	// callback func
-	const sendDatatoCart = cartData => {
-		setCartList(previousState => [...previousState, cartData]);
+	/**
+	 * @description - une fonction callback qui permet de recuperer les donnees des plantes (nom et prix) et mettre a jour le state global partagE avec Cart component
+	 */
+	const sendDatatoCart = (PlantName, PlantPrice) => {
+		// temporary cartList object
+		let updatedCartList = {
+			PlantName: PlantName,
+			PlantPrice: PlantPrice,
+		};
+
+		setCartList(previousState => [...previousState, updatedCartList]);
 	};
 
 	return (
