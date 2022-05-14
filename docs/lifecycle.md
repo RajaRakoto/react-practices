@@ -1,4 +1,4 @@
-<!-- TODO: verified -->
+<!-- TODO: useEffect() example -->
 
 ### 🔵 Life cycle
 
