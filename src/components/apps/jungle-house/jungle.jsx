@@ -14,7 +14,7 @@ import Cart from './_cart';
 
 /**
  * @description - le composant mere pour jungle house app
- * @feat - react-responsive(mediaquery) | bt5 (grid) | className injection | props (children)
+ * @feat - react-responsive(mediaquery) | bt5 (grid) | className injection | props | previousState
  */
 export default function Jungle() {
 	const isSmallScreenForCart = useMediaQuery({
@@ -38,9 +38,7 @@ export default function Jungle() {
 
 	// callback func
 	const sendDatatoCart = cartData => {
-		cartList.push(cartData);
-		setCartList(cartList);
-		console.log('cartList(state): ' + cartList);
+		setCartList(previousState => [...previousState, cartData]);
 	};
 
 	return (
