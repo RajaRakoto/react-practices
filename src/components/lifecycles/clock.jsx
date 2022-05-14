@@ -2,6 +2,8 @@ import React from 'react';
 
 // ===============================================
 
+// TODO: useEffect exemple [**]
+
 /**
  * @feat - state | setState() | date | setInterval() | clearInterval() | toLocaleTimeString() | component life cycle
  */
