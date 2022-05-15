@@ -73,6 +73,11 @@ main {
 			text-align: center;
 			padding-right: 20px;
 
+			li {
+				background-color: rgba(192, 192, 192, 0.342);
+				border-radius: 1rem;
+			}
+
 			.empty-btn {
 				margin-left: 1.3rem;
 				margin-top: 1rem;
@@ -93,6 +98,7 @@ main {
 			padding-top: 0.9rem;
 			border-top: rgba(85, 85, 85, 0.507) solid 3px;
 			text-align: center;
+
 			span {
 				color: $green-sea;
 			}
