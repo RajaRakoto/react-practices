@@ -87,16 +87,6 @@ function Plants() {
 		);
 	};
 
-	// TODO: to del
-	// // cart adding
-	// const handleAddClick = (plantName, plantPrice) => {
-	// 	sendDatatoCart(plantName, plantPrice);
-	// };
-
-	// const handleAddClick = () => {
-	// 	console.log('clicked !');
-	// };
-
 	// animation cleaner
 	const [animationFlag, setAnimationFlag] = React.useState(true);
 	animationCleaner(setAnimationFlag, plantsProducts.length - 6);
@@ -106,44 +96,6 @@ function Plants() {
 
 	return (
 		<React.Fragment>
-			{/* <ul className="plant-list">
-				{plantsProducts.map((plant, index) => (
-					<li
-						key={'plt-' + index}
-						className={
-							animationFlag
-								? 'plant-item plant-item-anim--1'
-								: 'plant-item plant-item-anim--2'
-						}
-					>
-						<PlantImage name={plant.name} />
-						<PlantPrice price={plant.price} />
-						<PlantName name={plant.name} favori={plant.isBestSale} />
-						<div
-							className="plant-condition"
-							onClick={() =>
-								handleConditionClick(plant.waterValue, plant.lightValue)
-							}
-						>
-							<PlantCondition
-								conditionType="water"
-								conditionValue={plant.waterValue}
-							/>
-							<PlantCondition
-								conditionType="light"
-								conditionValue={plant.lightValue}
-							/>
-						</div>
-						<PlantCategorie category={plant.category} />
-						<PlantDescription description={plant.description} />
-						<PlantBadge solde={plant.isSpecialOffer} />
-
-						<button className="button-55" onClick={() => handleAddClick()}>
-							Ajouter
-						</button>
-					</li>
-				))}
-			</ul> */}
 			<ul className="plant-list">
 				{plantsProducts.map(plant => {
 					const alreadyAdded = inCart(plant.id);
@@ -180,7 +132,7 @@ function Plants() {
 							<PlantBadge solde={plant.isSpecialOffer} />
 
 							<button className="button-55" onClick={() => addItem(plant)}>
-								{alreadyAdded ? 'Ajouter encore' : 'Ajouter'}
+								{alreadyAdded ? 'Ajouter à nouveau' : 'Ajouter'}
 							</button>
 						</li>
 					);

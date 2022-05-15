@@ -2,7 +2,7 @@ import React from 'react';
 
 /* utils */
 import { useMediaQuery } from 'react-responsive';
-import { CartProvider, useCart } from 'react-use-cart';
+import { CartProvider } from 'react-use-cart';
 
 /* styles */
 import './jungle.min.css';
@@ -35,22 +35,6 @@ export default function Jungle() {
 			</div>
 		);
 	};
-
-	// TODO: to del
-	// const [cartList, setCartList] = React.useState([]); // array
-
-	// /**
-	//  * @description - une fonction callback qui permet de recuperer les donnees des plantes (nom et prix) et mettre a jour le state global partagE avec Cart component
-	//  */
-	// const sendDatatoCart = (PlantName, PlantPrice) => {
-	// 	// temporary cartList object
-	// 	let updatedCartList = {
-	// 		PlantName: PlantName,
-	// 		PlantPrice: PlantPrice,
-	// 	};
-
-	// 	setCartList(previousState => [...previousState, updatedCartList]);
-	// };
 
 	return (
 		<React.Fragment>
