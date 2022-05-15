@@ -1,18 +1,15 @@
 import React from 'react';
 
 /* utils */
-import { CartProvider, useCart } from 'react-use-cart';
+import { useCart } from 'react-use-cart';
 
 // ===============================================
 
-// TODO: calcul sum of price [***]
 /**
  * @description - liste des achats (panier)
  * @feat - getObjectElementValue()
  */
 export default function Cart() {
-	const unity = ' Ar';
-
 	const {
 		isEmpty,
 		cartTotal,
@@ -23,36 +20,107 @@ export default function Cart() {
 		emptyCart,
 	} = useCart();
 
-	if (isEmpty) return <p>Your cart is empty</p>;
+	const unity = ' Ar';
 
-	return (
-		<div id="cart">
-			<h1>
-				Cart ({totalUniqueItems} - {cartTotal})
-			</h1>
+	// sub components
+	const TotalPrice = () => {
+		return (
+			<span>
+				TOTAL: {cartTotal} {unity}
+			</span>
+		);
+	};
 
-			{!isEmpty && <button onClick={emptyCart}>Empty cart</button>}
+	const ValidBtn = ({ isEmpty }) => {
+		const handleBuyClick = () => {
+			if (isEmpty) {
+				alert(
+					"⛔ Veuillez ajouter quelque chose dans votre panier avant d'effectuer un achat !",
+				);
+			} else {
+				alert('✅ Jungle house vous remercie pour votre achat ! A bientot ...');
+			}
+		};
 
-			<ul>
-				{items.map(item => (
-					<li key={item.id}>
-						{item.quantity} x {item.name}
-						<button
-							onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
-						>
-							-
-						</button>
-						<button
-							onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
-						>
-							+
-						</button>
-						<button onClick={() => removeItem(item.id)}>Remove &times;</button>
-					</li>
-				))}
-			</ul>
-		</div>
-	);
+		return (
+			<button className="button-33" onClick={handleBuyClick}>
+				ACHETER
+			</button>
+		);
+	};
+
+	const CartEmpty = ({ isEmpty }) => {
+		return (
+			<React.Fragment>
+				<h2 className="header">🛒 Panier</h2>
+				<div className="body">
+					<p style={{ paddingLeft: 20 }}>Votre panier est vide</p>
+				</div>
+				<h5 className="footer">
+					<TotalPrice />
+					<br />
+					<ValidBtn isEmpty={isEmpty} />
+				</h5>
+			</React.Fragment>
+		);
+	};
+
+	const CartCore = () => {
+		return (
+			<React.Fragment>
+				<h2 className="header">
+					🛒 Panier <span>{totalUniqueItems}</span>
+				</h2>
+				<div className="body">
+					<ul>
+						{items.map(item => (
+							<li key={item.id}>
+								<span>x {item.quantity} </span>
+								{'🌱' + item.name}
+								<button
+									onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
+								>
+									-
+								</button>
+								<button
+									onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
+								>
+									+
+								</button>
+								<button onClick={() => removeItem(item.id)}>
+									Remove &times;
+								</button>
+							</li>
+						))}
+					</ul>
+					{!isEmpty && (
+						<div className="empty-btn">
+							<button onClick={emptyCart}>Vider votre panier</button>
+						</div>
+					)}
+				</div>
+				<h5 className="footer">
+					<TotalPrice />
+					<br />
+					<ValidBtn isEmpty={isEmpty} />
+				</h5>
+			</React.Fragment>
+		);
+	};
+
+	if (isEmpty) {
+		return (
+			<div id="cart" className="cart--anim">
+				<CartEmpty isEmpty={isEmpty} />
+			</div>
+		);
+	} else {
+		return (
+			<div id="cart" className="cart--anim">
+				<CartCore />
+			</div>
+		);
+	}
 
 	// return (
 	// 	<div id="cart">
