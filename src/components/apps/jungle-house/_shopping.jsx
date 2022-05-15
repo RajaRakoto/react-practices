@@ -130,7 +130,6 @@ function Plants({ sendDatatoCart }) {
 
 					<button
 						class="button-55"
-						role="button"
 						onClick={() => handleAddClick(plant.name, plant.price)}
 					>
 						Ajouter
