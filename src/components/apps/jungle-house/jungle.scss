@@ -6,6 +6,7 @@
 @import './sass/colors';
 @import './sass/mixin';
 @import './sass/layout';
+@import './sass/buttons';
 
 header {
 	#banner {
@@ -56,14 +57,48 @@ main {
 
 		.header {
 			text-align: center;
+			padding-bottom: 0.9rem;
+			border-bottom: rgba(85, 85, 85, 0.507) solid 3px;
+
+			span {
+				background-color: rgba(150, 146, 146, 0.651);
+				color: #eee;
+				border-radius: 100px;
+				padding: 3px 10px 3px 10px;
+				font-size: 22px;
+			}
 		}
 
 		.body {
 			text-align: center;
+			padding-right: 20px;
+
+			li {
+				background-color: rgba(192, 192, 192, 0.342);
+				border-radius: 1rem;
+			}
+
+			.empty-btn {
+				margin-left: 1.3rem;
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+			}
+
+			span {
+				background-color: #bcf8d2;
+				padding: 7px 5px 7px 5px;
+				margin: 3px;
+				border-radius: 100%;
+				font-size: 13px;
+				font-weight: bold;
+			}
 		}
 
 		.footer {
+			padding-top: 0.9rem;
+			border-top: rgba(85, 85, 85, 0.507) solid 3px;
 			text-align: center;
+
 			span {
 				color: $green-sea;
 			}

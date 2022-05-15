@@ -1,4 +1,4 @@
-export const plantList = [
+export const plantsProducts = [
 	{
 		id: '1ed',
 		name: 'monstera',

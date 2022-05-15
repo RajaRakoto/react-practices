@@ -111,12 +111,26 @@ Toutes les operations effectuEs ci-dessous avec `setState()` ne permet pas de co
 Exemple avec un state de type array:
 
 ```jsx
-// def state
 const [cartList, setCartList] = React.useState([]); // empty array
 
-// callback func
 const sendDatatoCart = cartData => {
-	setCartList(previousState => [...previousState, cartData]); // destructuration de l'ancienne valeur du state et ajout de la nouvelle state
+	setCartList(previousState => [...previousState, cartData]);
+};
+```
+
+Exemple avec un state de type object:
+
+```jsx
+const [cartList, setCartList] = React.useState([]); // object container
+
+const sendDatatoCart = (PlantName, PlantPrice) => {
+	// temporary cartList object
+	let updatedCartList = {
+		PlantName: PlantName,
+		PlantPrice: PlantPrice,
+	};
+
+	setCartList(previousState => [...previousState, updatedCartList]);
 };
 ```
 
