@@ -1,17 +1,19 @@
-/* datas */
-import { plantList } from '../../../data/plantList';
-
-/* utils */
-import { getObjectElementValue } from '../../../utils/object';
+import React from 'react';
 
 // ===============================================
 
+// TODO: calcul sum of price [***]
 /**
  * @description - liste des achats (panier)
  * @feat - getObjectElementValue()
  */
 export default function Cart({ cartList }) {
 	const unity = ' Ar';
+	const totalPrice = React.useRef(0);
+
+	React.useEffect(() => {
+		totalPrice.current = totalPrice.current + 1;
+	});
 
 	return (
 		<div id="cart">
@@ -19,15 +21,20 @@ export default function Cart({ cartList }) {
 			<div className="body">
 				<ul>
 					{cartList.map((list, index) => (
-						<li key={'lst-' + index}>{list}</li>
+						<li key={'lst-' + index}>
+							🌱 <strong>{list.PlantName}</strong> {list.PlantPrice} {unity}
+						</li>
 					))}
 				</ul>
 			</div>
 			<h5 className="footer">
-				<span>TOTAL:</span>{' '}
-				{getObjectElementValue(plantList, '1ed', 'price') +
-					getObjectElementValue(plantList, '4kk', 'price') +
-					getObjectElementValue(plantList, '5pl', 'price')}
+				<span>
+					TOTAL: {totalPrice.current} {unity}
+				</span>{' '}
+				<br />
+				<button class="button-33">
+					ACHETER
+				</button>
 			</h5>
 		</div>
 	);
