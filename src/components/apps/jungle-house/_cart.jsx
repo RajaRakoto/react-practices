@@ -1,5 +1,10 @@
 import React from 'react';
 
+/* datas */
+import deleteIco from '../../../assets/icons/delete-ico.svg';
+import cartIco from '../../../assets/icons/cart-ico.svg';
+import cleanIco from '../../../assets/icons/clean-ico.svg';
+
 /* utils */
 import { useCart } from 'react-use-cart';
 
@@ -52,7 +57,10 @@ export default function Cart() {
 	const CartEmpty = ({ isEmpty }) => {
 		return (
 			<React.Fragment>
-				<h2 className="header">🛒 Panier</h2>
+				<h2 className="header">
+					{' '}
+					<img src={cartIco} alt="jungle cart" width={70} /> Panier{' '}
+				</h2>
 				<div className="body">
 					<p style={{ paddingLeft: 20 }}>Votre panier est vide</p>
 				</div>
@@ -66,36 +74,68 @@ export default function Cart() {
 	};
 
 	const CartCore = () => {
+		// cart items delete validation
+		const handleDeleteClick = () => {
+			if (
+				window.confirm(
+					'Vous etes sur de vouloir supprimer le contenu de votre panier ?',
+				)
+			) {
+				emptyCart();
+			}
+		};
+
 		return (
 			<React.Fragment>
 				<h2 className="header">
-					🛒 Panier <span>{totalUniqueItems}</span>
+					<img src={cartIco} alt="jungle cart" width={70} /> Panier{' '}
+					<span>{totalUniqueItems}</span>
 				</h2>
 				<div className="body">
 					<ul>
 						{items.map(item => (
 							<li key={item.id}>
-								<span>x {item.quantity} </span>
-								{'🌱' + item.name}
-								<button
-									onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
-								>
-									-
-								</button>
-								<button
-									onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
-								>
-									+
-								</button>
-								<button onClick={() => removeItem(item.id)}>
-									Remove &times;
-								</button>
+								<div className="grid1">
+									<span>x {item.quantity} </span>
+								</div>
+								<div className="grid2">{'🌱' + item.name}</div>
+								<div className="grid3">
+									<button
+										className="button-6"
+										onClick={() =>
+											updateItemQuantity(item.id, item.quantity - 1)
+										}
+									>
+										-
+									</button>
+									<button
+										className="button-6"
+										onClick={() =>
+											updateItemQuantity(item.id, item.quantity + 1)
+										}
+									>
+										+
+									</button>
+									<button
+										className="button-6"
+										style={{
+											backgroundColor: 'rgb(240, 154, 123)',
+											color: '#eee',
+										}}
+										onClick={() => removeItem(item.id)}
+									>
+										<img src={deleteIco} alt="delete card item" width={19} />
+									</button>
+								</div>
 							</li>
 						))}
 					</ul>
 					{!isEmpty && (
 						<div className="empty-btn">
-							<button onClick={emptyCart}>Vider votre panier</button>
+							<button className="button-32" onClick={handleDeleteClick}>
+								<img src={cleanIco} alt="clean items" width={30} /> Vider votre
+								panier
+							</button>
 						</div>
 					)}
 				</div>
@@ -110,39 +150,15 @@ export default function Cart() {
 
 	if (isEmpty) {
 		return (
-			<div id="cart" className="cart--anim">
+			<div id="cart">
 				<CartEmpty isEmpty={isEmpty} />
 			</div>
 		);
 	} else {
 		return (
-			<div id="cart" className="cart--anim">
+			<div id="cart">
 				<CartCore />
 			</div>
 		);
 	}
-
-	// return (
-	// 	<div id="cart">
-	// 		{/* <h2 className="header">🛒 Panier</h2>
-	// 		<div className="body">
-	// 			<ul>
-	// 				{cartList.map((list, index) => (
-	// 					<li key={'lst-' + index}>
-	// 						🌱 <strong>{list.PlantName}</strong> {list.PlantPrice} {unity}
-	// 					</li>
-	// 				))}
-	// 			</ul>
-	// 		</div>
-	// 		<h5 className="footer">
-	// 			<span>
-	// 				TOTAL: {totalPrice.current} {unity}
-	// 			</span>{' '}
-	// 			<br />
-	// 			<button className="button-33">
-	// 				ACHETER
-	// 			</button>
-	// 		</h5> */}
-	// 	</div>
-	// );
 }
