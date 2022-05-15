@@ -1,7 +1,7 @@
 import React from 'react';
 
 /* datas */
-import { plantList } from '../../../data/plantList';
+import { plantsProducts } from '../../../data/plants';
 
 /* deps */
 import {
@@ -30,7 +30,7 @@ import Button from '@mui/material/Button';
  * @feat - map() | mui(Button) | react-responsive(mediaquery) | getObjectElementType()
  */
 function Categories() {
-	const categoriesList = getObjectElementType(plantList, 'category');
+	const categoriesList = getObjectElementType(plantsProducts, 'category');
 	const isSmallScreenForCategories = useMediaQuery({
 		query: '(max-width: 537px)',
 	});
@@ -61,7 +61,7 @@ function Categories() {
  * @description - liste des plantes disponibles a vendre
  * @feat - map() [get property with keyword] | toString() | props | SEO (img) | setInterval() | className deleting
  */
-function Plants({ sendDatatoCart }) {
+function Plants() {
 	/**
 	 * @description - information sur chaque plante (alert)
 	 * Autre methode -> https://github.com/OpenClassrooms-Student-Center/7008001-Debutez-avec-React/blob/P2C5-Solution/src/components/CareScale.js
@@ -86,18 +86,23 @@ function Plants({ sendDatatoCart }) {
 		);
 	};
 
-	// cart adding
-	const handleAddClick = (plantName, plantPrice) => {
-		sendDatatoCart(plantName, plantPrice);
+	// TODO: to del
+	// // cart adding
+	// const handleAddClick = (plantName, plantPrice) => {
+	// 	sendDatatoCart(plantName, plantPrice);
+	// };
+
+	const handleAddClick = () => {
+		console.log('clicked !');
 	};
 
 	// animation cleaner
 	const [animationFlag, setAnimationFlag] = React.useState(true);
-	animationCleaner(setAnimationFlag, plantList.length - 6);
+	animationCleaner(setAnimationFlag, plantsProducts.length - 6);
 
 	return (
 		<ul className="plant-list">
-			{plantList.map((plant, index) => (
+			{plantsProducts.map((plant, index) => (
 				<li
 					key={'plt-' + index}
 					className={
@@ -128,10 +133,7 @@ function Plants({ sendDatatoCart }) {
 					<PlantDescription description={plant.description} />
 					<PlantBadge solde={plant.isSpecialOffer} />
 
-					<button
-						class="button-55"
-						onClick={() => handleAddClick(plant.name, plant.price)}
-					>
+					<button className="button-55" onClick={() => handleAddClick()}>
 						Ajouter
 					</button>
 				</li>
@@ -148,7 +150,7 @@ export default function Shopping({ sendDatatoCart }) {
 				<Categories />
 			</div>
 			<div className="body">
-				<Plants sendDatatoCart={sendDatatoCart} />
+				<Plants />
 			</div>
 		</div>
 	);

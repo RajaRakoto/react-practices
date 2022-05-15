@@ -1,5 +1,8 @@
 import React from 'react';
+
+/* utils */
 import { useMediaQuery } from 'react-responsive';
+import { CartProvider, useCart } from 'react-use-cart';
 
 /* styles */
 import './jungle.min.css';
@@ -33,32 +36,30 @@ export default function Jungle() {
 		);
 	};
 
-	const [cartList, setCartList] = React.useState([]); // array
+	// TODO: to del
+	// const [cartList, setCartList] = React.useState([]); // array
 
-	/**
-	 * @description - une fonction callback qui permet de recuperer les donnees des plantes (nom et prix) et mettre a jour le state global partagE avec Cart component
-	 */
-	const sendDatatoCart = (PlantName, PlantPrice) => {
-		// temporary cartList object
-		let updatedCartList = {
-			PlantName: PlantName,
-			PlantPrice: PlantPrice,
-		};
+	// /**
+	//  * @description - une fonction callback qui permet de recuperer les donnees des plantes (nom et prix) et mettre a jour le state global partagE avec Cart component
+	//  */
+	// const sendDatatoCart = (PlantName, PlantPrice) => {
+	// 	// temporary cartList object
+	// 	let updatedCartList = {
+	// 		PlantName: PlantName,
+	// 		PlantPrice: PlantPrice,
+	// 	};
 
-		setCartList(previousState => [...previousState, updatedCartList]);
-	};
+	// 	setCartList(previousState => [...previousState, updatedCartList]);
+	// };
 
 	return (
 		<React.Fragment>
 			<Header />
 			<main className="container-fluid">
 				<div className="row">
-					<ReactResponsive
-						active={isSmallScreenForCart}
-						children={<Cart cartList={cartList} />}
-					/>
+					<ReactResponsive active={isSmallScreenForCart} children={<Cart />} />
 					<div className="col-xl-9">
-						<Shopping sendDatatoCart={sendDatatoCart} />
+						<Shopping />
 					</div>
 				</div>
 			</main>

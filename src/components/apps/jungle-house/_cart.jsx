@@ -7,7 +7,7 @@ import React from 'react';
  * @description - liste des achats (panier)
  * @feat - getObjectElementValue()
  */
-export default function Cart({ cartList }) {
+export default function Cart() {
 	const unity = ' Ar';
 	const totalPrice = React.useRef(0);
 
@@ -17,7 +17,7 @@ export default function Cart({ cartList }) {
 
 	return (
 		<div id="cart">
-			<h2 className="header">🛒 Panier</h2>
+			{/* <h2 className="header">🛒 Panier</h2>
 			<div className="body">
 				<ul>
 					{cartList.map((list, index) => (
@@ -32,10 +32,10 @@ export default function Cart({ cartList }) {
 					TOTAL: {totalPrice.current} {unity}
 				</span>{' '}
 				<br />
-				<button class="button-33">
+				<button className="button-33">
 					ACHETER
 				</button>
-			</h5>
+			</h5> */}
 		</div>
 	);
 }
