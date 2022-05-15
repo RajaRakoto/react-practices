@@ -2,12 +2,18 @@ import React from 'react';
 
 // ===============================================
 
+// TODO: calcul sum of price [***]
 /**
  * @description - liste des achats (panier)
  * @feat - getObjectElementValue()
  */
 export default function Cart({ cartList }) {
 	const unity = ' Ar';
+	const totalPrice = React.useRef(0);
+
+	React.useEffect(() => {
+		totalPrice.current = totalPrice.current + 1;
+	});
 
 	return (
 		<div id="cart">
@@ -16,13 +22,19 @@ export default function Cart({ cartList }) {
 				<ul>
 					{cartList.map((list, index) => (
 						<li key={'lst-' + index}>
-							{list.PlantName} {list.PlantPrice} {unity}
+							🌱 <strong>{list.PlantName}</strong> {list.PlantPrice} {unity}
 						</li>
 					))}
 				</ul>
 			</div>
 			<h5 className="footer">
-				<span>TOTAL:</span>{' '}
+				<span>
+					TOTAL: {totalPrice.current} {unity}
+				</span>{' '}
+				<br />
+				<button class="button-33">
+					ACHETER
+				</button>
 			</h5>
 		</div>
 	);
