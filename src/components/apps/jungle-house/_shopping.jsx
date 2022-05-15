@@ -18,6 +18,7 @@ import {
 import { useMediaQuery } from 'react-responsive';
 import { getObjectElementType } from '../../../utils/object';
 import { animationCleaner } from '../../../utils/anim';
+import { useCart } from 'react-use-cart';
 
 /* mui */
 import Stack from '@mui/material/Stack';
@@ -92,53 +93,100 @@ function Plants() {
 	// 	sendDatatoCart(plantName, plantPrice);
 	// };
 
-	const handleAddClick = () => {
-		console.log('clicked !');
-	};
+	// const handleAddClick = () => {
+	// 	console.log('clicked !');
+	// };
 
 	// animation cleaner
 	const [animationFlag, setAnimationFlag] = React.useState(true);
 	animationCleaner(setAnimationFlag, plantsProducts.length - 6);
 
+	// useCart hook
+	const { addItem, inCart } = useCart();
+
 	return (
-		<ul className="plant-list">
-			{plantsProducts.map((plant, index) => (
-				<li
-					key={'plt-' + index}
-					className={
-						animationFlag
-							? 'plant-item plant-item-anim--1'
-							: 'plant-item plant-item-anim--2'
-					}
-				>
-					<PlantImage name={plant.name} />
-					<PlantPrice price={plant.price} />
-					<PlantName name={plant.name} favori={plant.isBestSale} />
-					<div
-						className="plant-condition"
-						onClick={() =>
-							handleConditionClick(plant.waterValue, plant.lightValue)
+		<React.Fragment>
+			{/* <ul className="plant-list">
+				{plantsProducts.map((plant, index) => (
+					<li
+						key={'plt-' + index}
+						className={
+							animationFlag
+								? 'plant-item plant-item-anim--1'
+								: 'plant-item plant-item-anim--2'
 						}
 					>
-						<PlantCondition
-							conditionType="water"
-							conditionValue={plant.waterValue}
-						/>
-						<PlantCondition
-							conditionType="light"
-							conditionValue={plant.lightValue}
-						/>
-					</div>
-					<PlantCategorie category={plant.category} />
-					<PlantDescription description={plant.description} />
-					<PlantBadge solde={plant.isSpecialOffer} />
+						<PlantImage name={plant.name} />
+						<PlantPrice price={plant.price} />
+						<PlantName name={plant.name} favori={plant.isBestSale} />
+						<div
+							className="plant-condition"
+							onClick={() =>
+								handleConditionClick(plant.waterValue, plant.lightValue)
+							}
+						>
+							<PlantCondition
+								conditionType="water"
+								conditionValue={plant.waterValue}
+							/>
+							<PlantCondition
+								conditionType="light"
+								conditionValue={plant.lightValue}
+							/>
+						</div>
+						<PlantCategorie category={plant.category} />
+						<PlantDescription description={plant.description} />
+						<PlantBadge solde={plant.isSpecialOffer} />
 
-					<button className="button-55" onClick={() => handleAddClick()}>
-						Ajouter
-					</button>
-				</li>
-			))}
-		</ul>
+						<button className="button-55" onClick={() => handleAddClick()}>
+							Ajouter
+						</button>
+					</li>
+				))}
+			</ul> */}
+			<ul className="plant-list">
+				{plantsProducts.map(plant => {
+					const alreadyAdded = inCart(plant.id);
+
+					return (
+						<li
+							key={'plt-' + plant.id}
+							className={
+								animationFlag
+									? 'plant-item plant-item-anim--1'
+									: 'plant-item plant-item-anim--2'
+							}
+						>
+							<PlantImage name={plant.name} />
+							<PlantPrice price={plant.price} />
+							<PlantName name={plant.name} favori={plant.isBestSale} />
+							<div
+								className="plant-condition"
+								onClick={() =>
+									handleConditionClick(plant.waterValue, plant.lightValue)
+								}
+							>
+								<PlantCondition
+									conditionType="water"
+									conditionValue={plant.waterValue}
+								/>
+								<PlantCondition
+									conditionType="light"
+									conditionValue={plant.lightValue}
+								/>
+							</div>
+							<PlantCategorie category={plant.category} />
+							<PlantDescription description={plant.description} />
+							<PlantBadge solde={plant.isSpecialOffer} />
+
+							<button className="button-55" onClick={() => addItem(plant)}>
+								{alreadyAdded ? 'Ajouter encore' : 'Ajouter'}
+							</button>
+						</li>
+					);
+				})}
+			</ul>
+		</React.Fragment>
 	);
 }
 

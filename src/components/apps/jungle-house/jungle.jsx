@@ -55,14 +55,19 @@ export default function Jungle() {
 	return (
 		<React.Fragment>
 			<Header />
-			<main className="container-fluid">
-				<div className="row">
-					<ReactResponsive active={isSmallScreenForCart} children={<Cart />} />
-					<div className="col-xl-9">
-						<Shopping />
+			<CartProvider>
+				<main className="container-fluid">
+					<div className="row">
+						<ReactResponsive
+							active={isSmallScreenForCart}
+							children={<Cart />}
+						/>
+						<div className="col-xl-9">
+							<Shopping />
+						</div>
 					</div>
-				</div>
-			</main>
+				</main>
+			</CartProvider>
 			<Footer />
 		</React.Fragment>
 	);
