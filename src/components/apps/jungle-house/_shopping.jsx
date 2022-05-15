@@ -127,11 +127,14 @@ function Plants({ sendDatatoCart }) {
 					<PlantCategorie category={plant.category} />
 					<PlantDescription description={plant.description} />
 					<PlantBadge solde={plant.isSpecialOffer} />
-					<div>
-						<button onClick={() => handleAddClick(plant.name, plant.price)}>
-							Ajouter
-						</button>
-					</div>
+
+					<button
+						class="button-55"
+						role="button"
+						onClick={() => handleAddClick(plant.name, plant.price)}
+					>
+						Ajouter
+					</button>
 				</li>
 			))}
 		</ul>
