@@ -28,7 +28,7 @@ export default function Jungle() {
 		return (
 			<div
 				className={`${
-					active ? 'col-xl-3 d-flex justify-content-center' : 'col-xl-3'
+					active ? 'col-xl-4 d-flex justify-content-center' : 'col-xl-4'
 				}`}
 			>
 				{children}
@@ -46,7 +46,7 @@ export default function Jungle() {
 							active={isSmallScreenForCart}
 							children={<Cart />}
 						/>
-						<div className="col-xl-9">
+						<div className="col-xl-8">
 							<Shopping />
 						</div>
 					</div>
