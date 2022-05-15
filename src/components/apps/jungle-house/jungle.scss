@@ -6,7 +6,7 @@
 @import './sass/colors';
 @import './sass/mixin';
 @import './sass/layout';
-@import '../../imports/button55';
+@import './sass/buttons';
 
 header {
 	#banner {
@@ -61,6 +61,7 @@ main {
 
 		.body {
 			text-align: center;
+			padding-right: 20px;
 		}
 
 		.footer {
