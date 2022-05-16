@@ -17,16 +17,16 @@ import './index.min.css';
 // import Forms from './components/events/form/forms';
 
 /* lifecycles */
-// import Clock from './components/lifecycle/clock';
+// import ClockLifecycle from './components/lifecycle/clockLifecycle';
 
 /* refs */
-// import Ref from './components/refs/counterRef';
+// import CounterRef from './components/refs/counterRef';
 
 /* states */
-import ObjectState from './components/states/objectState';
+// import ObjectState from './components/states/objectState';
 
 /* tests */
-// import Parent from './tests/labs';
+// import {...} from './tests/labs';
 
 // ===============================================
 
@@ -47,7 +47,7 @@ root.render(
 
 		{/* <Ref /> */}
 
-		<ObjectState />
+		{/* <ObjectState /> */}
 
 		{/* <Parent /> */}
 	</React.Fragment>,
