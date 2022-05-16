@@ -1,4 +1,4 @@
-<!-- TODO: verified -->
+<!-- TODO: work -->
 
 ### `🔵 PATTERNS - TIPS - TRICKS`
 
@@ -111,7 +111,7 @@ Maintenant que nous avons rappelé les bases, regardons maintenant ce qui est bi
 
 La règle d'immutabilité (caractère de ce qui ne peut changer) d'un etat React est souvent oubliée par la plupart des développeurs, ce qui mène alors leurs projets vers les pires bugs imaginables.
 
-Mais un état n'est pas vraiment immuable lui-même. Vous pouvez modifier les states de vos composant, **mais pas directement**. `La bonne pratique est de créer un nouvel objet correspondant à votre prochain état`. Qui dit nouvel objet dit nouvelle référence, et la différence de ref entre les états A et B est plus facile à comparer que toutes les propriétés une par une.
+Mais un état n'est pas vraiment immuable lui-même. Vous pouvez les modifier **mais pas directement**. `La bonne pratique est de créer un nouvel objet correspondant à votre prochain état`. Qui dit nouvel objet dit nouvelle référence, et la différence de ref entre les états A et B est plus facile à comparer que toutes les propriétés une par une.
 
 ⛔ Erroné
 
@@ -149,3 +149,29 @@ const UnComposant = () => {
 	return <div onClick={handleClick}>{object.click}</div>;
 };
 ```
+
+📍 **TU CHANGERAS TON ÉTAT**
+
+Oui, c'est un peu contraductoire par rapport a ce qui etait mentionnE ci-dessous mais **un état est par définition voué à évoluer**. Donc si votre but est d’avoir des informations qui ne changent pas dans le temps alors utilisez plutôt des constants. C’est plus léger et facile à comprendre.
+
+⛔ Erroné
+
+```jsx
+const UnComposant = () => {
+	const [valeur, setValeur] = useState('Valeur qui ne changera pas');
+
+	return <div>{valeur}</div>;
+};
+```
+
+✅ Correct
+
+```jsx
+const UnComposant = () => {
+	const valeur = 'Valeur qui ne changera pas';
+
+	return <div>{valeur}</div>;
+};
+```
+
+<!-- 📍 **TU NE CHANGERAS QU’UN ÉTAT À LA FOIS** -->
