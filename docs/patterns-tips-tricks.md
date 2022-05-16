@@ -1,6 +1,6 @@
 <!-- TODO: verified -->
 
-### `🔵 TIPS`
+### `🔵 PATTERNS - TIPS - TRICKS`
 
 #### `📌 useId()`
 
@@ -31,4 +31,22 @@ export default function App() {
 		</div>
 	);
 }
+```
+
+#### `📌 JSX Conditionals`
+
+A la place de `?` dans une condition ternaire
+
+```jsx
+const sampleComponent = () => {
+	return isTrue ? <p>True!</p> : null;
+};
+```
+
+Utilisez le `&&` pour omettre `: null`
+
+```jsx
+const sampleComponent = () => {
+	return isTrue && <p>True!</p>;
+};
 ```
