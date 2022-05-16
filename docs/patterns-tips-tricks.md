@@ -101,6 +101,49 @@ const sampleComponent = () => {
 };
 ```
 
+#### `📌 State patterns`
+
+Un état (ou state dans la langue de Shakespeare) est un ensemble de variables qui définit un composant à un instant T. En React, le changement d’un state résulte automatiquement par le re-render du composant où a été déclaré l’état.
+
+Maintenant que nous avons rappelé les bases, regardons maintenant ce qui est bien et ce qui ne l’est pas.
+
+📍 **TU NE MUTERAS POINT TON ÉTAT**
+
+La règle d'immutabilité (caractère de ce qui ne peut changer) d'un etat React est souvent oubliée par la plupart des développeurs, ce qui mène alors leurs projets vers les pires bugs imaginables.
+
+Mais un état n'est pas vraiment immuable lui-même. Vous pouvez modifier les states de vos composant, **mais pas directement**. `La bonne pratique est de créer un nouvel objet correspondant à votre prochain état`. Qui dit nouvel objet dit nouvelle référence, et la différence de ref entre les états A et B est plus facile à comparer que toutes les propriétés une par une.
+
+⛔ Erroné
+
+```jsx
+const UnComposant = () => {
+	const [object, setObject] = useState({
+		name: 'MacGuffin',
+		click: 0,
+	});
+
+	const handleClick = () => {
+		object.click = object.click + 1;
+		setObject(object);
+	};
+
+	return <div onClick={handleClick}>{object.click}</div>;
+};
 ```
 
+✅ Correct
+
+```jsx
+const UnComposant = () => {
+	const [object, setObject] = useState({
+		name: 'MacGuffin',
+		click: 0,
+	});
+
+	const handleClick = () => {
+		setObject({ ...object, click: object.click + 1 });
+	};
+
+	return <div onClick={handleClick}>{object.click}</div>;
+};
 ```
