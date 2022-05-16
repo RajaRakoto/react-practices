@@ -76,9 +76,9 @@ function Clock() {
 }
 ```
 
-#### `📌 modifier un state de type object`
+#### `📌 modifier un state`
 
-La bonne pratique pour modifier un state de type objet grace a `setObject()`
+- **object**: la bonne pratique pour modifier un state de type objet grace a `setObject()`
 
 ```jsx
 function ObjectState() {
@@ -86,6 +86,8 @@ function ObjectState() {
 		name: 'Rakoto',
 		click: 0,
 	});
+
+	// ici on crée un nouvel objet grâce à la syntaxe ES2018, avant de l’envoyer au setObject.
 
 	const handleClick = () => {
 		setObject({ ...object, click: object.click + 1 });

@@ -133,6 +133,8 @@ const UnComposant = () => {
 
 ✅ Correct
 
+Ici on crée un nouvel objet grâce à la syntaxe ES2018, avant de l’envoyer au setObject.
+
 ```jsx
 const UnComposant = () => {
 	const [object, setObject] = useState({
