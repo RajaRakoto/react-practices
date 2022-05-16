@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import './index.min.css';
 
 /* apps */
-// import Jungle from './components/apps/jungle-house/jungle';
+import Jungle from './components/apps/jungle-house/jungle';
 
 /* contexts */
 // import Parent from './components/contexts/basicContext';
@@ -35,7 +35,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // TODO: indexed component menu (router) [*]
 root.render(
 	<React.Fragment>
-		{/* <Jungle /> */}
+		<Jungle />
 
 		{/* <Parent /> */}
 		{/* <UserApp /> */}
