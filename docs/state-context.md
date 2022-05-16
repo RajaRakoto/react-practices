@@ -76,37 +76,46 @@ function Clock() {
 }
 ```
 
-#### `📌 setState()`
+#### `📌 modifier un state de type object`
 
-`setState()` permet de planifier une mise à jour de l'état local d'un composant.
-
-Exemple de mise a jour 1:
+La bonne pratique pour modifier un state de type objet grace a `setObject()`
 
 ```jsx
-// erroné
-state.comment = 'Bonjour';
+function ObjectState() {
+	const [object, setObject] = React.useState({
+		name: 'Rakoto',
+		click: 0,
+	});
 
-// correct
-setState({ comment: 'Bonjour' });
+	const handleClick = () => {
+		setObject({ ...object, click: object.click + 1 });
+	};
+
+	const handleChange = inputValue => {
+		setObject({ ...object, name: inputValue });
+	};
+
+	return (
+		<div>
+			<span>Name: {object.name}</span>
+			<br />
+			<span>Click: {object.click}</span> <br /> <br />
+			<button onClick={handleClick}>Set click</button>
+			<br />
+			<label htmlFor="name">Set name:</label>
+			<input
+				type="text"
+				id="name"
+				onChange={e => handleChange(e.target.value)}
+			/>
+		</div>
+	);
+}
 ```
 
-Exemple de mise a jour 2:
+#### `📌 previous state (concatenation de plusieurs etats)`
 
-```jsx
-// erroné
-setState({
-	counter: state.counter + props.increment,
-});
-
-// correct - cette fonction fléchée recevra l’état précédent comme premier argument et les props au moment de la mise à jour comme second argument
-setState((state, props) => ({
-	counter: state.counter + props.increment,
-}));
-```
-
-#### `📌 previous state pour les arrays ou objects`
-
-Toutes les operations effectuEs ci-dessous avec `setState()` ne permet pas de concatener l'ancienne valeur d'un state avec la nouvelle valeur. Voici une autre maniere plus propre de stocker/concatener vos states
+Toutes les operations effectuEs ci-dessous ne permet pas de concatener l'ancienne valeur d'un etat avec la nouvelle valeur. Voici une autre maniere plus propre de stocker/concatener vos etats
 
 Exemple avec un state de type array:
 
