@@ -16,7 +16,7 @@ import Cart from './_cart';
 // ===============================================
 
 /**
- * @description - le composant mere pour jungle house app
+ * @description - le composant parent pour jungle house app
  * @feat - react-responsive(mediaquery) | bt5 (grid) | className injection | props | previousState
  */
 export default function Jungle() {
