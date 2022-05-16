@@ -94,10 +94,13 @@ function Plants() {
 	// useCart hook
 	const { addItem, inCart } = useCart();
 
+	// plants state
+	const [plantsState, setPlantsState] = React.useState(plantsProducts);
+
 	return (
 		<React.Fragment>
 			<ul className="plant-list">
-				{plantsProducts.map(plant => {
+				{plantsState.map(plant => {
 					const alreadyAdded = inCart(plant.id);
 
 					return (
