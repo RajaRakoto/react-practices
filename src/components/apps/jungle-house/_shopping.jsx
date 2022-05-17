@@ -146,6 +146,9 @@ export default function Shopping() {
 	// plants state
 	const [plantsState, setPlantsState] = React.useState(plantsProducts);
 
+	// TODO: filter & set state for plants [***]
+	const test = plantsProducts.filter(plant => plant.category === 'extérieur');
+
 	return (
 		<div id="shopping">
 			<h2 className="header">🌱 Liste des plantes</h2>
