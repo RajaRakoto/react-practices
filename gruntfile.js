@@ -1,7 +1,7 @@
 /**
  * @author: Raja
  * @description: gruntfile for react-practice project
- * @requires: grunt-contrib-compress
+ * @requires: grunt load-grunt-tasks grunt-contrib-compress
  */
 module.exports = function (grunt) {
 	require('load-grunt-tasks')(grunt);
