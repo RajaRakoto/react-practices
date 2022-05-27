@@ -55,3 +55,4 @@
 - [ ] Ajouter un boutton permettant de modifier une tache a partir d'un modal
 - [ ] Utiliser local storage pour garder vos taches en memoire
 - [ ] Ajouter un systeme de prioritE pour chaque tache
+- [ ] Check all task with one button
