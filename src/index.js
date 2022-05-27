@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
 /* styles */
-import '@picocss/pico';
+// import '@picocss/pico';
 import './index.min.css';
 
 /* apps */
 // import Jungle from './components/apps/jungle-house/jungle';
-import TodoSample from './components/apps/todo/todo-sample/todo';
+// import TodoSample from './components/apps/todo/todo-sample/todo';
 
 /* contexts */
 // import Parent from './components/contexts/basicContext';
@@ -27,6 +27,9 @@ import TodoSample from './components/apps/todo/todo-sample/todo';
 /* states */
 // import ObjectState from './components/states/objectState';
 
+/* alert */
+import SampleTextInputAlert from './components/sweetalert/alert';
+
 /* tests */
 // import {...} from './tests/labs';
 
@@ -38,7 +41,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.Fragment>
 		{/* <Jungle /> */}
-		<TodoSample />
+		{/* <TodoSample /> */}
 
 		{/* <Parent /> */}
 		{/* <UserApp /> */}
@@ -51,6 +54,7 @@ root.render(
 		{/* <Ref /> */}
 
 		{/* <ObjectState /> */}
+		<SampleTextInputAlert />
 
 		{/* <Parent /> */}
 	</React.Fragment>,
