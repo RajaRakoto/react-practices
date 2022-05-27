@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
 /* styles */
+import '@picocss/pico';
 import './index.min.css';
 
 /* apps */
-import Jungle from './components/apps/jungle-house/jungle';
+// import Jungle from './components/apps/jungle-house/jungle';
+import TodoSample from './components/apps/todo/todo-sample/todo';
 
 /* contexts */
 // import Parent from './components/contexts/basicContext';
@@ -35,7 +37,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // TODO: indexed component menu (router) [*]
 root.render(
 	<React.Fragment>
-		<Jungle />
+		{/* <Jungle /> */}
+		<TodoSample />
 
 		{/* <Parent /> */}
 		{/* <UserApp /> */}
