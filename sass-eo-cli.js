@@ -4,6 +4,19 @@ module.exports = function (grunt) {
 	// node-glob syntax
 	const includeAllSassFiles = ['./src/*.scss', './src/components/**/*.scss'];
 
+	// sass files path
+	const sassPath = {
+		'./src/components/events/forms/forms.min.css':
+			'./src/components/events/forms/forms.scss',
+		'./src/components/apps/todo/common/todo.min.css':
+			'./src/components/apps/todo/common/todo.scss',
+		'./src/components/apps/jungle-house/jungle.min.css':
+			'./src/components/apps/jungle-house/jungle.scss',
+		'./src/index.min.css': './src/index.scss',
+		'./src/components/events/departement/departement.min.css':
+			'./src/components/events/departement/departement.scss',
+	};
+
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('./package.json'),
 
@@ -13,16 +26,7 @@ module.exports = function (grunt) {
 					style: 'compressed',
 					loadPath: ['./node_modules/@raja_rakoto/sass-eo'],
 				},
-				files: {
-					// destination: source
-					'./src/index.min.css': './src/index.scss',
-					'./src/components/apps/jungle-house/jungle.min.css':
-						'./src/components/apps/jungle-house/jungle.scss',
-					'./src/components/events/departement/departement.min.css':
-						'./src/components/events/departement/departement.scss',
-					'./src/components/events/form/forms.min.css':
-						'./src/components/events/form/forms.scss',
-				},
+				files: sassPath,
 			},
 		},
 

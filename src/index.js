@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
 /* styles */
+import '@picocss/pico';
 import './index.min.css';
 
 /* apps */
 // import Jungle from './components/apps/jungle-house/jungle';
+import TodoSample from './components/apps/todo/todo-sample/todo';
 
 /* contexts */
 // import Parent from './components/contexts/basicContext';
@@ -17,16 +19,16 @@ import './index.min.css';
 // import Forms from './components/events/form/forms';
 
 /* lifecycles */
-// import Clock from './components/lifecycle/clock';
+// import ClockLifecycle from './components/lifecycle/clockLifecycle';
 
 /* refs */
-// import Ref from './components/refs/counterRef';
+// import CounterRef from './components/refs/counterRef';
 
 /* states */
-import ObjectState from './components/states/objectState';
+// import ObjectState from './components/states/objectState';
 
 /* tests */
-// import Parent from './tests/labs';
+// import {...} from './tests/labs';
 
 // ===============================================
 
@@ -36,6 +38,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.Fragment>
 		{/* <Jungle /> */}
+		<TodoSample />
 
 		{/* <Parent /> */}
 		{/* <UserApp /> */}
@@ -47,7 +50,7 @@ root.render(
 
 		{/* <Ref /> */}
 
-		<ObjectState />
+		{/* <ObjectState /> */}
 
 		{/* <Parent /> */}
 	</React.Fragment>,

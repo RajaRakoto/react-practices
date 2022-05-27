@@ -4,7 +4,7 @@ import React from 'react';
  * @description - stocker une valeur modifiable (count) qui ne provoque pas de nouveau rendu lors de la mise à jour.
  * @feat - useState() | useRef() | useEffect()
  */
-export default function Ref() {
+export default function CounterRef() {
 	const [inputValue, setInputValue] = React.useState('');
 	let countWithRef = React.useRef(0); // arg: valeur initiale de countWithRef
 	let countWithoutRef = 0;

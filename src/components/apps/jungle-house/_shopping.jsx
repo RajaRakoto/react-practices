@@ -62,7 +62,7 @@ function Categories() {
  * @description - liste des plantes disponibles a vendre
  * @feat - map() [get property with keyword] | toString() | props | SEO (img) | setInterval() | className deleting
  */
-function Plants() {
+function Plants({ plantsState }) {
 	/**
 	 * @description - information sur chaque plante (alert)
 	 * Autre methode -> https://github.com/OpenClassrooms-Student-Center/7008001-Debutez-avec-React/blob/P2C5-Solution/src/components/CareScale.js
@@ -97,7 +97,7 @@ function Plants() {
 	return (
 		<React.Fragment>
 			<ul className="plant-list">
-				{plantsProducts.map(plant => {
+				{plantsState.map(plant => {
 					const alreadyAdded = inCart(plant.id);
 
 					return (
@@ -142,15 +142,21 @@ function Plants() {
 	);
 }
 
-export default function Shopping({ sendDatatoCart }) {
+export default function Shopping() {
+	// plants state
+	const [plantsState, setPlantsState] = React.useState(plantsProducts);
+
+	// TODO: filter & set state for plants [***]
+	const test = plantsProducts.filter(plant => plant.category === 'extérieur');
+
 	return (
 		<div id="shopping">
 			<h2 className="header">🌱 Liste des plantes</h2>
 			<div id="categories">
-				<Categories />
+				<Categories plantsState={plantsState} />
 			</div>
 			<div className="body">
-				<Plants />
+				<Plants plantsState={plantsState} />
 			</div>
 		</div>
 	);
