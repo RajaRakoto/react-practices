@@ -6,6 +6,8 @@ module.exports = function (grunt) {
 
 	// sass files path
 	const sassPath = {
+		'./src/components/sweetalert/alert.min.css':
+			'./src/components/sweetalert/alert.scss',
 		'./src/components/events/forms/forms.min.css':
 			'./src/components/events/forms/forms.scss',
 		'./src/components/apps/todo/common/todo.min.css':

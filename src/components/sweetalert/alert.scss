@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+@import './sass/button82';
+@import 'sass-eo-basics';
+
+.swal-style {
+	input {
+		width: auto !important;
+	}
+}
+
+.swal--anim-show {
+	@include animation-zoom($in-out: in);
+}
+
+.swal--anim-hide {
+	@include animation-zoom($in-out: out);
+}
+
+.swal-confirm--btn-size {
+	width: 120px !important;
+	margin: 5px !important;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100%;
+	height: 100vh;
+}
+
+.main {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 1080px;
+	border-radius: 10px;
+	background-color: rgba(200, 200, 200, 0.556);
+	@include spacing-margin-gabarit($gabarit: small);
+
+	button {
+		@include spacing-margin-gabarit($gabarit: medium);
+	}
+}

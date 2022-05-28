@@ -10,7 +10,7 @@ import '../common/todo.min.css';
 
 export default function TodoSample() {
 	const [tasks, setTasks] = React.useState([
-		{ id: Date.now(), text: 'Tache1', isDone: false },
+		{ id: 10, text: 'Tache1', isDone: false },
 	]);
 
 	/**
@@ -27,7 +27,7 @@ export default function TodoSample() {
 	};
 
 	/**
-	 * @description - suppression d'une tache a partir de son id
+	 * @description - suppression d'une tache existante
 	 */
 	const deleteTask = id => {
 		const newTasks = tasks.filter(task => task.id !== id);
@@ -35,7 +35,7 @@ export default function TodoSample() {
 	};
 
 	/**
-	 * @description - changement de l'etat d'une tache a partir de son id
+	 * @description - changement de l'etat d'une tache existante
 	 */
 	const toggleTask = id => {
 		const realTask = tasks.find(task => task.id === id); // recuperer la tache concernEe
@@ -46,6 +46,20 @@ export default function TodoSample() {
 		taskCopy.isDone = !taskCopy.isDone; // modification de la proprietE isDone de la copie
 		tasksCopy[indexTask] = taskCopy; // replacement de l'objet qui se trouve dans l'index du tableau d'objet tasksCopy
 		setTasks(tasksCopy); // mise a jour du state tasks
+	};
+
+	/**
+	 * @description - modification d'une tache existante
+	 */
+	const editTask = (id, newText) => {
+		const realTask = tasks.find(task => task.id === id);
+		const indexTask = tasks.findIndex(task => task.id === id);
+		const taskCopy = { ...realTask };
+		const tasksCopy = [...tasks];
+
+		taskCopy.text = newText;
+		tasksCopy[indexTask] = taskCopy;
+		setTasks(tasksCopy);
 	};
 
 	return (
@@ -59,6 +73,7 @@ export default function TodoSample() {
 						tasks={tasks}
 						deleteTask={deleteTask}
 						toggleTask={toggleTask}
+            editTask={editTask}
 					/>
 					<footer>
 						<TaskForm addTask={addTask} />
