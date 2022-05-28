@@ -60,7 +60,7 @@ export default function SweetAlert2() {
 
 		if (inputValue) {
 			reactSwal.fire({
-				icon: 'success', // status (success, error, info)
+				icon: 'success', // status (success, error, info, warning)
 				html: `<span>Votre texte est "${inputValue}" </span>`, // injecter du code HTML
 				confirmButtonColor: '#1abc9c',
 			});
@@ -77,12 +77,35 @@ export default function SweetAlert2() {
 		});
 	};
 
+	const ConfirmAlert = async () => {
+		reactSwal
+			.fire({
+				title: 'Vous etes sure de vouloir supprimer ?',
+				text: 'Vous ne pouvez plus revenir en arriere apres cette operation !',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#d33',
+				confirmButtonText: 'Supprimer',
+			})
+			.then(result => {
+				if (result.isConfirmed) {
+					reactSwal.fire({
+						icon: 'success',
+						title: 'Suppression avec success !',
+						showConfirmButton: false,
+						timer: 1500,
+					});
+				}
+			});
+	};
+
 	return (
 		<React.Fragment>
 			<h1>Sweetalert2 example</h1>
 			<div className="main">
 				<Button event={SampleTextInput} label={'sample text input'} />
 				<Button event={SampleNotification} label={'sample notification'} />
+				<Button event={ConfirmAlert} label={'confirmation alert'} />
 			</div>
 		</React.Fragment>
 	);
