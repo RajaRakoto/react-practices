@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+@import './sass/button82';
+@import 'sass-eo-basics';
+
+.swal-style {
+	input {
+		max-width: 550px !important;
+	}
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100%;
+	height: 100vh;
+}
+
+.main {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
+	border-radius: 10px;
+	background-color: rgba(200, 200, 200, 0.556);
+
+	button {
+		@include spacing-margin-gabarit($gabarit: small);
+	}
+}
