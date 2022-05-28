@@ -22,9 +22,10 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	width: 100%;
+  max-width: 1080px;
 	border-radius: 10px;
 	background-color: rgba(200, 200, 200, 0.556);
+  @include spacing-margin-gabarit($gabarit: small);
 
 	button {
 		@include spacing-margin-gabarit($gabarit: small);
