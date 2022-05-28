@@ -45,7 +45,9 @@ export default function SweetAlert2() {
 			hideClass: {
 				popup: 'swal--anim-hide',
 			},
-			// width: '600px', // modifier la taille du modal
+			backdrop: true, // mode focus
+			background: '#eee', // modifier l'arriere plan du modal (img, color)
+			width: 'auto', // modifier la taille du modal
 			// verificateur
 			inputValidator: value => {
 				if (!value) {
@@ -148,6 +150,46 @@ export default function SweetAlert2() {
 		});
 	};
 
+	const AutoCloseAlert = async () => {
+		let timerIntervalID;
+		let timerIntervalValue = 100;
+		let timerValue = 2000;
+		reactSwal
+			.fire({
+				title: 'Auto close alert',
+				html: 'Ceci va disparaitre dans <strong></strong> ms.',
+				timer: timerValue,
+				timerProgressBar: true,
+				didOpen: () => {
+					reactSwal.showLoading();
+					const strong = reactSwal.getHtmlContainer().querySelector('strong');
+					timerIntervalID = setInterval(() => {
+						strong.textContent = reactSwal.getTimerLeft();
+					}, timerIntervalValue);
+				},
+				willClose: () => {
+					clearInterval(timerIntervalID);
+				},
+			})
+			.then(result => {
+				if (result.dismiss === reactSwal.DismissReason.timer) {
+					reactSwal.fire({
+						icon: 'success',
+						title: 'Auto close alert finished !',
+						showConfirmButton: false,
+						timer: 2000,
+					});
+				} else {
+					reactSwal.fire({
+						icon: 'error',
+						title: "Vous avez interrompu l'auto fermeture !",
+						showConfirmButton: false,
+						timer: 2000,
+					});
+				}
+			});
+	};
+
 	return (
 		<React.Fragment>
 			<h1>Sweetalert2 example</h1>
@@ -157,6 +199,7 @@ export default function SweetAlert2() {
 				<Button event={SampleConfirmAlert} label={'sample confirm alert'} />
 				<Button event={AdvancedConfirmAlert} label={'advanced confirm alert'} />
 				<Button event={SampleModalImage} label={'sample modal image'} />
+				<Button event={AutoCloseAlert} label={'auto close alert'} />
 			</div>
 		</React.Fragment>
 	);
