@@ -9,6 +9,14 @@
 	}
 }
 
+.swal--anim-show {
+	@include animation-zoom($in-out: in);
+}
+
+.swal--anim-hide {
+	@include animation-zoom($in-out: out);
+}
+
 body {
 	display: flex;
 	justify-content: center;
@@ -22,10 +30,10 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-  max-width: 1080px;
+	max-width: 1080px;
 	border-radius: 10px;
 	background-color: rgba(200, 200, 200, 0.556);
-  @include spacing-margin-gabarit($gabarit: small);
+	@include spacing-margin-gabarit($gabarit: small);
 
 	button {
 		@include spacing-margin-gabarit($gabarit: small);
