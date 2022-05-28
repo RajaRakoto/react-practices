@@ -17,6 +17,11 @@
 	@include animation-zoom($in-out: out);
 }
 
+.swal-confirm--btn-size {
+	width: 120px !important;
+	margin: 5px !important;
+}
+
 body {
 	display: flex;
 	justify-content: center;
