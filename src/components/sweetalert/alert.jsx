@@ -137,6 +137,17 @@ export default function SweetAlert2() {
 			});
 	};
 
+	const SampleModalImage = async () => {
+		reactSwal.fire({
+			title: 'sample modal image',
+			text: 'image (400x200)',
+			imageUrl: 'https://unsplash.it/400/200',
+			imageWidth: 400,
+			imageHeight: 200,
+			imageAlt: 'modal image example',
+		});
+	};
+
 	return (
 		<React.Fragment>
 			<h1>Sweetalert2 example</h1>
@@ -145,6 +156,7 @@ export default function SweetAlert2() {
 				<Button event={SampleNotification} label={'sample notification'} />
 				<Button event={SampleConfirmAlert} label={'sample confirm alert'} />
 				<Button event={AdvancedConfirmAlert} label={'advanced confirm alert'} />
+				<Button event={SampleModalImage} label={'sample modal image'} />
 			</div>
 		</React.Fragment>
 	);
