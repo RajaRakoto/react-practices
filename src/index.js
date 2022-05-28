@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
 /* styles */
-// import '@picocss/pico';
+import '@picocss/pico';
 import './index.min.css';
 
 /* apps */
@@ -28,7 +28,7 @@ import './index.min.css';
 // import ObjectState from './components/states/objectState';
 
 /* alert */
-import SampleTextInputAlert from './components/sweetalert/alert';
+import SweetAlert2 from './components/sweetalert/alert';
 
 /* tests */
 // import {...} from './tests/labs';
@@ -54,7 +54,7 @@ root.render(
 		{/* <Ref /> */}
 
 		{/* <ObjectState /> */}
-		<SampleTextInputAlert />
+		<SweetAlert2 />
 
 		{/* <Parent /> */}
 	</React.Fragment>,
