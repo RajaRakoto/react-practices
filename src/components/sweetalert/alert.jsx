@@ -6,6 +6,9 @@ import './alert.min.css';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
+/**
+ * @description - un composant permettant de generer un bouton attachE a un evenement passE comme props avec un label different
+ */
 function Button({ event, label }) {
 	return (
 		<button
@@ -26,7 +29,7 @@ export default function SweetAlert2() {
 	const SampleTextInput = async () => {
 		const { value: inputValue } = await reactSwal.fire({
 			title: 'sample text input', // titre
-			inputLabel: "un exemple d'input (text) simple", // description
+			inputLabel: "un exemple d'input (type = text) simple", // description
 			input: 'text', // type d'entree
 			inputValue: '', // valeur par defaut
 			showCancelButton: true, // afficher le bouton annuler
@@ -35,6 +38,13 @@ export default function SweetAlert2() {
 			confirmButtonColor: '#1abc9c', // couleur du bouton de confirmation
 			cancelButtonText: 'Annuler', // contenu du bouton d'annulation
 			customClass: 'swal-style', // utilisation d'une class externe pour le style (note: utiliser le role !important pour chaque prop)
+			// animation customization
+			showClass: {
+				popup: 'swal--anim-show',
+			},
+			hideClass: {
+				popup: 'swal--anim-hide',
+			},
 			// width: '600px', // modifier la taille du modal
 			// verificateur
 			inputValidator: value => {
@@ -51,10 +61,20 @@ export default function SweetAlert2() {
 		if (inputValue) {
 			reactSwal.fire({
 				icon: 'success', // status (success, error, info)
-				html: `<span>Votre texte est ${inputValue}</span>`, // injecter du code HTML
+				html: `<span>Votre texte est "${inputValue}" </span>`, // injecter du code HTML
 				confirmButtonColor: '#1abc9c',
 			});
 		}
+	};
+
+	const SampleNotification = async () => {
+		reactSwal.fire({
+			// position: 'top-end', // position du fenetre dans le DOM
+			icon: 'success', // status (success, error, info)
+			title: 'Operation effectuer avec success !',
+			showConfirmButton: false, // cacher le bouton de confirmation
+			timer: 1500, // delai d'affichage
+		});
 	};
 
 	return (
@@ -62,6 +82,7 @@ export default function SweetAlert2() {
 			<h1>Sweetalert2 example</h1>
 			<div className="main">
 				<Button event={SampleTextInput} label={'sample text input'} />
+				<Button event={SampleNotification} label={'sample notification'} />
 			</div>
 		</React.Fragment>
 	);
