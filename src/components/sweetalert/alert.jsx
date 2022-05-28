@@ -77,7 +77,7 @@ export default function SweetAlert2() {
 		});
 	};
 
-	const ConfirmAlert = async () => {
+	const SampleConfirmAlert = async () => {
 		reactSwal
 			.fire({
 				title: 'Vous etes sure de vouloir supprimer ?',
@@ -99,13 +99,52 @@ export default function SweetAlert2() {
 			});
 	};
 
+	const AdvancedConfirmAlert = async () => {
+		const swalWithBootstrapButtons = reactSwal.mixin({
+			customClass: {
+				confirmButton: 'btn btn-success swal-confirm--btn-size',
+				cancelButton: 'btn btn-danger swal-confirm--btn-size',
+			},
+			buttonsStyling: false,
+		});
+
+		swalWithBootstrapButtons
+			.fire({
+				title: 'Vous etes sure de vouloir supprimer ?',
+				text: 'Vous ne pouvez plus revenir en arriere apres cette operation !',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonText: 'Oui',
+				cancelButtonText: 'Non',
+				reverseButtons: true,
+			})
+			.then(result => {
+				if (result.isConfirmed) {
+					swalWithBootstrapButtons.fire({
+						icon: 'success',
+						title: 'Suppression avec success !',
+						showConfirmButton: false,
+						timer: 1500,
+					});
+				} else if (result.dismiss === reactSwal.DismissReason.cancel) {
+					swalWithBootstrapButtons.fire({
+						icon: 'error',
+						title: 'Operation annulE !',
+						showConfirmButton: false,
+						timer: 1500,
+					});
+				}
+			});
+	};
+
 	return (
 		<React.Fragment>
 			<h1>Sweetalert2 example</h1>
 			<div className="main">
 				<Button event={SampleTextInput} label={'sample text input'} />
 				<Button event={SampleNotification} label={'sample notification'} />
-				<Button event={ConfirmAlert} label={'confirmation alert'} />
+				<Button event={SampleConfirmAlert} label={'sample confirm alert'} />
+				<Button event={AdvancedConfirmAlert} label={'advanced confirm alert'} />
 			</div>
 		</React.Fragment>
 	);
