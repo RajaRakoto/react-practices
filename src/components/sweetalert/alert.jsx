@@ -1,3 +1,5 @@
+// TODO: last work [***]
+
 import React from 'react';
 
 import './alert.min.css';
