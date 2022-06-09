@@ -24,11 +24,14 @@ import './index.min.css';
 /* refs */
 // import CounterRef from './components/refs/counterRef';
 
+/* route */
+import RouteApp from './components/route/route-app';
+
 /* states */
 // import ObjectState from './components/states/objectState';
 
 /* alert */
-import SweetAlert2 from './components/sweetalert/alert';
+// import SweetAlert2 from './components/sweetalert/alert';
 
 /* tests */
 // import {...} from './tests/labs';
@@ -53,8 +56,10 @@ root.render(
 
 		{/* <Ref /> */}
 
+		<RouteApp />
+
 		{/* <ObjectState /> */}
-		<SweetAlert2 />
+		{/* <SweetAlert2 /> */}
 
 		{/* <Parent /> */}
 	</React.Fragment>,
